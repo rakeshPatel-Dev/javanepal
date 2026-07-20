@@ -5,6 +5,9 @@ import { TooltipProvider } from "@/components/ui/tooltip"
 import { Toaster } from "@/components/ui/sonner"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
+import { OrganizationSchema } from "@/components/seo/organization-schema"
+import { WebsiteSchema } from "@/components/seo/website-schema"
+import { CourseSchema } from "@/components/seo/course-schema"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -77,6 +80,9 @@ export default function RootLayout({
         >
           <TooltipProvider>
             <Navbar />
+            <OrganizationSchema />
+            <WebsiteSchema />
+            <CourseSchema />
             <main className="flex-1 px-3 sm:px-5 lg:px-8">{children}</main>
             <Footer />
             <Toaster position="top-right" richColors closeButton />
