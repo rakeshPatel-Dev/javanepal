@@ -42,7 +42,7 @@ export function Navbar() {
         className={cn(
           "sticky top-0 z-50 w-full border-b transition-all duration-300 safe-x",
           scrolled
-            ? "bg-background/50 backdrop-blur-lg rounded-full top-3 border border-border max-w-6xl mx-auto shadow-sm"
+            ? "bg-background/80 backdrop-blur-lg border-border shadow-xs"
             : "bg-background/60 border-transparent",
         )}
       >
