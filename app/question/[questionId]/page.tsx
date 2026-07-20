@@ -24,6 +24,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { TYPE_COLORS } from "@/lib/types"
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema"
 import { FAQSchema } from "@/components/seo/faq-schema"
+import { PersonSchema } from "@/components/seo/person-schema"
 
 function renderAnswer(text: string) {
   if (!text) return null
@@ -97,6 +98,13 @@ export default function QuestionPage() {
                 question: question.title,
                 answer: question.shortAnswer,
               }]}
+              datePublished={question.source?.year ? `${question.source.year}-01-01` : undefined}
+            />
+            <PersonSchema
+              name="Rakesh Patel"
+              url="https://rakeshpatel.me"
+              jobTitle="Developer & Content Curator"
+              description="Creator of JavaNepal — a curated Java OOP question bank for BITM 2nd Semester students."
             />
 
             <div className="space-y-4">
@@ -232,7 +240,15 @@ export default function QuestionPage() {
                     <div className="flex flex-wrap gap-1.5 pt-2 items-center">
                       <TagIcon className="w-4 h-4 text-muted-foreground shrink-0" />
                       <span className="text-xs font-bold text-muted-foreground mr-1">Related:</span>
-                      {(question.relatedTopics ?? []).map((t) => <Tag key={t} name={t} />)}
+                      {(question.relatedTopics ?? []).map((t) => (
+                        <Link
+                          key={t}
+                          href={`/search?q=${encodeURIComponent(t)}`}
+                          className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium border border-border/80 bg-muted/40 text-muted-foreground hover:bg-accent hover:text-accent-foreground hover:border-primary/30 transition-all duration-200"
+                        >
+                          {t}
+                        </Link>
+                      ))}
                     </div>
                   )}
                 </motion.div>
@@ -269,6 +285,12 @@ export default function QuestionPage() {
                     <div className="flex justify-between items-center py-2 border-b border-border/60 text-sm">
                       <span className="text-muted-foreground font-semibold">Exam Frequency</span>
                       <span className="font-bold text-primary font-mono">{question.examFrequency}</span>
+                    </div>
+                  )}
+                  {question.source?.year && (
+                    <div className="flex justify-between items-center py-2 border-b border-border/60 text-sm">
+                      <span className="text-muted-foreground font-semibold">Last Updated</span>
+                      <span className="font-bold text-foreground font-mono">{question.source.year}</span>
                     </div>
                   )}
                   <div className="flex justify-between items-center py-2 text-sm">

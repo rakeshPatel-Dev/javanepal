@@ -2,6 +2,9 @@ import Link from "next/link"
 import { ArrowRight, BookOpen, Layers, HelpCircle, Search, Bookmark, Database, Globe, Target, Code2, Heart, ExternalLink } from "lucide-react"
 import { getGlobalStats } from "@/lib/data"
 import { MotionDiv } from "@/components/common/motion-div"
+import { PersonSchema } from "@/components/seo/person-schema"
+import { OrganizationSchema } from "@/components/seo/organization-schema"
+import { WebsiteSchema } from "@/components/seo/website-schema"
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -53,6 +56,14 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <OrganizationSchema />
+      <WebsiteSchema />
+      <PersonSchema
+        name="Rakesh Patel"
+        url="https://rakeshpatel.me"
+        jobTitle="Developer & Content Curator"
+        description="Creator of JavaNepal — a curated Java OOP question bank for BITM 2nd Semester students."
+      />
       <section className="mesh-gradient relative overflow-hidden py-28 lg:py-36 px-4 sm:px-6 lg:px-8">
         <div aria-hidden="true" className="hero-grid" />
         <div className="absolute top-1/4 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
