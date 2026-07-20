@@ -5,8 +5,8 @@ interface FAQItem {
   answer: string
 }
 
-export function FAQSchema({ questions }: { questions: FAQItem[] }) {
-  const data = {
+export function FAQSchema({ questions, datePublished }: { questions: FAQItem[]; datePublished?: string }) {
+  const data: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: questions.map((q) => ({
@@ -18,5 +18,6 @@ export function FAQSchema({ questions }: { questions: FAQItem[] }) {
       },
     })),
   }
+  if (datePublished) data.datePublished = datePublished
   return <JsonLd data={data} />
 }
