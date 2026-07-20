@@ -15,6 +15,8 @@ import { useTracking } from "@/hooks/use-tracking"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema"
+import { FAQSchema } from "@/components/seo/faq-schema"
 import type { Question } from "@/lib/types"
 
 function sortQuestions(questions: Question[], sortBy: string): Question[] {
@@ -78,6 +80,20 @@ export default function TopicPage() {
             ...(unit ? [{ label: unit.title, href: `/unit/${unit.slug || unit.id}` }] : []),
             { label: topic.title },
           ]}
+        />
+        <BreadcrumbSchema
+          items={[
+            { name: "Home", url: "https://javanepal.vercel.app" },
+            { name: "Units", url: "https://javanepal.vercel.app/units" },
+            ...(unit ? [{ name: unit.title, url: `https://javanepal.vercel.app/unit/${unit.slug || unit.id}` }] : []),
+            { name: topic.title, url: `https://javanepal.vercel.app/topic/${topic.slug || topic.id}` },
+          ]}
+        />
+        <FAQSchema
+          questions={allQuestions.slice(0, 10).map((q) => ({
+            question: q.title,
+            answer: q.shortAnswer,
+          }))}
         />
 
         <div className="mt-6">

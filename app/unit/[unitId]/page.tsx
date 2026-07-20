@@ -15,6 +15,7 @@ import { useTracking } from "@/hooks/use-tracking"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema"
 
 const difficultyVariant: Record<string, string> = {
   Beginner: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20 dark:bg-emerald-950/20 dark:text-emerald-400",
@@ -48,6 +49,13 @@ export default function UnitPage() {
       <Container className="py-8 lg:py-10">
         <div className="mb-6">
           <Breadcrumb items={[{ label: "Units", href: "/units" }, { label: `Unit ${unit.id}` }]} />
+          <BreadcrumbSchema
+            items={[
+              { name: "Home", url: "https://javanepal.vercel.app" },
+              { name: "Units", url: "https://javanepal.vercel.app/units" },
+              { name: unit.title, url: `https://javanepal.vercel.app/unit/${unit.slug || unit.id}` },
+            ]}
+          />
         </div>
 
         <motion.div

@@ -22,6 +22,8 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { TYPE_COLORS } from "@/lib/types"
+import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema"
+import { FAQSchema } from "@/components/seo/faq-schema"
 
 function renderAnswer(text: string) {
   if (!text) return null
@@ -80,6 +82,21 @@ export default function QuestionPage() {
                 ...(topic ? [{ label: topic.title, href: `/topic/${topic.slug || topic.id}` }] : []),
                 { label: `Q${question.id}` },
               ]}
+            />
+            <BreadcrumbSchema
+              items={[
+                { name: "Home", url: "https://javanepal.vercel.app" },
+                { name: "Units", url: "https://javanepal.vercel.app/units" },
+                ...(unit ? [{ name: unit.title, url: `https://javanepal.vercel.app/unit/${unit.slug || unit.id}` }] : []),
+                ...(topic ? [{ name: topic.title, url: `https://javanepal.vercel.app/topic/${topic.slug || topic.id}` }] : []),
+                { name: `Q${question.id}: ${question.title}`, url: `https://javanepal.vercel.app/question/${question.slug || question.id}` },
+              ]}
+            />
+            <FAQSchema
+              questions={[{
+                question: question.title,
+                answer: question.shortAnswer,
+              }]}
             />
 
             <div className="space-y-4">
