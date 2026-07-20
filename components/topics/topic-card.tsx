@@ -78,6 +78,7 @@ export function TopicCard({ topic, progress, isUpNext = false }: { topic: Enrich
 
           <Button
             variant={isUpNext ? "default" : "outline"}
+            nativeButton={false}
             className={`w-full mt-auto rounded-xl font-black transition-all text-sm flex items-center justify-center gap-2 h-10 ${
               isUpNext
                 ? "bg-primary text-primary-foreground hover:opacity-95 shadow-sm cursor-pointer"

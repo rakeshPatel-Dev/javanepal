@@ -99,6 +99,7 @@ export function QuestionCard({
             <Button
               variant="ghost"
               size="xs"
+              nativeButton={false}
               className="text-primary hover:text-primary hover:bg-primary/10 gap-1"
               render={
                 <Link href={`/question/${question.slug || question.id}`}>

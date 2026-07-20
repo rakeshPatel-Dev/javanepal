@@ -110,6 +110,7 @@ export default function UnitPage() {
             {topics.length > 0 && (
               <Button
                 className="w-full bg-primary text-primary-foreground font-bold rounded-lg hover:opacity-95 transition-all flex items-center justify-center gap-2 h-11 shadow-sm cursor-pointer"
+                nativeButton={false}
                 render={
                   <Link href={`/topic/${topicProgress.find((item) => item.topic.id === upNextTopicId)?.topic.slug || topics[0]?.slug || topics[0]?.id}`}>
                     <Play className="w-3.5 h-3.5 fill-primary-foreground" />

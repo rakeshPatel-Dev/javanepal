@@ -44,7 +44,7 @@ function Button({
   className,
   variant = "default",
   size = "default",
-  nativeButton = false,
+  nativeButton = true,
   ...props
 }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
   return (

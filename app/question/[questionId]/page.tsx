@@ -334,6 +334,7 @@ export default function QuestionPage() {
               </p>
               <Button
                 className="w-full bg-primary text-primary-foreground font-bold py-2 rounded-xl text-xs hover:opacity-95 transition-all h-9 cursor-pointer"
+                nativeButton={false}
                 render={<Link href="/about">Upgrade to Pro</Link>}
               />
             </div>
@@ -348,6 +349,7 @@ export default function QuestionPage() {
               <Button
                 variant="ghost"
                 size="sm"
+                nativeButton={false}
                 className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground hover:text-primary cursor-pointer"
                 render={
                   <Link href={`/question/${prevQ.slug || prevQ.id}`}>
@@ -373,6 +375,7 @@ export default function QuestionPage() {
               <Button
                 variant="secondary"
                 size="sm"
+                nativeButton={false}
                 className="flex items-center gap-1.5 text-xs font-bold text-primary bg-primary/10 border border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all cursor-pointer rounded-xl px-4 py-2"
                 render={
                   <Link href={`/question/${nextQ.slug || nextQ.id}`}>
