@@ -93,7 +93,7 @@ export default function SearchPage() {
             <div className="flex md:hidden items-center justify-between p-1 bg-secondary rounded-2xl border border-border">
               <span className="text-xs font-bold text-muted-foreground px-3">{filtered.length} results</span>
               <Sheet>
-                <SheetTrigger render={<Button variant={hasFilters ? "secondary" : "outline"} size="sm" className="gap-1.5 rounded-xl cursor-pointer" />}>
+                <SheetTrigger render={<Button variant={hasFilters ? "default" : "outline"} size="sm" className="gap-1.5 rounded-xl cursor-pointer" />}>
                   <SlidersHorizontal className="w-3.5 h-3.5" />
                   {hasFilters ? "Filters Active" : "Filters"}
                 </SheetTrigger>
@@ -167,6 +167,35 @@ export default function SearchPage() {
                 </button>
               )}
             </div>
+
+            {hasFilters && (
+              <div className="flex flex-wrap gap-1.5">
+                {selectedDifficulties.map((d) => (
+                  <span key={d} className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                    {d}
+                    <button onClick={() => toggleDifficulty(d)} className="cursor-pointer hover:text-destructive transition-colors">
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                ))}
+                {selectedTypes.map((t) => (
+                  <span key={t} className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                    {t}
+                    <button onClick={() => toggleType(t)} className="cursor-pointer hover:text-destructive transition-colors">
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                ))}
+                {sortBy !== "default" && (
+                  <span className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-muted text-muted-foreground border border-border">
+                    Sort: {sortBy === "alphabetical" ? "A-Z" : sortBy === "difficulty-asc" ? "Easy First" : "Hard First"}
+                    <button onClick={() => setSortBy("default")} className="cursor-pointer hover:text-destructive transition-colors">
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                )}
+              </div>
+            )}
 
             <div className="space-y-4">
               {!hasSearch && !hasFilters ? (

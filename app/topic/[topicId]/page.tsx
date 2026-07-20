@@ -89,7 +89,7 @@ export default function TopicPage() {
             </p>
             <div className="md:hidden">
               <Sheet>
-                <SheetTrigger render={<Button variant={hasFilters ? "secondary" : "outline"} size="sm" className="gap-1.5 cursor-pointer" />}>
+                <SheetTrigger render={<Button variant={hasFilters ? "default" : "outline"} size="sm" className="gap-1.5 cursor-pointer" />}>
                   <SlidersHorizontal className="w-3.5 h-3.5" />
                   Filters
                   {hasFilters && <span className="ml-0.5 text-[10px]">({selectedDifficulties.length + selectedTypes.length})</span>}
@@ -135,6 +135,35 @@ export default function TopicPage() {
               </CardContent>
             </Card>
           </div>
+
+          {hasFilters && (
+            <div className="flex flex-wrap gap-1.5 mb-4">
+              {selectedDifficulties.map((d) => (
+                <span key={d} className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                  {d}
+                  <button onClick={() => toggleDifficulty(d)} className="cursor-pointer hover:text-destructive transition-colors">
+                    <X className="w-3 h-3" />
+                  </button>
+                </span>
+              ))}
+              {selectedTypes.map((t) => (
+                <span key={t} className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                  {t}
+                  <button onClick={() => toggleType(t)} className="cursor-pointer hover:text-destructive transition-colors">
+                    <X className="w-3 h-3" />
+                  </button>
+                </span>
+              ))}
+              {sortBy !== "default" && (
+                <span className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-muted text-muted-foreground border border-border">
+                  Sort: {sortBy === "alphabetical" ? "A-Z" : sortBy === "difficulty-asc" ? "Easy First" : "Hard First"}
+                  <button onClick={() => setSortBy("default")} className="cursor-pointer hover:text-destructive transition-colors">
+                    <X className="w-3 h-3" />
+                  </button>
+                </span>
+              )}
+            </div>
+          )}
 
           {filtered.length === 0 ? (
             <EmptyState
