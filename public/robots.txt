@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /units
+Allow: /topic/
+Allow: /search
+Allow: /bookmarks
+Allow: /about
+Disallow: /_next/
+Disallow: /api/
+
+Sitemap: https://javanepal.vercel.app/sitemap.xml
