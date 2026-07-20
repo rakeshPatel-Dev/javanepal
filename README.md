@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JavaNepal
 
-## Getting Started
+Master OOP in Java — theory, coding, viva & exam questions with syllabus organization and revision tracking.
 
-First, run the development server:
+Built for BITM 2nd Semester students. Offline-first, searchable, bookmarkable.
+
+## Tech Stack
+
+| Layer | Choice |
+|-------|--------|
+| Framework | Next.js 16 (App Router, Turbopack) |
+| Language | TypeScript 5 |
+| Styling | Tailwind CSS v4 + shadcn/ui (Base UI) |
+| Animation | Framer Motion v12 |
+| Theme | next-themes (class-based dark mode) |
+| Data | Static JSON files (`data/`) |
+| Font | Geist Variable (self-hosted via `@fontsource-variable/geist`) |
+
+## Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # → http://localhost:3000
+npm run build    # production build
+npm run start    # serve production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+javanepal/
+├── app/                # Next.js App Router pages
+│   ├── page.tsx        # Landing / home
+│   ├── about/          # About page
+│   ├── bookmarks/      # Bookmarked questions
+│   ├── question/       # Question detail (dynamic)
+│   ├── search/         # Full-text search
+│   ├── topic/          # Topic detail (dynamic)
+│   ├── unit/           # Unit detail (dynamic)
+│   ├── units/          # Units listing
+│   └── layout.tsx      # Root layout (theme, nav, footer)
+├── components/         # React components
+│   ├── layout/         # Navbar, Footer
+│   ├── sections/       # Home page sections (Hero, Stats, etc.)
+│   ├── common/         # Shared UI (Container, Breadcrumb, etc.)
+│   ├── questions/      # QuestionCard
+│   ├── topics/         # TopicCard
+│   └── ui/             # shadcn/ui primitives (Button, Card, etc.)
+├── lib/                # Utilities
+│   ├── data.ts         # Data access layer (reads JSON)
+│   ├── types.ts        # TypeScript types & constants
+│   └── utils.ts        # cn() helper
+├── hooks/              # React hooks
+│   └── use-tracking.ts # Bookmarks, completed, progress
+├── data/               # Static JSON data
+│   ├── units.json
+│   ├── topics.json
+│   └── questions.json
+└── public/             # Static assets
+    ├── favicon/
+    ├── image/
+    └── javanepal-whatsapp-og.png
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Key Features
 
-## Learn More
+- **500+ questions** across 5 units, 20+ topics
+- **9 question types**: Theory, Programming, MCQ, Interview, Viva, Debugging, Output, Lab, Assignment
+- **3 difficulty levels**: Easy, Medium, Hard
+- **Track progress**: completed questions, bookmarks (localStorage)
+- **Full-text search** with filters (difficulty, type, sort)
+- **Dark mode** with system preference detection
+- **Responsive** — mobile-first layout
+- **Offline-ready** — all data is static JSON, no API needed
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Connect the repo to [Vercel](https://vercel.com) — zero config required.
