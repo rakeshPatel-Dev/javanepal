@@ -1,21 +1,59 @@
 {
-  "name": "Javalab - Curated Java Questions",
-  "short_name": "Javalab",
+  "name": "JavaNepal — Master OOPs With Java",
+  "short_name": "JavaNepal",
+  "description": "Master OOP in Java with theory, coding, viva & exam questions. Search, track progress, bookmark concepts & study smarter.",
+  "start_url": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "any",
+  "theme_color": "#0037b0",
+  "background_color": "#ffffff",
+  "categories": ["education", "productivity"],
+  "lang": "en-US",
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.png",
+      "src": "/favicon/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/web-app-manifest-512x512.png",
+      "src": "/favicon/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "/favicon/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Units",
+      "short_name": "Units",
+      "description": "Browse all units",
+      "url": "/units"
+    },
+    {
+      "name": "Search",
+      "short_name": "Search",
+      "description": "Search questions",
+      "url": "/search"
+    },
+    {
+      "name": "Bookmarks",
+      "short_name": "Bookmarks",
+      "description": "Bookmarked questions",
+      "url": "/bookmarks"
+    }
+  ]
 }

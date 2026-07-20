@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { ThemeProvider } from "@/components/theme-provider"
 
 import { TooltipProvider } from "@/components/ui/tooltip"
@@ -47,6 +47,18 @@ export const metadata: Metadata = {
     apple: [{ url: "/favicon/apple-touch-icon.png" }],
   },
   manifest: "/favicon/site.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "JavaNepal",
+    statusBarStyle: "default",
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f0f0f" },
+  ],
 }
 
 export default function RootLayout({
