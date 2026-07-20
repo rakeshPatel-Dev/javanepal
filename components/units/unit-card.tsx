@@ -61,11 +61,9 @@ export function UnitCard({ unit, progress }: { unit: EnrichedUnit; progress: Pro
             </div>
           </div>
 
-          <Button asChild variant="outline" className="w-full mt-auto py-2.5 bg-secondary text-primary hover:bg-primary hover:text-primary-foreground font-bold rounded-2xl border border-primary/10 transition-all text-xs flex items-center justify-center gap-1.5 h-10 cursor-pointer">
-            <Link href={`/unit/${unit.slug || unit.id}`}>
-              {pct > 0 ? "Continue Unit" : "Start Unit"}
-              <ChevronRight className="w-4 h-4 ml-0.5" />
-            </Link>
+          <Button variant="outline" className="w-full mt-auto py-2.5 bg-secondary text-primary hover:bg-primary hover:text-primary-foreground font-bold rounded-2xl border border-primary/10 transition-all text-xs flex items-center justify-center gap-1.5 h-10 cursor-pointer" render={<Link href={`/unit/${unit.slug || unit.id}`} />}>
+            {pct > 0 ? "Continue Unit" : "Start Unit"}
+            <ChevronRight className="w-4 h-4 ml-0.5" />
           </Button>
         </CardContent>
       </Card>

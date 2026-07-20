@@ -12,8 +12,8 @@ export interface Question {
   title: string
   slug: string
   type: string
-  difficulty: "Easy" | "Medium" | "Hard"
-  examFrequency: "High" | "Medium" | "Low"
+  difficulty: string
+  examFrequency: string
   marks: number
   estimatedTime: number
   isProgramming: boolean
@@ -41,7 +41,8 @@ export interface Topic {
   estimatedQuestions: number
 }
 
-export interface EnrichedTopic extends Topic {
+export interface EnrichedTopic extends Omit<Topic, "estimatedQuestions"> {
+  estimatedQuestions: number
   questionCount: number
   stats: {
     easy: number

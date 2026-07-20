@@ -7,17 +7,19 @@ import { Sparkles, Rocket, BookOpen } from "lucide-react"
 import { useTracking } from "@/hooks/use-tracking"
 import type { GlobalStats } from "@/lib/types"
 
+const easeOut = [0.16, 1, 0.3, 1] as [number, number, number, number]
+
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.55, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.55, delay, ease: easeOut },
 })
 
 const float = (delay = 0, distance = 12, duration = 5) => ({
   initial: { y: 0 },
   animate: {
     y: [0, -distance, 0],
-    transition: { duration, delay, repeat: Infinity, ease: "easeInOut" },
+    transition: { duration, delay, repeat: Infinity, ease: "easeInOut" as "easeInOut" },
   },
 })
 

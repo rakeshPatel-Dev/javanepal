@@ -4,15 +4,16 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { UnitCard } from "@/components/units/unit-card"
-import type { EnrichedUnit, Progress } from "@/lib/types"
+import { useTracking } from "@/hooks/use-tracking"
+import type { EnrichedUnit } from "@/lib/types"
 
 export default function FeaturedUnits({
   featuredUnits,
-  getUnitProgress,
 }: {
   featuredUnits: EnrichedUnit[]
-  getUnitProgress: (id: number) => Progress
 }) {
+  const { getUnitProgress } = useTracking()
+
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
       <div className="max-w-6xl mx-auto">

@@ -1,6 +1,8 @@
 import * as LucideIcons from "lucide-react"
 
 export function Icon({ name, className = "" }: { name: string; className?: string }) {
-  const IconComponent = (LucideIcons as Record<string, React.ComponentType<{ className?: string }>>)[name] || LucideIcons.HelpCircle
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const IconComponent = (LucideIcons as any)[name]
+  if (!IconComponent) return null
   return <IconComponent className={className} />
 }

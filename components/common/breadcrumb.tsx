@@ -14,11 +14,7 @@ export function Breadcrumb({ items = [] }: { items?: { label: string; href?: str
     <ShadcnBreadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <Link href="/" className="flex items-center gap-1">
-              <Home className="w-3.5 h-3.5" />
-            </Link>
-          </BreadcrumbLink>
+          <BreadcrumbLink render={<Link href="/" className="flex items-center gap-1"><Home className="w-3.5 h-3.5" /></Link>} />
         </BreadcrumbItem>
         {items.map((item, idx) => {
           const isLast = idx === items.length - 1
@@ -27,15 +23,11 @@ export function Breadcrumb({ items = [] }: { items?: { label: string; href?: str
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 {isLast || !item.href ? (
-                  <BreadcrumbPage className="truncate max-w-[200px] font-semibold">
-                    {item.label}
-                  </BreadcrumbPage>
+                  <BreadcrumbPage className="truncate max-w-[200px] font-semibold">{item.label}</BreadcrumbPage>
                 ) : (
-                  <BreadcrumbLink asChild>
-                    <Link href={item.href} className="truncate max-w-[200px]">
-                      {item.label}
-                    </Link>
-                  </BreadcrumbLink>
+                  <BreadcrumbLink
+                    render={<Link href={item.href} className="truncate max-w-[200px]">{item.label}</Link>}
+                  />
                 )}
               </BreadcrumbItem>
             </span>

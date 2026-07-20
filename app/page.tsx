@@ -18,7 +18,7 @@ export default function HomePage() {
       <StatsGrid stats={stats} />
       <QuickAccess />
       <Features />
-      <FeaturedUnits featuredUnits={units.slice(0, 6)} getUnitProgress={() => ({ completed: 0, total: 0, percentage: 0 })} />
+      <FeaturedUnits featuredUnits={units.slice(0, 6)} />
       <Difficulty stats={stats} />
       <Testimonials />
       <CTABento />
