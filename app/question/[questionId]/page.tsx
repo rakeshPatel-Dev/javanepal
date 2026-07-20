@@ -341,7 +341,7 @@ export default function QuestionPage() {
         </div>
       </Container>
 
-      <footer className="fixed bottom-0 left-0 right-0 bg-background/95 border-t border-border z-40 py-4 shadow-lg backdrop-blur-md">
+      <footer className="fixed bottom-0 left-0 right-0 bg-background/95 border-t border-border z-40 py-4 shadow-lg backdrop-blur-md safe-bottom">
         <Container>
           <div className="flex justify-between items-center gap-4">
             {prevQ ? (

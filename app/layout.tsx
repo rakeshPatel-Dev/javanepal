@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     title: "JavaNepal",
-    statusBarStyle: "default",
+    statusBarStyle: "black-translucent",
   },
 }
 
@@ -68,7 +68,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col bg-background text-foreground font-sans antialiased" suppressHydrationWarning>
+      <body className="min-h-dvh flex flex-col bg-background text-foreground font-sans antialiased" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -77,7 +77,7 @@ export default function RootLayout({
         >
           <TooltipProvider>
             <Navbar />
-            <main className="flex-1 px-3 sm:px-5 lg:px-8">{children}</main>
+            <main className="flex-1 px-3 sm:px-5 lg:px-8 safe-bottom">{children}</main>
             <Footer />
             <Toaster position="top-right" richColors closeButton />
           </TooltipProvider>
