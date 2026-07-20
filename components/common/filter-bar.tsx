@@ -4,21 +4,7 @@ import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-
-const DIFFICULTIES = ["Easy", "Medium", "Hard"]
-const TYPES = ["Theory", "Programming", "MCQ", "Interview", "Viva", "Debugging", "Output", "Lab", "Assignment"]
-const SORT_OPTIONS = [
-  { value: "default", label: "Default" },
-  { value: "alphabetical", label: "A → Z" },
-  { value: "difficulty-asc", label: "Easy First" },
-  { value: "difficulty-desc", label: "Hard First" },
-]
-
-const difficultyStyles: Record<string, string> = {
-  Easy: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20 dark:text-emerald-400",
-  Medium: "bg-amber-500/10 text-amber-600 border-amber-500/20 dark:text-amber-400",
-  Hard: "bg-rose-500/10 text-rose-600 border-rose-500/20 dark:text-rose-400",
-}
+import { DIFFICULTIES, QUESTION_TYPES, SORT_OPTIONS, DIFFICULTY_STYLES } from "@/lib/types"
 
 export function FilterBar({
   selectedDifficulties = [],
@@ -53,7 +39,7 @@ export function FilterBar({
               <Badge
                 variant={selectedDifficulties.includes(d) ? "default" : "outline"}
                 className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-all duration-200 cursor-pointer ${
-                  selectedDifficulties.includes(d) ? "shadow-sm" : `${difficultyStyles[d]} hover:opacity-80`
+                  selectedDifficulties.includes(d) ? "shadow-sm" : `${DIFFICULTY_STYLES[d]} hover:opacity-80`
                 }`}
               >
                 {d}
@@ -70,7 +56,7 @@ export function FilterBar({
           Type
         </span>
         <div className="flex flex-wrap gap-1.5">
-          {TYPES.map((t) => (
+          {QUESTION_TYPES.map((t) => (
             <button key={t} onClick={() => onTypeChange(t)} className="cursor-pointer">
               <Badge
                 variant={selectedTypes.includes(t) ? "default" : "outline"}

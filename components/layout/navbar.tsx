@@ -57,7 +57,7 @@ export function Navbar() {
               </div>
               <div className="block">
                 <span className="font-extrabold text-foreground text-lg sm:text-xl leading-none tracking-tight flex items-center gap-1.5">
-                  JavaLab
+                  JavaNepal
                 </span>
                 <span className="hidden sm:block text-[10px] text-muted-foreground leading-none mt-1 font-semibold tracking-wider uppercase">
                   Curated OOPs Learning

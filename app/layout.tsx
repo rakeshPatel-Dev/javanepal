@@ -1,38 +1,29 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
+
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { Toaster } from "@/components/ui/sonner"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import "./globals.css"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-})
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-})
-
 export const metadata: Metadata = {
+  metadataBase: new URL("https://javanepal.vercel.app"),
   title: {
-    default: "JavaLab — Master OOPs With Java",
-    template: "%s | JavaLab",
+    default: "JavaNepal — Master OOPs With Java",
+    template: "%s | JavaNepal",
   },
   description:
     "Master OOP in Java with theory, coding, viva & exam questions. Search, track progress, bookmark concepts & study smarter.",
   openGraph: {
-    title: "JavaLab — Master OOPs With Java",
+    title: "JavaNepal — Master OOPs With Java",
     description:
       "Master OOP in Java with theory, coding, viva & exam questions. Search, track progress, bookmark concepts & study smarter.",
-    url: "https://javalabapp.vercel.app",
-    siteName: "JavaLab",
+    url: "https://javanepal.vercel.app",
+    siteName: "JavaNepal",
     images: [
       {
-        url: "https://javalabapp.vercel.app/Javalab-whatsapp-og.png",
+        url: "/javanepal-whatsapp-og.png",
         width: 1200,
         height: 630,
       },
@@ -42,10 +33,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "JavaLab — Master OOPs With Java",
+    title: "JavaNepal — Master OOPs With Java",
     description:
       "Master OOP in Java with theory, coding, viva & exam questions.",
-    images: ["https://javalabapp.vercel.app/Javalab-whatsapp-og.png"],
+    images: ["/javanepal-whatsapp-og.png"],
   },
   icons: {
     icon: [
@@ -64,13 +55,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-    >
-      <head />
-      <body className="min-h-screen flex flex-col bg-background text-foreground font-sans">
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col bg-background text-foreground font-sans antialiased" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

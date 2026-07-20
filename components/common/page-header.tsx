@@ -1,3 +1,5 @@
+"use client"
+
 import { MotionDiv } from "@/components/common/motion-div"
 import { Badge } from "@/components/ui/badge"
 

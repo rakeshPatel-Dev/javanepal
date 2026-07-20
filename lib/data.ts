@@ -1,7 +1,11 @@
-import unitsData from "@/data/units.json"
-import topicsData from "@/data/topics.json"
-import questionsData from "@/data/questions.json"
-import type { EnrichedUnit, EnrichedTopic, Question, GlobalStats } from "@/lib/types"
+import unitsDataJson from "@/data/units.json"
+import topicsDataJson from "@/data/topics.json"
+import questionsDataJson from "@/data/questions.json"
+import type { EnrichedUnit, EnrichedTopic, Question, GlobalStats, Unit, Topic } from "@/lib/types"
+
+const unitsData = unitsDataJson as Unit[]
+const topicsData = topicsDataJson as Topic[]
+const questionsData = questionsDataJson as Question[]
 
 export const getQuestions = (): Question[] => [...questionsData]
 

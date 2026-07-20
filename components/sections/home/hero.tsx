@@ -63,6 +63,7 @@ export default function Hero({ stats }: { stats: GlobalStats }) {
 
   return (
     <section className="relative overflow-hidden py-24 lg:py-25 px-4 sm:px-6 lg:px-8">
+      <div className="hero-grid" />
       <div className="absolute top-10 right-[10%] w-32 h-32 bg-primary/10 rounded-2xl floating-shape blur-xl pointer-events-none" />
       <div className="absolute bottom-10 left-[5%] w-48 h-48 bg-secondary/20 rounded-full floating-shape blur-2xl pointer-events-none" style={{ animationDelay: "-2s" }} />
       <div className="absolute top-1/2 left-[20%] w-16 h-16 bg-accent/20 rounded-xl floating-shape blur-lg pointer-events-none" style={{ animationDelay: "-4s" }} />

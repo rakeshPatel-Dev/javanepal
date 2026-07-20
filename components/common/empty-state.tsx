@@ -1,3 +1,5 @@
+"use client"
+
 import { MotionDiv } from "@/components/common/motion-div"
 import type { LucideIcon } from "lucide-react"
 

@@ -21,7 +21,7 @@ export function Footer() {
                 </div>
               </div>
               <span className="text-foreground flex items-start flex-col text-xl font-black">
-                JavaLab
+                JavaNepal
                 <p className="text-xs text-muted-foreground font-semibold leading-relaxed uppercase">
                   Curated Java Questions
                 </p>
@@ -123,7 +123,7 @@ export function Footer() {
         </div>
 
         <div className="pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <span>© {year} JavaLab. All rights reserved.</span>
+          <span>© {year} JavaNepal. All rights reserved.</span>
           <div className="flex items-center gap-4 flex-wrap">
             <span className="flex items-center gap-1.5">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />

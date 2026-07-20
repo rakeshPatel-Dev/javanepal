@@ -18,16 +18,25 @@ function loadIds(key: string): number[] {
 }
 
 export function useTracking() {
-  const [bookmarks, setBookmarks] = useState<number[]>(() => loadIds(BOOKMARKS_KEY))
-  const [completed, setCompleted] = useState<number[]>(() => loadIds(COMPLETED_KEY))
+  const [hydrated, setHydrated] = useState(false)
+  const [bookmarks, setBookmarks] = useState<number[]>([])
+  const [completed, setCompleted] = useState<number[]>([])
 
   useEffect(() => {
+    setBookmarks(loadIds(BOOKMARKS_KEY))
+    setCompleted(loadIds(COMPLETED_KEY))
+    setHydrated(true)
+  }, [])
+
+  useEffect(() => {
+    if (!hydrated) return
     localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(bookmarks))
-  }, [bookmarks])
+  }, [bookmarks, hydrated])
 
   useEffect(() => {
+    if (!hydrated) return
     localStorage.setItem(COMPLETED_KEY, JSON.stringify(completed))
-  }, [completed])
+  }, [completed, hydrated])
 
   const isBookmarked = useCallback(
     (id: number) => bookmarks.includes(id),
@@ -89,6 +98,7 @@ export function useTracking() {
   return {
     bookmarks,
     completed,
+    hydrated,
     isBookmarked,
     toggleBookmark,
     isCompleted,
