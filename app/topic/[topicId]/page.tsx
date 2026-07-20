@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react"
 import { useParams } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { SlidersHorizontal, BookOpen } from "lucide-react"
+import { SlidersHorizontal, BookOpen, X } from "lucide-react"
 import { Container } from "@/components/common/container"
 import { Breadcrumb } from "@/components/common/breadcrumb"
 import { PageHeader } from "@/components/common/page-header"
@@ -14,6 +14,7 @@ import { getTopicById, getUnitById, getQuestionsByTopicId } from "@/lib/data"
 import { useTracking } from "@/hooks/use-tracking"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import type { Question } from "@/lib/types"
 
 function sortQuestions(questions: Question[], sortBy: string): Question[] {
@@ -39,9 +40,9 @@ export default function TopicPage() {
   const [selectedDifficulties, setSelectedDifficulties] = useState<string[]>([])
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
   const [sortBy, setSortBy] = useState("default")
-  const [filtersOpen, setFiltersOpen] = useState(false)
 
   const { isBookmarked, toggleBookmark, isCompleted, toggleCompleted } = useTracking()
+  const hasFilters = selectedDifficulties.length > 0 || selectedTypes.length > 0 || sortBy !== "default"
 
   const filtered = useMemo(() => {
     let qs = allQuestions
@@ -86,28 +87,24 @@ export default function TopicPage() {
             <p className="text-sm text-muted-foreground">
               Showing <span className="font-semibold text-foreground">{filtered.length}</span> of {allQuestions.length} questions
             </p>
-            <Button
-              variant={filtersOpen ? "secondary" : "outline"}
-              size="sm"
-              onClick={() => setFiltersOpen((v) => !v)}
-              className="gap-1.5 cursor-pointer"
-            >
-              <SlidersHorizontal className="w-3.5 h-3.5" />
-              Filters
-            </Button>
-          </div>
-
-          <AnimatePresence>
-            {filtersOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.25 }}
-                className="overflow-hidden"
-              >
-                <Card className="mb-5 gap-0 py-0 rounded-3xl border border-border bg-card shadow-xs">
-                  <CardContent className="p-4">
+            <div className="md:hidden">
+              <Sheet>
+                <SheetTrigger render={<Button variant={hasFilters ? "secondary" : "outline"} size="sm" className="gap-1.5 cursor-pointer" />}>
+                  <SlidersHorizontal className="w-3.5 h-3.5" />
+                  Filters
+                  {hasFilters && <span className="ml-0.5 text-[10px]">({selectedDifficulties.length + selectedTypes.length})</span>}
+                </SheetTrigger>
+                <SheetContent side="bottom" className="h-auto max-h-[80vh] overflow-y-auto">
+                  <SheetHeader>
+                    <SheetTitle>Filter Questions</SheetTitle>
+                    {hasFilters && (
+                      <button onClick={clearFilters} className="text-xs font-bold text-primary hover:text-destructive transition-colors flex items-center gap-1 cursor-pointer">
+                        <X className="w-3 h-3" />
+                        Clear all
+                      </button>
+                    )}
+                  </SheetHeader>
+                  <div className="px-5 pb-6">
                     <FilterBar
                       selectedDifficulties={selectedDifficulties}
                       onDifficultyChange={toggleDifficulty}
@@ -117,11 +114,27 @@ export default function TopicPage() {
                       onSortChange={setSortBy}
                       onClear={clearFilters}
                     />
-                  </CardContent>
-                </Card>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+          </div>
+
+          <div className="hidden md:block mb-5">
+            <Card className="gap-0 py-0 rounded-3xl border border-border bg-card shadow-xs">
+              <CardContent className="p-4">
+                <FilterBar
+                  selectedDifficulties={selectedDifficulties}
+                  onDifficultyChange={toggleDifficulty}
+                  selectedTypes={selectedTypes}
+                  onTypeChange={toggleType}
+                  sortBy={sortBy}
+                  onSortChange={setSortBy}
+                  onClear={clearFilters}
+                />
+              </CardContent>
+            </Card>
+          </div>
 
           {filtered.length === 0 ? (
             <EmptyState

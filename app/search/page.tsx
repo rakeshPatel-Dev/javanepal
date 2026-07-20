@@ -13,6 +13,7 @@ import { useTracking } from "@/hooks/use-tracking"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import type { Question } from "@/lib/types"
 
 function sortQuestions(questions: Question[], sortBy: string): Question[] {
@@ -37,7 +38,6 @@ export default function SearchPage() {
   const [selectedDifficulties, setSelectedDifficulties] = useState<string[]>([])
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
   const [sortBy, setSortBy] = useState("default")
-  const [filtersOpen, setFiltersOpen] = useState(false)
 
   const toggleDifficulty = (d: string) =>
     setSelectedDifficulties((prev) => (prev.includes(d) ? prev.filter((x) => x !== d) : [...prev, d]))
@@ -92,29 +92,37 @@ export default function SearchPage() {
           <aside className="md:col-span-4 lg:col-span-3 sticky top-24 space-y-4">
             <div className="flex md:hidden items-center justify-between p-1 bg-secondary rounded-2xl border border-border">
               <span className="text-xs font-bold text-muted-foreground px-3">{filtered.length} results</span>
-              <Button
-                variant={filtersOpen || hasFilters ? "secondary" : "outline"}
-                size="sm"
-                onClick={() => setFiltersOpen((v) => !v)}
-                className="gap-1.5 rounded-xl cursor-pointer"
-              >
-                <SlidersHorizontal className="w-3.5 h-3.5" />
-                {hasFilters ? "Filters Active" : "Filters"}
-                {hasFilters && (
-                  <span
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      clearFilters()
-                    }}
-                    className="ml-1 text-muted-foreground hover:text-destructive transition-colors"
-                  >
-                    <X className="w-3 h-3" />
-                  </span>
-                )}
-              </Button>
+              <Sheet>
+                <SheetTrigger render={<Button variant={hasFilters ? "secondary" : "outline"} size="sm" className="gap-1.5 rounded-xl cursor-pointer" />}>
+                  <SlidersHorizontal className="w-3.5 h-3.5" />
+                  {hasFilters ? "Filters Active" : "Filters"}
+                </SheetTrigger>
+                <SheetContent side="bottom" className="h-auto max-h-[80vh] overflow-y-auto">
+                  <SheetHeader>
+                    <SheetTitle>Filter Questions</SheetTitle>
+                    {hasFilters && (
+                      <button onClick={clearFilters} className="text-xs font-bold text-primary hover:text-destructive transition-colors flex items-center gap-1 cursor-pointer">
+                        <X className="w-3 h-3" />
+                        Clear all
+                      </button>
+                    )}
+                  </SheetHeader>
+                  <div className="px-5 pb-6">
+                    <FilterBar
+                      selectedDifficulties={selectedDifficulties}
+                      onDifficultyChange={toggleDifficulty}
+                      selectedTypes={selectedTypes}
+                      onTypeChange={toggleType}
+                      sortBy={sortBy}
+                      onSortChange={setSortBy}
+                      onClear={clearFilters}
+                    />
+                  </div>
+                </SheetContent>
+              </Sheet>
             </div>
 
-            <div className={`${filtersOpen ? "block" : "hidden md:block"} animate-in slide-in-from-top-4 duration-300`}>
+            <div className="hidden md:block animate-in slide-in-from-top-4 duration-300">
               <Card className="rounded-2xl border border-border bg-card shadow-xs gap-0 py-0">
                 <CardContent className="p-5">
                   <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-4">Refine Search</h3>
