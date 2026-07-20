@@ -1,6 +1,6 @@
 import Link from "next/link"
 import {
-  Code2, BookOpen, Search, Bookmark, Info, Heart, ExternalLink, MessageCircle,
+   BookOpen, Search, Bookmark, Info, Heart, ExternalLink, MessageCircle,
 } from "lucide-react"
 import { Container } from "@/components/common/container"
 import { Logo } from "@/components/common/logo"
@@ -9,9 +9,9 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-border bg-background/95 backdrop-blur-md mt-auto py-12 safe-bottom">
+    <footer className="border-t border-border bg-background/95 backdrop-blur-md mt-auto py-12 md:py-16 px-3 sm:px-5 lg:px-8">
       <Container>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-10">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2.5 group w-fit">
               <div className="relative">

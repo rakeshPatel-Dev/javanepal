@@ -77,7 +77,7 @@ export default function RootLayout({
         >
           <TooltipProvider>
             <Navbar />
-            <main className="flex-1 px-3 sm:px-5 lg:px-8 safe-bottom">{children}</main>
+            <main className="flex-1 px-3 sm:px-5 lg:px-8">{children}</main>
             <Footer />
             <Toaster position="top-right" richColors closeButton />
           </TooltipProvider>
