@@ -1,0 +1,481 @@
+[
+  {
+    "id": 29,
+    "unitId": 4,
+    "topicId": 29,
+    "title": "Inheritance Basics",
+    "slug": "inheritance-basics",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Inheritance",
+      "extends",
+      "IS-A"
+    ],
+    "question": "Explain inheritance in Java with examples.",
+    "shortAnswer": "Inheritance allows a class to inherit properties and methods from another class using extends.",
+    "detailedAnswer": "**Inheritance**:\n- IS-A relationship\n- Reuse existing code\n- Hierarchical classification\n- Using 'extends' keyword\n\n**Types**:\n- Single inheritance (one parent)\n- Multilevel (parent → child → grandchild)\n- Hierarchical (one parent, multiple children)\n\n**Benefits**:\n- Code reuse\n- Method overriding\n- Polymorphism",
+    "code": "class Animal {\n    void sound() {\n        System.out.println(\"Animal makes sound\");\n    }\n}\n\nclass Dog extends Animal {\n    void display() {\n        System.out.println(\"Dog is an animal\");\n    }\n}\n\nclass Puppy extends Dog {\n    void play() {\n        System.out.println(\"Puppy plays\");\n    }\n}\n\npublic class InheritanceDemo {\n    public static void main(String[] args) {\n        Puppy p = new Puppy();\n        p.sound();  // From Animal\n        p.display();  // From Dog\n        p.play();  // From Puppy\n    }\n}",
+    "output": "Animal makes sound\nDog is an animal\nPuppy plays",
+    "explanation": "Inheritance creates IS-A relationships and enables code reuse.",
+    "commonMistakes": [
+      "Multiple inheritance not supported",
+      "Private members not inherited"
+    ],
+    "relatedTopics": [
+      "Method Overriding",
+      "super",
+      "Polymorphism"
+    ],
+    "previousYear": [
+      "2025",
+      "2024",
+      "2023"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 30,
+    "unitId": 4,
+    "topicId": 30,
+    "title": "super Keyword",
+    "slug": "super-keyword",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "super",
+      "Inheritance",
+      "Parent Class"
+    ],
+    "question": "Explain the use of 'super' keyword in Java with examples.",
+    "shortAnswer": "super refers to parent class and is used to call parent constructor or access parent members.",
+    "detailedAnswer": "**Uses of super**:\n\n1. **Call parent constructor**: `super(parameters)`\n2. **Access parent method**: `super.methodName()`\n3. **Access parent variable**: `super.variableName`\n\n**Rules**:\n- super() must be first statement in constructor\n- Can access overridden methods\n- Can access parent fields",
+    "code": "class Parent {\n    String name = \"Parent\";\n    \n    Parent() {\n        System.out.println(\"Parent constructor\");\n    }\n    \n    Parent(String name) {\n        this.name = name;\n    }\n    \n    void display() {\n        System.out.println(\"Parent: \" + name);\n    }\n}\n\nclass Child extends Parent {\n    String name = \"Child\";\n    \n    Child() {\n        super();  // Call parent constructor\n        System.out.println(\"Child constructor\");\n    }\n    \n    Child(String name) {\n        super(name);  // Call parameterized parent constructor\n    }\n    \n    void display() {\n        super.display();  // Call parent method\n        System.out.println(\"Child: \" + this.name);\n        System.out.println(\"Parent name: \" + super.name);\n    }\n}\n\npublic class SuperDemo {\n    public static void main(String[] args) {\n        Child c1 = new Child();\n        c1.display();\n        Child c2 = new Child(\"Custom\");\n        c2.display();\n    }\n}",
+    "output": "Parent constructor\nChild constructor\nParent: Parent\nChild: Child\nParent name: Parent\nParent: Custom\nChild: Child\nParent name: Parent",
+    "explanation": "super provides access to parent class members.",
+    "commonMistakes": [
+      "Using super() after other statements",
+      "Forgetting super() in constructors"
+    ],
+    "relatedTopics": [
+      "Inheritance",
+      "Constructors",
+      "Method Overriding"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 31,
+    "unitId": 4,
+    "topicId": 31,
+    "title": "Method Overriding",
+    "slug": "method-overriding",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Overriding",
+      "Polymorphism",
+      "@Override"
+    ],
+    "question": "Explain method overriding with rules and the use of @Override annotation.",
+    "shortAnswer": "Method overriding allows subclass to provide specific implementation of parent method.",
+    "detailedAnswer": "**Method Overriding Rules**:\n\n1. Same method signature (name, parameters)\n2. Same or covariant return type\n3. Cannot have more restrictive access modifier\n4. Cannot be static\n5. final methods cannot be overridden\n\n**@Override Annotation**:\n- Compile-time check\n- Ensures method is overriding parent\n- Catch errors early",
+    "code": "class Animal {\n    void sound() {\n        System.out.println(\"Animal sound\");\n    }\n    \n    void eat() {\n        System.out.println(\"Animal eats\");\n    }\n}\n\nclass Dog extends Animal {\n    @Override\n    void sound() {  // Overriding\n        System.out.println(\"Dog barks\");\n    }\n    \n    // Cannot override final method\n    // void eat() { } // Error if final in parent\n}\n\npublic class OverrideDemo {\n    public static void main(String[] args) {\n        Animal a = new Dog();\n        a.sound();  // Calls overridden method\n        a.eat();    // Calls parent method\n    }\n}",
+    "output": "Dog barks\nAnimal eats",
+    "explanation": "Overriding enables runtime polymorphism and specific behavior.",
+    "commonMistakes": [
+      "Changing method signature (overloading, not overriding)",
+      "Using more restrictive access modifier"
+    ],
+    "relatedTopics": [
+      "Polymorphism",
+      "Inheritance",
+      "@Override"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 32,
+    "unitId": 4,
+    "topicId": 32,
+    "title": "Dynamic Method Dispatch",
+    "slug": "dynamic-method-dispatch",
+    "type": "Theory",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Dynamic Dispatch",
+      "Runtime Polymorphism",
+      "Method Overriding"
+    ],
+    "question": "Explain dynamic method dispatch (runtime polymorphism) in Java.",
+    "shortAnswer": "Dynamic method dispatch is runtime polymorphism where method call is resolved at runtime based on object type.",
+    "detailedAnswer": "**Dynamic Method Dispatch**:\n- Runtime polymorphism\n- Method called based on object type\n- Reference variable type determines what can be called\n- Object type determines which method executes\n\n**Key Points**:\n1. Parent reference → Child object\n2. Overridden method called at runtime\n3. Enables polymorphism",
+    "code": "class Animal {\n    void sound() {\n        System.out.println(\"Animal sound\");\n    }\n}\n\nclass Dog extends Animal {\n    void sound() {\n        System.out.println(\"Dog barks\");\n    }\n}\n\nclass Cat extends Animal {\n    void sound() {\n        System.out.println(\"Cat meows\");\n    }\n}\n\npublic class DynamicDispatch {\n    public static void main(String[] args) {\n        Animal a;  // Reference variable\n        \n        a = new Dog();\n        a.sound();  // Calls Dog's sound (runtime)\n        \n        a = new Cat();\n        a.sound();  // Calls Cat's sound (runtime)\n    }\n}",
+    "output": "Dog barks\nCat meows",
+    "explanation": "Dynamic dispatch enables flexible and extensible code.",
+    "commonMistakes": [
+      "Confusing with compile-time polymorphism",
+      "Not understanding reference vs object type"
+    ],
+    "relatedTopics": [
+      "Polymorphism",
+      "Overriding",
+      "Inheritance"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 33,
+    "unitId": 4,
+    "topicId": 33,
+    "title": "Abstract Classes",
+    "slug": "abstract-classes",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Abstract",
+      "Classes",
+      "Abstraction"
+    ],
+    "question": "Explain abstract classes in Java with examples.",
+    "shortAnswer": "Abstract classes cannot be instantiated and may contain abstract methods.",
+    "detailedAnswer": "**Abstract Classes**:\n- Cannot be instantiated\n- May contain abstract methods (no body)\n- Can contain concrete methods\n- Subclasses must implement abstract methods\n\n**Key Points**:\n1. Abstract methods have no body\n2. Subclass must override abstract methods\n3. Used for partial abstraction\n4. Can have constructors",
+    "code": "abstract class Shape {\n    String color;\n    \n    Shape(String color) {\n        this.color = color;\n    }\n    \n    // Abstract method\n    abstract double getArea();\n    \n    // Concrete method\n    void display() {\n        System.out.println(\"Color: \" + color);\n    }\n}\n\nclass Circle extends Shape {\n    double radius;\n    \n    Circle(String color, double radius) {\n        super(color);\n        this.radius = radius;\n    }\n    \n    @Override\n    double getArea() {\n        return Math.PI * radius * radius;\n    }\n}\n\npublic class AbstractDemo {\n    public static void main(String[] args) {\n        Circle c = new Circle(\"Red\", 5.0);\n        c.display();\n        System.out.println(\"Area: \" + c.getArea());\n    }\n}",
+    "output": "Color: Red\nArea: 78.53981633974483",
+    "explanation": "Abstract classes provide partial implementation and define contracts.",
+    "commonMistakes": [
+      "Instantiating abstract class",
+      "Not overriding abstract methods"
+    ],
+    "relatedTopics": [
+      "Interfaces",
+      "Abstraction",
+      "Inheritance"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 34,
+    "unitId": 4,
+    "topicId": 34,
+    "title": "Interfaces",
+    "slug": "interfaces",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Interfaces",
+      "Implementation",
+      "Multiple Inheritance"
+    ],
+    "question": "Explain interfaces in Java with examples.",
+    "shortAnswer": "Interfaces define contracts that classes must implement, supporting multiple inheritance.",
+    "detailedAnswer": "**Interfaces**:\n- Pure abstraction (all methods abstract by default)\n- Support multiple inheritance (multiple interfaces)\n- Cannot have instance variables\n- All fields are public static final\n\n**Implementation**:\n- `implements` keyword\n- Class must implement all methods\n- Can implement multiple interfaces\n\n**Benefits**:\n- Multiple inheritance\n- Loose coupling\n- Design by contract",
+    "code": "interface Printable {\n    void print();\n}\n\ninterface Showable {\n    void show();\n}\n\nclass Document implements Printable, Showable {\n    @Override\n    public void print() {\n        System.out.println(\"Printing document\");\n    }\n    \n    @Override\n    public void show() {\n        System.out.println(\"Showing document\");\n    }\n}\n\npublic class InterfaceDemo {\n    public static void main(String[] args) {\n        Document d = new Document();\n        d.print();\n        d.show();\n    }\n}",
+    "output": "Printing document\nShowing document",
+    "explanation": "Interfaces enable multiple inheritance and design flexibility.",
+    "commonMistakes": [
+      "Forgetting to implement interface methods",
+      "Using private members in interfaces"
+    ],
+    "relatedTopics": [
+      "Abstract Classes",
+      "Multiple Inheritance",
+      "Polymorphism"
+    ],
+    "previousYear": [
+      "2025",
+      "2024",
+      "2023"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 35,
+    "unitId": 4,
+    "topicId": 35,
+    "title": "Default and Static Methods in Interfaces",
+    "slug": "default-and-static-methods-in-interfaces",
+    "type": "Theory",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": false,
+    "tags": [
+      "Default Methods",
+      "Static Methods",
+      "Interface",
+      "Java 8"
+    ],
+    "question": "Explain default and static methods in interfaces (Java 8+).",
+    "shortAnswer": "Default methods provide default implementation, static methods are utility methods in interfaces.",
+    "detailedAnswer": "**Default Methods**:\n- Allow adding methods without breaking implementation\n- Provide default implementation\n- Classes can override default methods\n- Example: `default void log() { }`\n\n**Static Methods**:\n- Belong to interface, not instances\n- Called using interface name\n- Utility functions\n- Example: `static void show() { }`",
+    "code": "interface MyInterface {\n    void normalMethod();\n    \n    default void defaultMethod() {\n        System.out.println(\"Default implementation\");\n    }\n    \n    static void staticMethod() {\n        System.out.println(\"Static method in interface\");\n    }\n}\n\nclass MyClass implements MyInterface {\n    @Override\n    public void normalMethod() {\n        System.out.println(\"Normal method implemented\");\n    }\n    \n    // Optional: Override default method\n    @Override\n    public void defaultMethod() {\n        System.out.println(\"Overridden default method\");\n    }\n}\n\npublic class InterfaceMethodDemo {\n    public static void main(String[] args) {\n        MyClass obj = new MyClass();\n        obj.normalMethod();\n        obj.defaultMethod();\n        MyInterface.staticMethod();  // Called with interface name\n    }\n}",
+    "output": "Normal method implemented\nOverridden default method\nStatic method in interface",
+    "explanation": "Default and static methods enable interface evolution without breaking existing code.",
+    "commonMistakes": [
+      "Not understanding method resolution",
+      "Using static methods as instance methods"
+    ],
+    "relatedTopics": [
+      "Interfaces",
+      "Java 8 Features",
+      "Functional Interfaces"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 36,
+    "unitId": 4,
+    "topicId": 36,
+    "title": "Functional Interfaces",
+    "slug": "functional-interfaces",
+    "type": "Theory",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": false,
+    "tags": [
+      "Functional Interface",
+      "@FunctionalInterface",
+      "Lambda"
+    ],
+    "question": "What is a functional interface? Explain with examples.",
+    "shortAnswer": "Functional interface has exactly one abstract method and can be used with lambda expressions.",
+    "detailedAnswer": "**Functional Interface**:\n- Exactly one abstract method\n- Can have multiple default/static methods\n- Used with lambda expressions\n- `@FunctionalInterface` annotation optional\n\n**Examples**:\n- Runnable (run())\n- Callable (call())\n- Comparator (compare())\n- Custom functional interfaces\n\n**Benefits**:\n- Enables functional programming\n- Lambda expressions\n- Method references",
+    "code": "@FunctionalInterface\ninterface Calculator {\n    int calculate(int a, int b);  // Single abstract method\n    \n    default void display() {\n        System.out.println(\"Default method allowed\");\n    }\n}\n\npublic class FunctionalInterfaceDemo {\n    public static void main(String[] args) {\n        // Using lambda expression\n        Calculator add = (a, b) -> a + b;\n        Calculator multiply = (a, b) -> a * b;\n        \n        System.out.println(\"Addition: \" + add.calculate(10, 20));\n        System.out.println(\"Multiplication: \" + multiply.calculate(10, 20));\n        \n        add.display();\n    }\n}",
+    "output": "Addition: 30\nMultiplication: 200\nDefault method allowed",
+    "explanation": "Functional interfaces enable lambda expressions for functional programming.",
+    "commonMistakes": [
+      "Adding multiple abstract methods",
+      "Not using @FunctionalInterface annotation"
+    ],
+    "relatedTopics": [
+      "Interfaces",
+      "Lambda Expressions",
+      "Java 8"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 37,
+    "unitId": 4,
+    "topicId": 37,
+    "title": "Sealed Classes",
+    "slug": "sealed-classes",
+    "type": "Theory",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": false,
+    "tags": [
+      "Sealed Classes",
+      "Java 17",
+      "Inheritance Control"
+    ],
+    "question": "Explain the concept of sealed classes in Java with an example.",
+    "shortAnswer": "Sealed classes restrict which classes can extend them, providing controlled inheritance.",
+    "detailedAnswer": "**Sealed Classes**:\n- Control inheritance hierarchy\n- Specify permitted subclasses\n- Only permitted classes can extend\n\n**Syntax**:\n```java\nsealed class Shape permits Circle, Square, Triangle { }\nfinal class Circle extends Shape { }\nnon-sealed class Square extends Shape { }\nclass Triangle extends Shape { }\n```\n\n**Keywords**:\n- `sealed`: restricts inheritance\n- `permits`: lists allowed subclasses\n- `non-sealed`: allows unrestricted inheritance\n- `final`: prevents further inheritance",
+    "code": "sealed class Animal permits Dog, Cat, Bird {\n    void sound() {\n        System.out.println(\"Animal sound\");\n    }\n}\n\nfinal class Dog extends Animal {\n    @Override\n    void sound() {\n        System.out.println(\"Dog barks\");\n    }\n}\n\nnon-sealed class Cat extends Animal {\n    @Override\n    void sound() {\n        System.out.println(\"Cat meows\");\n    }\n}\n\n// class Lion extends Animal {} // Error: Lion not permitted\n\npublic class SealedDemo {\n    public static void main(String[] args) {\n        Animal a1 = new Dog();\n        Animal a2 = new Cat();\n        a1.sound();\n        a2.sound();\n    }\n}",
+    "output": "Dog barks\nCat meows",
+    "explanation": "Sealed classes provide controlled inheritance for domain modeling.",
+    "commonMistakes": [
+      "Not listing all permitted subclasses",
+      "Creating subclass not in permits list"
+    ],
+    "relatedTopics": [
+      "Inheritance",
+      "Java 17 Features",
+      "final"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 38,
+    "unitId": 4,
+    "topicId": 38,
+    "title": "Liskov Substitution Principle",
+    "slug": "liskov-substitution-principle",
+    "type": "Theory",
+    "difficulty": "Hard",
+    "examFrequency": "Medium",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": false,
+    "isRepeated": false,
+    "tags": [
+      "LSP",
+      "SOLID",
+      "Design Principles"
+    ],
+    "question": "Explain the Liskov Substitution Principle in object-oriented design.",
+    "shortAnswer": "Subtypes must be substitutable for their base types without changing program behavior.",
+    "detailedAnswer": "**Liskov Substitution Principle (LSP)**:\n\n**Definition**: Objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program.\n\n**Key Points**:\n1. Subclass should extend, not restrict\n2. Preconditions cannot be strengthened\n3. Postconditions cannot be weakened\n4. Invariants must be preserved\n\n**Violation Example**:\n- Square inherits from Rectangle\n- Setting width changes both width and height\n- Violates LSP because Rectangle behavior breaks\n\n**Benefits**:\n- Better polymorphism\n- Code reusability\n- Maintainability",
+    "code": "// LSP Violation Example\nclass Rectangle {\n    protected int width;\n    protected int height;\n    \n    void setWidth(int width) { this.width = width; }\n    void setHeight(int height) { this.height = height; }\n    int getArea() { return width * height; }\n}\n\n// Violates LSP - Square changes behavior\nclass Square extends Rectangle {\n    @Override\n    void setWidth(int width) {\n        super.setWidth(width);\n        super.setHeight(width);\n    }\n    \n    @Override\n    void setHeight(int height) {\n        super.setHeight(height);\n        super.setWidth(height);\n    }\n}\n\npublic class LSPDemo {\n    public static void main(String[] args) {\n        Rectangle r = new Square();\n        r.setWidth(5);\n        r.setHeight(10);\n        // If r was Rectangle, area = 50\n        // But with Square, area = 100 (violates LSP)\n        System.out.println(\"Area: \" + r.getArea());\n    }\n}",
+    "output": "Area: 100",
+    "explanation": "LSP ensures that inheritance maintains correct behavior.",
+    "commonMistakes": [
+      "Violating LSP with incorrect inheritance",
+      "Modifying behavior in subclasses unexpectedly"
+    ],
+    "relatedTopics": [
+      "Inheritance",
+      "SOLID Principles",
+      "Design Patterns"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Effective Java - Joshua Bloch"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  }
+]

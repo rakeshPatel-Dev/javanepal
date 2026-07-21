@@ -1,0 +1,431 @@
+[
+  {
+    "id": 39,
+    "unitId": 5,
+    "topicId": 39,
+    "title": "Exception Hierarchy",
+    "slug": "exception-hierarchy",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Exceptions",
+      "Hierarchy",
+      "Throwable"
+    ],
+    "question": "Explain the exception hierarchy in Java.",
+    "shortAnswer": "Throwable is root, Error and Exception are subclasses. RuntimeException extends Exception.",
+    "detailedAnswer": "**Exception Hierarchy**:\n\n```\nThrowable\n├── Error (unchecked)\n│   ├── OutOfMemoryError\n│   ├── StackOverflowError\n│   └── VirtualMachineError\n└── Exception (checked)\n    ├── RuntimeException (unchecked)\n    │   ├── ArithmeticException\n    │   ├── NullPointerException\n    │   ├── ArrayIndexOutOfBoundsException\n    │   └── ClassCastException\n    └── Other checked exceptions\n        ├── IOException\n        ├── SQLException\n        └── ClassNotFoundException\n```\n\n**Categories**:\n1. **Error**: Serious problems, JVM errors\n2. **Exception**: Programmatic exceptions\n3. **RuntimeException**: Common programming errors",
+    "code": "public class ExceptionHierarchyDemo {\n    public static void main(String[] args) {\n        try {\n            // ArithmeticException (unchecked)\n            int result = 10 / 0;\n        } catch (ArithmeticException e) {\n            System.out.println(\"ArithmeticException caught\");\n        }\n        \n        try {\n            // NullPointerException (unchecked)\n            String str = null;\n            System.out.println(str.length());\n        } catch (NullPointerException e) {\n            System.out.println(\"NullPointerException caught\");\n        }\n        \n        try {\n            // ArrayIndexOutOfBoundsException (unchecked)\n            int[] arr = new int[5];\n            System.out.println(arr[10]);\n        } catch (ArrayIndexOutOfBoundsException e) {\n            System.out.println(\"ArrayIndexOutOfBoundsException caught\");\n        }\n    }\n}",
+    "output": "ArithmeticException caught\nNullPointerException caught\nArrayIndexOutOfBoundsException caught",
+    "explanation": "Understanding exception hierarchy is crucial for proper exception handling.",
+    "commonMistakes": [
+      "Catching Exception instead of specific exceptions",
+      "Not understanding checked vs unchecked"
+    ],
+    "relatedTopics": [
+      "Checked/Unchecked",
+      "Custom Exceptions"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 40,
+    "unitId": 5,
+    "topicId": 40,
+    "title": "Checked vs Unchecked Exceptions",
+    "slug": "checked-vs-unchecked-exceptions",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Checked",
+      "Unchecked",
+      "Exceptions"
+    ],
+    "question": "Differentiate between checked and unchecked exceptions in Java.",
+    "shortAnswer": "Checked exceptions are checked at compile-time; unchecked exceptions are checked at runtime.",
+    "detailedAnswer": "**Checked Exceptions**:\n- Checked at compile-time\n- Must be handled or declared\n- Extend Exception (not RuntimeException)\n- Examples: IOException, SQLException\n\n**Unchecked Exceptions**:\n- Not checked at compile-time\n- Not required to handle\n- Extend RuntimeException\n- Examples: NullPointerException, ArrayIndexOutOfBounds\n\n**Comparison**:\n| Aspect | Checked | Unchecked |\n|--------|---------|-----------|\n| Checked | Compile-time | Runtime |\n| Handling | Required | Optional |\n| Type | Exception | RuntimeException |\n| Cause | External factors | Programming errors |",
+    "code": "import java.io.*;\n\npublic class CheckedUncheckedDemo {\n    public static void main(String[] args) {\n        // Unchecked exception - not required to handle\n        int result = 10 / 0;  // ArithmeticException\n        \n        // Checked exception - must handle\n        try {\n            FileReader fr = new FileReader(\"file.txt\");  // IOException\n        } catch (FileNotFoundException e) {\n            System.out.println(\"File not found\");\n        }\n        \n        // Unchecked exception - common programming errors\n        String str = null;\n        str.length();  // NullPointerException\n        \n        int[] arr = new int[5];\n        arr[10] = 100;  // ArrayIndexOutOfBoundsException\n    }\n}",
+    "output": "Exception in thread \"main\" java.lang.ArithmeticException: / by zero\n\tat CheckedUncheckedDemo.main(CheckedUncheckedDemo.java:6)",
+    "explanation": "Checked exceptions force handling, unchecked exceptions represent programming errors.",
+    "commonMistakes": [
+      "Handling unchecked exceptions unnecessarily",
+      "Not handling checked exceptions",
+      "Using RuntimeException unnecessarily"
+    ],
+    "relatedTopics": [
+      "Exception Hierarchy",
+      "Custom Exceptions"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 41,
+    "unitId": 5,
+    "topicId": 41,
+    "title": "try, catch, finally Blocks",
+    "slug": "try-catch-finally-blocks",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "try",
+      "catch",
+      "finally",
+      "Exception Handling"
+    ],
+    "question": "Write a Java program demonstrating try, catch, and finally blocks.",
+    "shortAnswer": "try contains code that may throw exception, catch handles exception, finally always executes.",
+    "detailedAnswer": "**try-catch-finally**:\n\n**try**:\n- Contains risky code\n- Must be followed by catch or finally\n\n**catch**:\n- Handles specific exception\n- Multiple catches for different exceptions\n\n**finally**:\n- Always executes (except System.exit())\n- Used for cleanup (close resources)",
+    "code": "public class TryCatchFinally {\n    public static void main(String[] args) {\n        System.out.println(\"Program start\");\n        \n        try {\n            System.out.println(\"Entering try block\");\n            int[] numbers = {10, 20, 30};\n            System.out.println(\"Accessing index 5: \" + numbers[5]);\n            System.out.println(\"This line won't execute\");\n        } catch (ArrayIndexOutOfBoundsException e) {\n            System.out.println(\"Caught: \" + e.getMessage());\n        } catch (ArithmeticException e) {\n            System.out.println(\"Caught: \" + e.getMessage());\n        } finally {\n            System.out.println(\"Finally block always executes\");\n        }\n        \n        System.out.println(\"Program continues\");\n        \n        // Example with finally returning value\n        System.out.println(\"\\nResult: \" + testFinally());\n    }\n    \n    static int testFinally() {\n        try {\n            return 10;\n        } catch (Exception e) {\n            return 20;\n        } finally {\n            System.out.println(\"Finally in testFinally\");\n        }\n    }\n}",
+    "output": "Program start\nEntering try block\nCaught: Index 5 out of bounds for length 3\nFinally block always executes\nProgram continues\nFinally in testFinally\nResult: 10",
+    "explanation": "try-catch-finally provides structured exception handling with guaranteed cleanup.",
+    "commonMistakes": [
+      "Forgetting finally for resource cleanup",
+      "Not handling all possible exceptions",
+      "Empty catch blocks"
+    ],
+    "relatedTopics": [
+      "Multiple Catch",
+      "try-with-resources"
+    ],
+    "previousYear": [
+      "2025",
+      "2024",
+      "2023"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 42,
+    "unitId": 5,
+    "topicId": 42,
+    "title": "Multiple Catch and Multi-catch",
+    "slug": "multiple-catch-and-multi-catch",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": false,
+    "tags": [
+      "Multiple Catch",
+      "Multi-catch",
+      "Java 7"
+    ],
+    "question": "Write a Java program demonstrating multiple catch and multi-catch (Java 7+).",
+    "shortAnswer": "Multiple catch blocks handle different exceptions; multi-catch uses | to catch multiple exceptions in one block.",
+    "detailedAnswer": "**Multiple Catch**:\n- Multiple catch blocks for different exceptions\n- Order matters (child before parent)\n- Handles different exception types differently\n\n**Multi-catch (Java 7+)**:\n- Catch multiple exception types in one catch\n- Use `|` operator\n- Reduces code duplication\n- Exception parameter is final",
+    "code": "public class MultiCatchDemo {\n    public static void main(String[] args) {\n        String[] inputs = {\"10\", \"abc\", null};\n        \n        for (String input : inputs) {\n            try {\n                System.out.println(\"Processing: \" + input);\n                \n                // Multiple exceptions possible\n                int num = Integer.parseInt(input);\n                int result = 100 / num;\n                System.out.println(\"Result: \" + result);\n                \n                // Access array\n                int[] arr = new int[5];\n                arr[10] = result;\n                \n            } catch (NumberFormatException e) {\n                System.out.println(\"NumberFormatException: \" + input);\n            } catch (ArithmeticException e) {\n                System.out.println(\"ArithmeticException: \" + input);\n            } catch (Exception e) {\n                System.out.println(\"Generic Exception: \" + e.getMessage());\n            }\n        }\n        \n        System.out.println(\"\\n=== Multi-catch Example ===\");\n        try {\n            // Code that may throw multiple exceptions\n            String str = null;\n            str.length();  // NullPointerException\n            \n            int[] arr = new int[3];\n            arr[5] = 10;  // ArrayIndexOutOfBoundsException\n            \n        } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {\n            System.out.println(\"Caught: \" + e.getClass().getSimpleName());\n        }\n    }\n}",
+    "output": "Processing: 10\nResult: 10\nProcessing: abc\nNumberFormatException: abc\nProcessing: null\nGeneric Exception: null\n\n=== Multi-catch Example ===\nCaught: NullPointerException",
+    "explanation": "Multi-catch reduces code duplication for handling related exceptions.",
+    "commonMistakes": [
+      "Wrong order in catch blocks (child before parent)",
+      "Using | with incompatible exception types"
+    ],
+    "relatedTopics": [
+      "try-catch-finally",
+      "Exception Handling"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 43,
+    "unitId": 5,
+    "topicId": 43,
+    "title": "Nested try Statements",
+    "slug": "nested-try-statements",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": false,
+    "tags": [
+      "Nested try",
+      "Exception Handling",
+      "Hierarchy"
+    ],
+    "question": "Write a Java program to demonstrate the use of nested try blocks.",
+    "shortAnswer": "Inner try blocks handle exceptions locally; if not caught, exception propagates to outer try.",
+    "detailedAnswer": "**Nested try**:\n- try blocks inside try blocks\n- Inner try handles exceptions first\n- Exception propagates outward if not caught\n- Outer try can catch remaining exceptions\n\n**Benefits**:\n- Localized exception handling\n- Different levels of handling\n- Fine-grained control",
+    "code": "public class NestedTryDemo {\n    public static void main(String[] args) {\n        System.out.println(\"Outer try block\");\n        \n        try {\n            System.out.println(\"Outer try - before inner try\");\n            \n            // Inner try block 1\n            try {\n                System.out.println(\"Inner try 1\");\n                int[] arr = new int[3];\n                arr[5] = 10;  // ArrayIndexOutOfBoundsException\n                System.out.println(\"This line won't execute\");\n            } catch (ArrayIndexOutOfBoundsException e) {\n                System.out.println(\"Inner catch 1: \" + e.getMessage());\n            }\n            \n            // Inner try block 2\n            try {\n                System.out.println(\"\\nInner try 2\");\n                int result = 10 / 0;  // ArithmeticException\n                System.out.println(\"This line won't execute\");\n            } catch (NumberFormatException e) {\n                System.out.println(\"Inner catch 2: \" + e.getMessage());\n            }\n            \n            // Inner try block 3 - uncaught exception\n            try {\n                System.out.println(\"\\nInner try 3 - uncaught exception\");\n                String str = null;\n                str.length();  // NullPointerException - not caught inner\n                System.out.println(\"This line won't execute\");\n            } catch (ArithmeticException e) {\n                System.out.println(\"Inner catch 3: \" + e.getMessage());\n            }\n            \n            System.out.println(\"Outer try - after inner try\");\n        } catch (NullPointerException e) {\n            System.out.println(\"Outer catch: \" + e.getMessage());\n        } catch (Exception e) {\n            System.out.println(\"Outer catch: \" + e.getMessage());\n        }\n        \n        System.out.println(\"\\nProgram continues after outer try\");\n        \n        // Nested try with multiple levels\n        try {\n            try {\n                try {\n                    int[] data = new int[2];\n                    data[3] = 5;\n                } catch (ArithmeticException e) {\n                    System.out.println(\"Deepest catch\");\n                }\n            } catch (ArrayIndexOutOfBoundsException e) {\n                System.out.println(\"Middle catch\");\n            }\n        } catch (Exception e) {\n            System.out.println(\"Outer catch\");\n        }\n    }\n}",
+    "output": "Outer try block\nOuter try - before inner try\nInner try 1\nInner catch 1: Index 5 out of bounds for length 3\n\nInner try 2\n\nInner try 3 - uncaught exception\nOuter catch: Cannot invoke \"String.length()\" because \"str\" is null\n\nProgram continues after outer try\nMiddle catch",
+    "explanation": "Nested try blocks provide hierarchical exception handling for complex operations.",
+    "commonMistakes": [
+      "Not handling inner exceptions that propagate",
+      "Catching exceptions too early",
+      "Unnecessary nesting"
+    ],
+    "relatedTopics": [
+      "try-catch-finally",
+      "Exception Propagation"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 44,
+    "unitId": 5,
+    "topicId": 44,
+    "title": "try-with-resources",
+    "slug": "try-with-resources",
+    "type": "Programming",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": false,
+    "tags": [
+      "try-with-resources",
+      "AutoCloseable",
+      "Java 7"
+    ],
+    "question": "Write a Java program to demonstrate try-with-resources for automatic resource management.",
+    "shortAnswer": "try-with-resources automatically closes resources that implement AutoCloseable.",
+    "detailedAnswer": "**try-with-resources**:\n- Introduced in Java 7\n- Automatically closes resources\n- Works with AutoCloseable or Closeable\n- Resources declared in try parentheses\n\n**Benefits**:\n- Automatic cleanup\n- Cleaner code\n- No finally required\n\n**Features**:\n- Multiple resources\n- Order of closing is reverse order\n- Suppressed exceptions",
+    "code": "import java.io.*;\nimport java.util.*;\n\npublic class TryWithResourcesDemo {\n    public static void main(String[] args) {\n        // try-with-resources with file\n        try (FileWriter writer = new FileWriter(\"test.txt\")) {\n            writer.write(\"Hello, try-with-resources!\");\n            System.out.println(\"File written successfully\");\n        } catch (IOException e) {\n            System.out.println(\"Error: \" + e.getMessage());\n        }\n        \n        // Multiple resources\n        try (FileReader reader = new FileReader(\"test.txt\");\n             BufferedReader bufferedReader = new BufferedReader(reader)) {\n            String line = bufferedReader.readLine();\n            System.out.println(\"Read: \" + line);\n        } catch (IOException e) {\n            System.out.println(\"Error reading: \" + e.getMessage());\n        }\n        \n        // Custom AutoCloseable resource\n        try (MyResource resource = new MyResource()) {\n            resource.use();\n        } catch (Exception e) {\n            System.out.println(\"Exception: \" + e.getMessage());\n        }\n        \n        // Scanner with try-with-resources\n        try (Scanner scanner = new Scanner(System.in)) {\n            System.out.print(\"Enter text: \");\n            String input = scanner.nextLine();\n            System.out.println(\"You entered: \" + input);\n        }\n    }\n}\n\nclass MyResource implements AutoCloseable {\n    @Override\n    public void close() throws Exception {\n        System.out.println(\"Resource closed automatically\");\n    }\n    \n    void use() {\n        System.out.println(\"Using resource\");\n    }\n}",
+    "output": "File written successfully\nRead: Hello, try-with-resources!\nUsing resource\nResource closed automatically\nEnter text: test\nYou entered: test",
+    "explanation": "try-with-resources simplifies resource management and prevents resource leaks.",
+    "commonMistakes": [
+      "Using resources that don't implement AutoCloseable",
+      "Resource declaration syntax error",
+      "Not handling exceptions properly"
+    ],
+    "relatedTopics": [
+      "AutoCloseable",
+      "Closeable",
+      "File I/O"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 45,
+    "unitId": 5,
+    "topicId": 45,
+    "title": "throw and throws Keywords",
+    "slug": "throw-and-throws-keywords",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "throw",
+      "throws",
+      "Exception"
+    ],
+    "question": "Explain the difference between throw and throws in Java.",
+    "shortAnswer": "throw explicitly throws an exception; throws declares exceptions that a method can throw.",
+    "detailedAnswer": "**throw**:\n- Used to explicitly throw an exception\n- Followed by exception object\n- Inside method body\n- Can throw checked or unchecked\n\n**throws**:\n- Used in method signature\n- Declares exceptions that might be thrown\n- Used for checked exceptions\n- Can declare multiple exceptions\n\n**Example**:\n```java\npublic void method() throws IOException {\n    if (error) {\n        throw new IOException(\"Error occurred\");\n    }\n}\n```",
+    "code": "import java.io.*;\n\npublic class ThrowThrowsDemo {\n    \n    // Method using throws\n    public static void validateAge(int age) throws IllegalArgumentException {\n        if (age < 0 || age > 150) {\n            // Using throw\n            throw new IllegalArgumentException(\"Invalid age: \" + age);\n        }\n        System.out.println(\"Valid age: \" + age);\n    }\n    \n    // Method throwing multiple exceptions\n    public static void processFile(String filename) throws IOException, NumberFormatException {\n        if (filename == null) {\n            throw new NullPointerException(\"Filename is null\");\n        }\n        \n        // Simulate file processing\n        System.out.println(\"Processing: \" + filename);\n        \n        // Using throw for custom exception\n        if (filename.equals(\"error.txt\")) {\n            throw new IOException(\"File not found: \" + filename);\n        }\n    }\n    \n    public static void main(String[] args) {\n        // Handling checked exception\n        try {\n            validateAge(25);\n            validateAge(200);  // This will throw exception\n        } catch (IllegalArgumentException e) {\n            System.out.println(\"Caught: \" + e.getMessage());\n        }\n        \n        // Handling multiple exceptions\n        try {\n            processFile(\"data.txt\");\n            processFile(\"error.txt\");  // This will throw IOException\n        } catch (IOException e) {\n            System.out.println(\"IOException caught: \" + e.getMessage());\n        } catch (NumberFormatException e) {\n            System.out.println(\"NumberFormatException caught: \" + e.getMessage());\n        } catch (NullPointerException e) {\n            System.out.println(\"NullPointerException caught: \" + e.getMessage());\n        }\n        \n        // Re-throwing exceptions\n        try {\n            processFile(null);\n        } catch (Exception e) {\n            // Re-throw as runtime exception\n            throw new RuntimeException(\"Error processing: \" + e.getMessage());\n        }\n    }\n}",
+    "output": "Valid age: 25\nCaught: Invalid age: 200\nProcessing: data.txt\nProcessing: error.txt\nIOException caught: File not found: error.txt\nException in thread \"main\" java.lang.RuntimeException: Error processing: Filename is null\n\tat ThrowThrowsDemo.main(ThrowThrowsDemo.java:56)",
+    "explanation": "throw is used to generate exceptions; throws is used to declare them in method signature.",
+    "commonMistakes": [
+      "Using throw without exception object",
+      "Not declaring checked exceptions with throws",
+      "Confusing throw and throws"
+    ],
+    "relatedTopics": [
+      "Custom Exceptions",
+      "Exception Handling"
+    ],
+    "previousYear": [
+      "2025",
+      "2024",
+      "2023"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "A",
+      "marks": 5
+    }
+  },
+  {
+    "id": 46,
+    "unitId": 5,
+    "topicId": 46,
+    "title": "Custom Exceptions",
+    "slug": "custom-exceptions",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Custom Exception",
+      "User-defined Exception"
+    ],
+    "question": "Write a Java program to create custom exception classes.",
+    "shortAnswer": "Custom exceptions extend Exception or RuntimeException with custom constructor.",
+    "detailedAnswer": "**Custom Exceptions**:\n- Extend Exception (checked) or RuntimeException (unchecked)\n- Provide meaningful error messages\n- Add custom fields and methods\n- Follow naming convention (ClassNameException)\n\n**Benefits**:\n- Application-specific errors\n- Better error handling\n- Self-documenting code",
+    "code": "// Custom checked exception\nclass InsufficientBalanceException extends Exception {\n    private double balance;\n    private double attemptedWithdraw;\n    \n    public InsufficientBalanceException(String message, double balance, double amount) {\n        super(message);\n        this.balance = balance;\n        this.attemptedWithdraw = amount;\n    }\n    \n    public double getBalance() { return balance; }\n    public double getAttemptedWithdraw() { return attemptedWithdraw; }\n}\n\n// Custom unchecked exception\nclass InvalidAccountException extends RuntimeException {\n    public InvalidAccountException(String message) {\n        super(message);\n    }\n}\n\nclass BankAccount {\n    private String accountNumber;\n    private double balance;\n    \n    BankAccount(String accountNumber, double balance) {\n        this.accountNumber = accountNumber;\n        this.balance = balance;\n    }\n    \n    void withdraw(double amount) throws InsufficientBalanceException {\n        if (amount <= 0) {\n            throw new InvalidAccountException(\"Invalid withdrawal amount: \" + amount);\n        }\n        if (amount > balance) {\n            throw new InsufficientBalanceException(\n                \"Insufficient balance\", balance, amount);\n        }\n        balance -= amount;\n        System.out.println(\"Withdrawn: $\" + amount + \", New balance: $\" + balance);\n    }\n    \n    void display() {\n        System.out.println(\"Account: \" + accountNumber + \", Balance: $\" + balance);\n    }\n}\n\npublic class CustomExceptionDemo {\n    public static void main(String[] args) {\n        BankAccount account = new BankAccount(\"12345\", 1000.0);\n        \n        System.out.println(\"Initial account:\");\n        account.display();\n        \n        try {\n            account.withdraw(500);  // Successful\n            account.withdraw(600);  // Insufficient balance\n        } catch (InsufficientBalanceException e) {\n            System.out.println(\"\\nInsufficientBalanceException caught:\");\n            System.out.println(\"Message: \" + e.getMessage());\n            System.out.println(\"Balance: $\" + e.getBalance());\n            System.out.println(\"Attempted: $\" + e.getAttemptedWithdraw());\n        } catch (InvalidAccountException e) {\n            System.out.println(\"InvalidAccountException: \" + e.getMessage());\n        }\n        \n        // Testing invalid amount\n        try {\n            account.withdraw(-100);\n        } catch (InsufficientBalanceException e) {\n            System.out.println(\"This won't happen\");\n        } catch (InvalidAccountException e) {\n            System.out.println(\"\\nInvalidAccountException: \" + e.getMessage());\n        }\n    }\n}",
+    "output": "Initial account:\nAccount: 12345, Balance: $1000.0\nWithdrawn: $500.0, New balance: $500.0\n\nInsufficientBalanceException caught:\nMessage: Insufficient balance\nBalance: $500.0\nAttempted: $600.0\n\nInvalidAccountException: Invalid withdrawal amount: -100.0",
+    "explanation": "Custom exceptions make error handling more specific and meaningful.",
+    "commonMistakes": [
+      "Not providing proper constructors",
+      "Creating exceptions for everything",
+      "Not including useful error information"
+    ],
+    "relatedTopics": [
+      "Exception Hierarchy",
+      "throw/throws"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 47,
+    "unitId": 5,
+    "topicId": 47,
+    "title": "Exception Chaining",
+    "slug": "exception-chaining",
+    "type": "Theory",
+    "difficulty": "Hard",
+    "examFrequency": "Medium",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": false,
+    "isRepeated": false,
+    "tags": [
+      "Exception Chaining",
+      "Causes",
+      "initCause"
+    ],
+    "question": "Explain exception chaining and how it is implemented in Java.",
+    "shortAnswer": "Exception chaining links exceptions to preserve the original cause using initCause() or constructor.",
+    "detailedAnswer": "**Exception Chaining**:\n- Links exception to its cause\n- Preserves original error information\n- Provides complete stack trace\n\n**Methods**:\n1. **Constructor**: `Throwable(Throwable cause)`\n2. **initCause()**: Sets cause after creation\n3. **getCause()**: Retrieves the cause\n\n**Benefits**:\n- Complete error context\n- Better debugging\n- Allows abstraction without losing details",
+    "code": "public class ExceptionChainingDemo {\n    \n    public static void method1() throws Exception {\n        try {\n            method2();\n        } catch (NullPointerException e) {\n            // Exception chaining using constructor\n            throw new Exception(\"Error in method1\", e);\n        }\n    }\n    \n    public static void method2() {\n        try {\n            method3();\n        } catch (ArithmeticException e) {\n            // Exception chaining using initCause\n            RuntimeException re = new RuntimeException(\"Error in method2\");\n            re.initCause(e);\n            throw re;\n        }\n    }\n    \n    public static void method3() {\n        // Original exception\n        int result = 10 / 0;  // ArithmeticException\n    }\n    \n    public static void main(String[] args) {\n        try {\n            method1();\n        } catch (Exception e) {\n            System.out.println(\"Top-level exception: \" + e.getMessage());\n            System.out.println(\"Cause: \" + e.getCause().getMessage());\n            System.out.println(\"\\nFull stack trace:\");\n            e.printStackTrace();\n        }\n        \n        // Another example of chaining\n        try {\n            readFile();\n        } catch (Exception e) {\n            System.out.println(\"\\n\\nChained exception from file handling:\");\n            Throwable cause = e;\n            while (cause != null) {\n                System.out.println(\"-> \" + cause.getClass().getSimpleName() + \": \" + cause.getMessage());\n                cause = cause.getCause();\n            }\n        }\n    }\n    \n    static void readFile() throws Exception {\n        try {\n            // Simulate file error\n            throw new java.io.IOException(\"File not found\");\n        } catch (java.io.IOException e) {\n            throw new Exception(\"File processing failed\", e);\n        }\n    }\n}",
+    "output": "Top-level exception: Error in method1\nCause: Cannot divide by zero\n\nFull stack trace:\njava.lang.Exception: Error in method1\n\tat ExceptionChainingDemo.method1(ExceptionChainingDemo.java:9)\n\tat ExceptionChainingDemo.main(ExceptionChainingDemo.java:41)\nCaused by: java.lang.NullPointerException: Cannot divide by zero\n\tat ExceptionChainingDemo.method3(ExceptionChainingDemo.java:24)\n\tat ExceptionChainingDemo.method2(ExceptionChainingDemo.java:14)\n\tat ExceptionChainingDemo.method1(ExceptionChainingDemo.java:6)\n\t... 1 more\n\n\nChained exception from file handling:\n-> Exception: File processing failed\n-> IOException: File not found",
+    "explanation": "Exception chaining preserves the original cause of an exception for better debugging.",
+    "commonMistakes": [
+      "Losing the cause by not chaining",
+      "Not using getCause() when needed",
+      "Creating circular references"
+    ],
+    "relatedTopics": [
+      "Exceptions",
+      "Debugging"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  }
+]

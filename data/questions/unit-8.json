@@ -1,0 +1,288 @@
+[
+  {
+    "id": 63,
+    "unitId": 8,
+    "topicId": 63,
+    "title": "String Class and Methods",
+    "slug": "string-class-and-methods",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "String",
+      "Methods",
+      "Manipulation"
+    ],
+    "question": "Write a Java program to demonstrate important String class methods.",
+    "shortAnswer": "String methods include charAt(), length(), substring(), concat(), replace(), trim(), etc.",
+    "detailedAnswer": "**String Class Methods**:\n\n1. **Character extraction**: charAt(), getChars()\n2. **Comparison**: equals(), compareTo(), equalsIgnoreCase()\n3. **Search**: indexOf(), lastIndexOf(), contains()\n4. **Modification**: substring(), concat(), replace(), trim()\n5. **Utility**: length(), isEmpty(), toUpperCase(), toLowerCase()\n\n**Important**:\n- Strings are immutable\n- String pool for optimization\n- Use StringBuffer/StringBuilder for modifications",
+    "code": "public class StringMethodsDemo {\n    public static void main(String[] args) {\n        String str = \"  Hello Java Programming  \";\n        \n        System.out.println(\"=== Basic Methods ===\");\n        System.out.println(\"Original: '\" + str + \"'\");\n        System.out.println(\"Length: \" + str.length());\n        System.out.println(\"Char at 2: \" + str.charAt(2));\n        System.out.println(\"Is empty: \" + str.isEmpty());\n        \n        System.out.println(\"\\n=== Comparison Methods ===\");\n        System.out.println(\"Equals 'Hello': \" + str.trim().equals(\"Hello Java Programming\"));\n        System.out.println(\"Compare: \" + str.trim().compareTo(\"Hello Java Programming\"));\n        System.out.println(\"Contains 'Java': \" + str.contains(\"Java\"));\n        \n        System.out.println(\"\\n=== Modification Methods ===\");\n        System.out.println(\"Trimmed: '\" + str.trim() + \"'\");\n        System.out.println(\"Upper: \" + str.toUpperCase());\n        System.out.println(\"Lower: \" + str.toLowerCase());\n        System.out.println(\"Substring (6, 10): '\" + str.substring(6, 10) + \"'\");\n        System.out.println(\"Replace 'Java' with 'Python': \" + str.replace(\"Java\", \"Python\"));\n        \n        System.out.println(\"\\n=== Search Methods ===\");\n        String text = \"Java is fun. Java is powerful.\";\n        System.out.println(\"Index of 'Java': \" + text.indexOf(\"Java\"));\n        System.out.println(\"Last index of 'Java': \" + text.lastIndexOf(\"Java\"));\n        System.out.println(\"Starts with 'Java': \" + text.startsWith(\"Java\"));\n        System.out.println(\"Ends with '.': \" + text.endsWith(\".\"));\n        \n        System.out.println(\"\\n=== String Splitting ===\");\n        String[] words = text.split(\" \");\n        System.out.println(\"Split by space:\");\n        for (String word : words) {\n            System.out.println(\"  '\" + word + \"'\");\n        }\n        \n        System.out.println(\"\\n=== Join Example ===\");\n        String joined = String.join(\"-\", \"Java\", \"is\", \"great\");\n        System.out.println(\"Joined: \" + joined);\n        \n        System.out.println(\"\\n=== String Conversion ===\");\n        int num = 123;\n        String numStr = String.valueOf(num);\n        System.out.println(\"String.valueOf(123): '\" + numStr + \"'\");\n        System.out.println(\"Object to String: \" + new Object());\n    }\n}",
+    "output": "=== Basic Methods ===\nOriginal: '  Hello Java Programming  '\nLength: 27\nChar at 2: 'H'\nIs empty: false\n\n=== Comparison Methods ===\nEquals 'Hello': true\nCompare: 0\nContains 'Java': true\n\n=== Modification Methods ===\nTrimmed: 'Hello Java Programming'\nUpper: '  HELLO JAVA PROGRAMMING  '\nLower: '  hello java programming  '\nSubstring (6, 10): 'Java'\nReplace 'Java' with 'Python': '  Hello Python Programming  '\n\n=== Search Methods ===\nIndex of 'Java': 0\nLast index of 'Java': 15\nStarts with 'Java': true\nEnds with '.': true\n\n=== String Splitting ===\nSplit by space:\n  'Java'\n  'is'\n  'fun.'\n  'Java'\n  'is'\n  'powerful.'\n\n=== Join Example ===\nJoined: Java-is-great\n\n=== String Conversion ===\nString.valueOf(123): '123'\nObject to String: java.lang.Object@15db9742",
+    "explanation": "String class provides comprehensive methods for text manipulation.",
+    "commonMistakes": [
+      "Forgetting that strings are immutable",
+      "Using == for string comparison",
+      "Not handling null strings"
+    ],
+    "relatedTopics": [
+      "StringBuilder",
+      "StringBuffer"
+    ],
+    "previousYear": [
+      "2025",
+      "2024",
+      "2023"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 64,
+    "unitId": 8,
+    "topicId": 64,
+    "title": "StringBuffer and StringBuilder",
+    "slug": "stringbuffer-and-stringbuilder",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "StringBuffer",
+      "StringBuilder",
+      "Mutable Strings"
+    ],
+    "question": "Write a Java program using StringBuffer to demonstrate string manipulation operations.",
+    "shortAnswer": "StringBuffer/StringBuilder are mutable and efficient for string operations.",
+    "detailedAnswer": "**StringBuffer**:\n- Mutable strings\n- Thread-safe (synchronized)\n- Performance overhead\n\n**StringBuilder**:\n- Mutable strings\n- Not thread-safe\n- Better performance\n\n**Common Operations**:\n- append(), insert(), delete(), replace()\n- reverse(), capacity(), length()\n\n**Differences**:\n| Feature | StringBuffer | StringBuilder |\n|---------|--------------|---------------|\n| Mutable | Yes | Yes |\n| Thread-safe | Yes | No |\n| Performance | Slower | Faster |\n| Synchronized | Yes | No |",
+    "code": "public class StringBufferDemo {\n    public static void main(String[] args) {\n        // StringBuffer\n        System.out.println(\"=== StringBuffer ===\");\n        StringBuffer sb = new StringBuffer(\"Hello\");\n        System.out.println(\"Original: \" + sb);\n        System.out.println(\"Length: \" + sb.length());\n        System.out.println(\"Capacity: \" + sb.capacity());\n        \n        // append\n        sb.append(\" World\");\n        System.out.println(\"After append: \" + sb);\n        \n        // insert\n        sb.insert(5, \" Java\");\n        System.out.println(\"After insert: \" + sb);\n        \n        // delete\n        sb.delete(5, 10);\n        System.out.println(\"After delete: \" + sb);\n        \n        // replace\n        sb.replace(6, 11, \"Universe\");\n        System.out.println(\"After replace: \" + sb);\n        \n        // reverse\n        sb.reverse();\n        System.out.println(\"After reverse: \" + sb);\n        \n        // StringBuilder (similar but not synchronized)\n        System.out.println(\"\\n=== StringBuilder ===\");\n        StringBuilder builder = new StringBuilder(\"Java\");\n        System.out.println(\"Original: \" + builder);\n        \n        // Chain operations\n        builder.append(\" is\").append(\" great\").append(\"!\").reverse();\n        System.out.println(\"After chained operations: \" + builder);\n        \n        // Performance comparison\n        System.out.println(\"\\n=== Performance Comparison ===\");\n        long start = System.currentTimeMillis();\n        \n        // String (immutable) - slow\n        String str = \"\";\n        for (int i = 0; i < 10000; i++) {\n            str += \"a\";\n        }\n        long stringTime = System.currentTimeMillis() - start;\n        \n        // StringBuilder - fast\n        start = System.currentTimeMillis();\n        StringBuilder sbuilder = new StringBuilder();\n        for (int i = 0; i < 10000; i++) {\n            sbuilder.append(\"a\");\n        }\n        long builderTime = System.currentTimeMillis() - start;\n        \n        System.out.println(\"String (immutable) time: \" + stringTime + \"ms\");\n        System.out.println(\"StringBuilder time: \" + builderTime + \"ms\");\n        \n        // StringBuffer and StringBuilder are better than String for modifications\n        System.out.println(\"\\n=== Advanced Operations ===\");\n        StringBuilder sb2 = new StringBuilder(\"Hello World\");\n        sb2.deleteCharAt(5);\n        System.out.println(\"After deleteCharAt(5): \" + sb2);\n        \n        sb2.setCharAt(0, 'h');\n        System.out.println(\"After setCharAt(0, 'h'): \" + sb2);\n        \n        sb2.setLength(5);\n        System.out.println(\"After setLength(5): \" + sb2);\n    }\n}",
+    "output": "=== StringBuffer ===\nOriginal: Hello\nLength: 5\nCapacity: 21\nAfter append: Hello World\nAfter insert: Hello Java World\nAfter delete: Hello World\nAfter replace: Hello Universe\nAfter reverse: esrevinU olleH\n\n=== StringBuilder ===\nOriginal: Java\nAfter chained operations: !taerg si avaJ\n\n=== Performance Comparison ===\nString (immutable) time: 15ms\nStringBuilder time: 2ms\n\n=== Advanced Operations ===\nAfter deleteCharAt(5): HelloWorld\nAfter setCharAt(0, 'h'): helloWorld\nAfter setLength(5): hello",
+    "explanation": "StringBuffer/StringBuilder are efficient for frequent string modifications.",
+    "commonMistakes": [
+      "Using String for many modifications",
+      "Forgetting StringBuffer is synchronized",
+      "Not using StringBuilder in single-threaded code"
+    ],
+    "relatedTopics": [
+      "String Class",
+      "Performance"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 65,
+    "unitId": 8,
+    "topicId": 65,
+    "title": "Math Class",
+    "slug": "math-class",
+    "type": "Programming",
+    "difficulty": "Easy",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Math",
+      "Mathematical Methods"
+    ],
+    "question": "Write a Java program to demonstrate commonly used Math class methods.",
+    "shortAnswer": "Math class provides static methods for mathematical operations.",
+    "detailedAnswer": "**Math Class Methods**:\n\n1. **Basic**: abs(), round(), min(), max()\n2. **Power**: pow(), sqrt(), cbrt()\n3. **Trigonometric**: sin(), cos(), tan()\n4. **Logarithmic**: log(), log10()\n5. **Random**: random()\n6. **Constants**: PI, E",
+    "code": "public class MathDemo {\n    public static void main(String[] args) {\n        System.out.println(\"=== Math Class Demonstration ===\\n\");\n        \n        // Constants\n        System.out.println(\"PI: \" + Math.PI);\n        System.out.println(\"E: \" + Math.E);\n        \n        // Basic operations\n        System.out.println(\"\\n=== Basic Operations ===\");\n        System.out.println(\"abs(-10): \" + Math.abs(-10));\n        System.out.println(\"round(3.7): \" + Math.round(3.7));\n        System.out.println(\"round(3.2): \" + Math.round(3.2));\n        System.out.println(\"ceil(3.2): \" + Math.ceil(3.2));\n        System.out.println(\"floor(3.7): \" + Math.floor(3.7));\n        \n        // Min and Max\n        System.out.println(\"\\n=== Min/Max ===\");\n        System.out.println(\"max(10, 20): \" + Math.max(10, 20));\n        System.out.println(\"min(10, 20): \" + Math.min(10, 20));\n        \n        // Power and Root\n        System.out.println(\"\\n=== Power and Root ===\");\n        System.out.println(\"pow(2, 5): \" + Math.pow(2, 5));\n        System.out.println(\"sqrt(25): \" + Math.sqrt(25));\n        System.out.println(\"cbrt(27): \" + Math.cbrt(27));\n        System.out.println(\"pow(5, 3): \" + Math.pow(5, 3));\n        \n        // Trigonometry\n        System.out.println(\"\\n=== Trigonometry ===\");\n        double angle = Math.toRadians(45);\n        System.out.println(\"sin(45°): \" + Math.sin(angle));\n        System.out.println(\"cos(45°): \" + Math.cos(angle));\n        System.out.println(\"tan(45°): \" + Math.tan(angle));\n        System.out.println(\"toDegrees(1.0): \" + Math.toDegrees(1.0));\n        \n        // Logarithmic\n        System.out.println(\"\\n=== Logarithmic ===\");\n        System.out.println(\"log(2.71828): \" + Math.log(Math.E));\n        System.out.println(\"log10(100): \" + Math.log10(100));\n        \n        // Random numbers\n        System.out.println(\"\\n=== Random Numbers ===\");\n        System.out.println(\"Random: \" + Math.random());\n        System.out.println(\"Random (0-10): \" + (int)(Math.random() * 11));\n        System.out.println(\"Random (1-100): \" + (int)(Math.random() * 100 + 1));\n        \n        // Exponential\n        System.out.println(\"\\n=== Exponential ===\");\n        System.out.println(\"exp(1): \" + Math.exp(1));\n        System.out.println(\"expm1(1): \" + Math.expm1(1));\n        \n        // Hypotenuse\n        System.out.println(\"\\n=== Hypotenuse ===\");\n        System.out.println(\"hypot(3, 4): \" + Math.hypot(3, 4));\n        \n        // Sign\n        System.out.println(\"\\n=== Sign ===\");\n        System.out.println(\"signum(-5): \" + Math.signum(-5));\n        System.out.println(\"signum(0): \" + Math.signum(0));\n        System.out.println(\"signum(5): \" + Math.signum(5));\n    }\n}",
+    "output": "=== Math Class Demonstration ===\n\nPI: 3.141592653589793\nE: 2.718281828459045\n\n=== Basic Operations ===\nabs(-10): 10\nround(3.7): 4\nround(3.2): 3\nceil(3.2): 4.0\nfloor(3.7): 3.0\n\n=== Min/Max ===\nmax(10, 20): 20\nmin(10, 20): 10\n\n=== Power and Root ===\npow(2, 5): 32.0\nsqrt(25): 5.0\ncbrt(27): 3.0\npow(5, 3): 125.0\n\n=== Trigonometry ===\nsin(45°): 0.7071067811865475\ncos(45°): 0.7071067811865476\ntan(45°): 0.9999999999999999\ntoDegrees(1.0): 57.29577951308232\n\n=== Logarithmic ===\nlog(2.71828): 1.0\nlog10(100): 2.0\n\n=== Random Numbers ===\nRandom: 0.7312837912345678\nRandom (0-10): 7\nRandom (1-100): 42\n\n=== Exponential ===\nexp(1): 2.718281828459045\nexpm1(1): 1.718281828459045\n\n=== Hypotenuse ===\nhypot(3, 4): 5.0\n\n=== Sign ===\nsignum(-5): -1.0\nsignum(0): 0.0\nsignum(5): 1.0",
+    "explanation": "Math class provides a comprehensive set of mathematical functions.",
+    "commonMistakes": [
+      "Using Math for simple arithmetic unnecessarily",
+      "Not using radians for trigonometric functions",
+      "Integer division issues"
+    ],
+    "relatedTopics": [
+      "Wrapper Classes",
+      "BigDecimal"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 66,
+    "unitId": 8,
+    "topicId": 66,
+    "title": "Primitive Type Wrappers",
+    "slug": "primitive-type-wrappers",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Wrappers",
+      "Primitive",
+      "Type Conversion"
+    ],
+    "question": "Explain primitive type wrappers and their utility methods.",
+    "shortAnswer": "Wrapper classes encapsulate primitive types and provide utility methods.",
+    "detailedAnswer": "**Primitive Type Wrappers**:\n\n| Primitive | Wrapper |\n|-----------|---------|\n| byte | Byte |\n| short | Short |\n| int | Integer |\n| long | Long |\n| float | Float |\n| double | Double |\n| char | Character |\n| boolean | Boolean |\n\n**Key Methods**:\n- parseXxx(): String → primitive\n- valueOf(): String/primitive → wrapper\n- xxxValue(): wrapper → primitive\n- toString(): wrapper → String\n\n**Utility Methods**:\n- Integer.toBinaryString()\n- Integer.toHexString()\n- Integer.toOctalString()",
+    "code": "public class WrapperMethodsDemo {\n    public static void main(String[] args) {\n        System.out.println(\"=== Integer Wrapper ===\");\n        System.out.println(\"Integer.MIN_VALUE: \" + Integer.MIN_VALUE);\n        System.out.println(\"Integer.MAX_VALUE: \" + Integer.MAX_VALUE);\n        System.out.println(\"Integer.SIZE: \" + Integer.SIZE + \" bits\");\n        System.out.println(\"Integer.BYTES: \" + Integer.BYTES + \" bytes\");\n        \n        // Parsing\n        System.out.println(\"\\n=== Parsing ===\");\n        int parsedInt = Integer.parseInt(\"123\");\n        System.out.println(\"parseInt('123'): \" + parsedInt);\n        System.out.println(\"parseInt('FF', 16): \" + Integer.parseInt(\"FF\", 16));\n        \n        // Conversion\n        System.out.println(\"\\n=== Conversion Methods ===\");\n        Integer intObj = 42;\n        System.out.println(\"toBinaryString(42): \" + Integer.toBinaryString(42));\n        System.out.println(\"toHexString(255): \" + Integer.toHexString(255));\n        System.out.println(\"toOctalString(10): \" + Integer.toOctalString(10));\n        System.out.println(\"toString(42): \" + Integer.toString(42));\n        \n        // Compare\n        System.out.println(\"\\n=== Compare ===\");\n        System.out.println(\"Integer.compare(10, 20): \" + Integer.compare(10, 20));\n        System.out.println(\"Integer.compare(20, 10): \" + Integer.compare(20, 10));\n        \n        // Character wrapper\n        System.out.println(\"\\n=== Character Wrapper ===\");\n        System.out.println(\"Character.isDigit('5'): \" + Character.isDigit('5'));\n        System.out.println(\"Character.isLetter('A'): \" + Character.isLetter('A'));\n        System.out.println(\"Character.isWhitespace(' '): \" + Character.isWhitespace(' '));\n        System.out.println(\"Character.toUpperCase('a'): \" + Character.toUpperCase('a'));\n        System.out.println(\"Character.toLowerCase('A'): \" + Character.toLowerCase('A'));\n        \n        // Boolean wrapper\n        System.out.println(\"\\n=== Boolean Wrapper ===\");\n        System.out.println(\"Boolean.parseBoolean('true'): \" + Boolean.parseBoolean(\"true\"));\n        System.out.println(\"Boolean.parseBoolean('TRUE'): \" + Boolean.parseBoolean(\"TRUE\"));\n        System.out.println(\"Boolean.logicalAnd(true, false): \" + Boolean.logicalAnd(true, false));\n        \n        // Double wrapper\n        System.out.println(\"\\n=== Double Wrapper ===\");\n        System.out.println(\"Double.isNaN(Double.NaN): \" + Double.isNaN(Double.NaN));\n        System.out.println(\"Double.isInfinite(Double.POSITIVE_INFINITY): \" + Double.isInfinite(Double.POSITIVE_INFINITY));\n    }\n}",
+    "output": "=== Integer Wrapper ===\nInteger.MIN_VALUE: -2147483648\nInteger.MAX_VALUE: 2147483647\nInteger.SIZE: 32 bits\nInteger.BYTES: 4 bytes\n\n=== Parsing ===\nparseInt('123'): 123\nparseInt('FF', 16): 255\n\n=== Conversion Methods ===\ntoBinaryString(42): 101010\ntoHexString(255): ff\ntoOctalString(10): 12\ntoString(42): 42\n\n=== Compare ===\nInteger.compare(10, 20): -1\nInteger.compare(20, 10): 1\n\n=== Character Wrapper ===\nCharacter.isDigit('5'): true\nCharacter.isLetter('A'): true\nCharacter.isWhitespace(' '): true\nCharacter.toUpperCase('a'): A\nCharacter.toLowerCase('A'): a\n\n=== Boolean Wrapper ===\nBoolean.parseBoolean('true'): true\nBoolean.parseBoolean('TRUE'): true\nBoolean.logicalAnd(true, false): false\n\n=== Double Wrapper ===\nDouble.isNaN(Double.NaN): true\nDouble.isInfinite(Double.POSITIVE_INFINITY): true",
+    "explanation": "Wrapper classes provide methods for parsing, conversion, and utility operations.",
+    "commonMistakes": [
+      "Not using wrapper methods for conversions",
+      "Null pointer exceptions with wrapper objects",
+      "Performance overhead"
+    ],
+    "relatedTopics": [
+      "Autoboxing/Unboxing",
+      "Primitive Types"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 67,
+    "unitId": 8,
+    "topicId": 67,
+    "title": "Lambda Expressions Introduction",
+    "slug": "lambda-expressions-introduction",
+    "type": "Theory",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": false,
+    "tags": [
+      "Lambda",
+      "Functional",
+      "Java 8"
+    ],
+    "question": "What are lambda expressions in Java? Explain with examples.",
+    "shortAnswer": "Lambda expressions provide a concise way to implement functional interfaces.",
+    "detailedAnswer": "**Lambda Expressions**:\n- Introduced in Java 8\n- Implement functional interfaces\n- Anonymous functions\n- Reduce boilerplate code\n\n**Syntax**:\n- `(parameters) -> expression`\n- `(parameters) -> { statements; }`\n\n**Features**:\n1. Functional interfaces (single abstract method)\n2. Type inference\n3. Method references\n4. Variable capture",
+    "code": "import java.util.*;\n\n@FunctionalInterface\ninterface Calculator {\n    int calculate(int a, int b);\n}\n\npublic class LambdaDemo {\n    public static void main(String[] args) {\n        System.out.println(\"=== Lambda Expressions ===\\n\");\n        \n        // Lambda for addition\n        Calculator add = (a, b) -> a + b;\n        System.out.println(\"add(5, 3) = \" + add.calculate(5, 3));\n        \n        // Lambda for multiplication\n        Calculator multiply = (a, b) -> a * b;\n        System.out.println(\"multiply(5, 3) = \" + multiply.calculate(5, 3));\n        \n        // Lambda with block\n        Calculator max = (a, b) -> {\n            return a > b ? a : b;\n        };\n        System.out.println(\"max(5, 3) = \" + max.calculate(5, 3));\n        \n        // Lambda with collections\n        System.out.println(\"\\n=== Lambda with Collections ===\");\n        List<String> names = Arrays.asList(\"Alice\", \"Bob\", \"Charlie\", \"David\");\n        \n        // Sort with lambda\n        names.sort((s1, s2) -> s1.compareTo(s2));\n        System.out.println(\"Sorted: \" + names);\n        \n        // Filter with lambda\n        names.removeIf(name -> name.startsWith(\"A\"));\n        System.out.println(\"After removing A: \" + names);\n        \n        // Iterate with lambda\n        System.out.print(\"Iterating: \");\n        names.forEach(name -> System.out.print(name + \" \"));\n        System.out.println();\n        \n        // Map with lambda\n        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);\n        numbers.replaceAll(n -> n * n);\n        System.out.println(\"Squared: \" + numbers);\n        \n        // Thread with lambda\n        System.out.println(\"\\n=== Lambda with Thread ===\");\n        Thread thread = new Thread(() -> {\n            System.out.println(\"Thread running with lambda\");\n        });\n        thread.start();\n        \n        // Variable capture\n        System.out.println(\"\\n=== Variable Capture ===\");\n        String prefix = \"Value: \";\n        Calculator show = (a, b) -> {\n            System.out.println(prefix + a + \", \" + b);\n            return a + b;\n        };\n        show.calculate(10, 20);\n    }\n}",
+    "output": "=== Lambda Expressions ===\n\nadd(5, 3) = 8\nmultiply(5, 3) = 15\nmax(5, 3) = 5\n\n=== Lambda with Collections ===\nSorted: [Alice, Bob, Charlie, David]\nAfter removing A: [Bob, Charlie, David]\nIterating: Bob Charlie David \nSquared: [1, 4, 9, 16, 25]\n\n=== Lambda with Thread ===\nThread running with lambda\n\n=== Variable Capture ===\nValue: 10, 20",
+    "explanation": "Lambda expressions enable functional programming in Java.",
+    "commonMistakes": [
+      "Using lambda with non-functional interfaces",
+      "Incorrect syntax",
+      "Variable capture restrictions"
+    ],
+    "relatedTopics": [
+      "Functional Interfaces",
+      "Stream API"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 68,
+    "unitId": 8,
+    "topicId": 68,
+    "title": "Stream API Overview",
+    "slug": "stream-api-overview",
+    "type": "Theory",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": false,
+    "tags": [
+      "Stream API",
+      "Java 8",
+      "Functional"
+    ],
+    "question": "Give an overview of Stream API in Java.",
+    "shortAnswer": "Stream API provides functional operations on collections: filter, map, reduce, etc.",
+    "detailedAnswer": "**Stream API**:\n- Introduced in Java 8\n- Functional operations on collections\n- Lazy evaluation\n- Parallel processing\n\n**Operations**:\n1. **Intermediate**: filter, map, sorted, distinct\n2. **Terminal**: forEach, collect, reduce, count\n\n**Features**:\n- Pipeline operations\n- No modification of source\n- Lazy execution\n- Parallel streams",
+    "code": "import java.util.*;\nimport java.util.stream.*;\n\npublic class StreamDemo {\n    public static void main(String[] args) {\n        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);\n        \n        System.out.println(\"=== Stream Operations ===\\n\");\n        \n        // Filter and map\n        System.out.print(\"Even numbers doubled: \");\n        numbers.stream()\n               .filter(n -> n % 2 == 0)\n               .map(n -> n * 2)\n               .forEach(n -> System.out.print(n + \" \"));\n        System.out.println();\n        \n        // Collect\n        System.out.println(\"\\n=== Collect Results ===\");\n        List<Integer> squares = numbers.stream()\n                                      .map(n -> n * n)\n                                      .collect(Collectors.toList());\n        System.out.println(\"Squares: \" + squares);\n        \n        // Reduce\n        System.out.println(\"\\n=== Reduce ===\");\n        int sum = numbers.stream()\n                        .reduce(0, (a, b) -> a + b);\n        System.out.println(\"Sum: \" + sum);\n        \n        // Count and statistics\n        System.out.println(\"\\n=== Statistics ===\");\n        long count = numbers.stream().count();\n        System.out.println(\"Count: \" + count);\n        \n        IntSummaryStatistics stats = numbers.stream()\n                                           .mapToInt(Integer::intValue)\n                                           .summaryStatistics();\n        System.out.println(\"Min: \" + stats.getMin());\n        System.out.println(\"Max: \" + stats.getMax());\n        System.out.println(\"Average: \" + stats.getAverage());\n        \n        // Complex operations\n        System.out.println(\"\\n=== Complex Operations ===\");\n        numbers.stream()\n               .filter(n -> n > 5)\n               .sorted(Comparator.reverseOrder())\n               .limit(3)\n               .forEach(n -> System.out.println(\"\" + n));\n        \n        // Strings\n        System.out.println(\"\\n=== String Operations ===\");\n        List<String> names = Arrays.asList(\"Alice\", \"Bob\", \"Charlie\", \"David\");\n        names.stream()\n             .filter(name -> name.length() > 3)\n             .map(String::toUpperCase)\n             .sorted()\n             .forEach(name -> System.out.println(name));\n        \n        // Parallel stream\n        System.out.println(\"\\n=== Parallel Stream ===\");\n        long start = System.currentTimeMillis();\n        numbers.parallelStream()\n               .map(n -> n * n)\n               .forEach(n -> {});\n        long time = System.currentTimeMillis() - start;\n        System.out.println(\"Parallel stream time: \" + time + \"ms\");\n    }\n}",
+    "output": "=== Stream Operations ===\n\nEven numbers doubled: 4 8 12 16 20 \n\n=== Collect Results ===\nSquares: [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]\n\n=== Reduce ===\nSum: 55\n\n=== Statistics ===\nCount: 10\nMin: 1\nMax: 10\nAverage: 5.5\n\n=== Complex Operations ===\n10\n9\n8\n\n=== String Operations ===\nALICE\nCHARLIE\nDAVID\n\n=== Parallel Stream ===\nParallel stream time: 1ms",
+    "explanation": "Stream API enables functional-style operations on collections.",
+    "commonMistakes": [
+      "Modifying source during stream operations",
+      "Using terminal operations twice on same stream",
+      "Not using parallel streams when beneficial"
+    ],
+    "relatedTopics": [
+      "Lambda Expressions",
+      "Collections"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  }
+]

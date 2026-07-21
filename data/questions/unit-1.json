@@ -1,0 +1,386 @@
+[
+  {
+    "id": 1,
+    "unitId": 1,
+    "topicId": 1,
+    "title": "History and Creation of Java",
+    "slug": "history-and-creation-of-java",
+    "type": "Theory",
+    "difficulty": "Easy",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 8,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "History",
+      "Java",
+      "Creation"
+    ],
+    "question": "Explain the history and creation of Java. Who developed it and when?",
+    "shortAnswer": "Java was developed by James Gosling at Sun Microsystems in 1991 as part of the Green Project, initially called Oak, later renamed to Java in 1995.",
+    "detailedAnswer": "Java was created by James Gosling, Mike Sheridan, and Patrick Naughton at Sun Microsystems in 1991. Initially called Oak (named after an oak tree outside Gosling's office), it was developed for consumer electronics. In 1994, the project was renamed to Java after Java coffee from Indonesia. Java 1.0 was officially released in 1995 with the slogan 'Write Once, Run Anywhere.'",
+    "code": "// First Java program - Hello World\npublic class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}",
+    "output": "Hello, World!",
+    "explanation": "Java was created to develop software for embedded systems and to provide platform-independent programming.",
+    "commonMistakes": [
+      "Confusing Java with JavaScript",
+      "Thinking Java was created for web development initially"
+    ],
+    "relatedTopics": [
+      "Java Buzzwords",
+      "Features of Java"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "A",
+      "marks": 5
+    }
+  },
+  {
+    "id": 2,
+    "unitId": 1,
+    "topicId": 2,
+    "title": "Java Buzzwords",
+    "slug": "java-buzzwords",
+    "type": "Theory",
+    "difficulty": "Easy",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Buzzwords",
+      "Features"
+    ],
+    "question": "What are Java Buzzwords? Explain any five of them.",
+    "shortAnswer": "Java buzzwords are: Simple, Object-Oriented, Robust, Multithreaded, Architecture Neutral, Interpreted, High Performance, Distributed, Dynamic.",
+    "detailedAnswer": "Java Buzzwords describe key features:\n\n1. **Simple**: Clean syntax, easy to learn\n2. **Object-Oriented**: Supports encapsulation, inheritance, polymorphism\n3. **Robust**: Strong type checking, exception handling\n4. **Multithreaded**: Supports concurrent programming\n5. **Architecture Neutral**: Bytecode runs on any platform\n6. **Interpreted**: Bytecode executed by JVM\n7. **High Performance**: JIT compilation\n8. **Distributed**: Supports network programming\n9. **Dynamic**: Runtime class loading",
+    "code": "// Demonstrating Java features\npublic class JavaFeatures {\n    public static void main(String[] args) {\n        System.out.println(\"Java is Simple, Object-Oriented, and Robust\");\n        System.out.println(\"Runs on: \" + System.getProperty(\"os.name\"));\n    }\n}",
+    "output": "Java is Simple, Object-Oriented, and Robust\nRuns on: Windows 10",
+    "explanation": "These buzzwords represent the design goals of Java language.",
+    "commonMistakes": [
+      "Forgetting key buzzwords",
+      "Confusing with features of other languages"
+    ],
+    "relatedTopics": [
+      "Features of Java"
+    ],
+    "previousYear": [
+      "2025",
+      "2024",
+      "2023"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "A",
+      "marks": 5
+    }
+  },
+  {
+    "id": 3,
+    "unitId": 1,
+    "topicId": 3,
+    "title": "JVM, JRE, JDK Architecture",
+    "slug": "jvm-jre-jdk-architecture",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 10,
+    "estimatedTime": 15,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "JVM",
+      "JRE",
+      "JDK",
+      "Architecture"
+    ],
+    "question": "Describe the architecture of JVM, JRE, and JDK. Explain the role of each.",
+    "shortAnswer": "JVM executes bytecode, JRE provides runtime environment, JDK provides development tools.",
+    "detailedAnswer": "**Architecture Overview:**\n\n**JDK (Java Development Kit)**:\n- Contains JRE + Development Tools\n- Tools: javac (compiler), javadoc, jar, jdb (debugger)\n\n**JRE (Java Runtime Environment)**:\n- Contains JVM + Core Libraries\n- Provides runtime environment for Java programs\n- Includes class libraries, JVM, supporting files\n\n**JVM (Java Virtual Machine)**:\n- Executes Java bytecode\n- Converts bytecode to machine code\n- Manages memory (heap, stack, method area)\n- Provides garbage collection\n\n**Relationship**: JDK ⊃ JRE ⊃ JVM",
+    "code": "// Checking Java environment\npublic class JavaArchitecture {\n    public static void main(String[] args) {\n        System.out.println(\"Java Home: \" + System.getProperty(\"java.home\"));\n        System.out.println(\"Java Version: \" + System.getProperty(\"java.version\"));\n        System.out.println(\"JVM Vendor: \" + System.getProperty(\"java.vendor\"));\n    }\n}",
+    "output": "Java Home: C:\\Program Files\\Java\\jdk-17\nJava Version: 17.0.1\nJVM Vendor: Oracle Corporation",
+    "explanation": "Understanding the architecture helps in proper installation and development setup.",
+    "commonMistakes": [
+      "Confusing JRE and JDK",
+      "Not understanding JVM's role in execution"
+    ],
+    "relatedTopics": [
+      "JVM",
+      "JRE",
+      "JDK"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 10
+    }
+  },
+  {
+    "id": 4,
+    "unitId": 1,
+    "topicId": 4,
+    "title": "Bytecode and Platform Independence",
+    "slug": "bytecode-and-platform-independence",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Bytecode",
+      "Platform Independence"
+    ],
+    "question": "Explain how Java achieves platform independence through bytecode.",
+    "shortAnswer": "Java source code compiles to bytecode, which runs on any platform with JVM, making it platform independent.",
+    "detailedAnswer": "**Platform Independence Process:**\n\n1. **Source Code (.java)** → **Compiler (javac)** → **Bytecode (.class)**\n2. **Bytecode** → **JVM (platform specific)** → **Machine Code**\n\n**Key Points**:\n- Bytecode is platform independent\n- JVM is platform dependent (different for each OS)\n- JVM interprets/compiles bytecode to native code\n- Same .class file runs on Windows, Linux, macOS\n\n**Benefits**:\n- 'Write Once, Run Anywhere'\n- Reduced development time\n- Consistent behavior",
+    "code": "// Compilation and execution process\n/*\nStep 1: javac HelloWorld.java  (creates HelloWorld.class bytecode)\nStep 2: java HelloWorld         (runs on any platform with JVM)\n*/\npublic class PlatformDemo {\n    public static void main(String[] args) {\n        System.out.println(\"Runs on: \" + System.getProperty(\"os.name\"));\n    }\n}",
+    "output": "Runs on: Windows 10 (or Linux/macOS)",
+    "explanation": "Bytecode makes Java programs portable across all platforms.",
+    "commonMistakes": [
+      "Thinking Java code is interpreted directly",
+      "Confusing bytecode with machine code"
+    ],
+    "relatedTopics": [
+      "Bytecode",
+      "JVM"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 5,
+    "unitId": 1,
+    "topicId": 5,
+    "title": "Writing, Compiling, Running Java Programs",
+    "slug": "writing-compiling-running-java-programs",
+    "type": "Programming",
+    "difficulty": "Easy",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Compilation",
+      "Execution",
+      "Basic Program"
+    ],
+    "question": "Write a Java program to display 'Welcome to Java Programming' and explain the steps to compile and run it.",
+    "shortAnswer": "Write source code, save as .java file, compile with javac, run with java command.",
+    "detailedAnswer": "**Steps to Write, Compile, and Run:**\n\n1. **Write Source Code**:\n   ```java\n   public class Welcome {\n       public static void main(String[] args) {\n           System.out.println(\"Welcome to Java Programming\");\n       }\n   }\n   ```\n\n2. **Save**: Save as 'Welcome.java'\n\n3. **Compile**: `javac Welcome.java`\n   - Creates Welcome.class bytecode\n\n4. **Run**: `java Welcome`\n   - Output: Welcome to Java Programming",
+    "code": "public class Welcome {\n    public static void main(String[] args) {\n        System.out.println(\"Welcome to Java Programming\");\n    }\n}",
+    "output": "Welcome to Java Programming",
+    "explanation": "Understanding the compilation and execution process is fundamental to Java programming.",
+    "commonMistakes": [
+      "Wrong file name extension (.java required)",
+      "Missing main method signature",
+      "Not having proper environment setup"
+    ],
+    "relatedTopics": [
+      "Compilation Process",
+      "JVM"
+    ],
+    "previousYear": [
+      "2025",
+      "2024",
+      "2023"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 6,
+    "unitId": 1,
+    "topicId": 6,
+    "title": "Command Line Arguments",
+    "slug": "command-line-arguments",
+    "type": "Programming",
+    "difficulty": "Easy",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Command Line",
+      "Arguments",
+      "Main"
+    ],
+    "question": "Write a Java program that accepts command line arguments and prints them.",
+    "shortAnswer": "Use the String[] args parameter in main method to access command line arguments.",
+    "detailedAnswer": "Command line arguments are passed to the main method through the String[] args parameter.\n\n**Example Usage**:\n```\njava ProgramName arg1 arg2 arg3\n```\n\nThe args array contains: [arg1, arg2, arg3]\n\nAccess via: args[0], args[1], args[2]\n\nAlways check args.length before accessing.",
+    "code": "public class CommandLineDemo {\n    public static void main(String[] args) {\n        System.out.println(\"Number of arguments: \" + args.length);\n        for (int i = 0; i < args.length; i++) {\n            System.out.println(\"Argument \" + (i+1) + \": \" + args[i]);\n        }\n    }\n}",
+    "output": "Number of arguments: 3\nArgument 1: Hello\nArgument 2: World\nArgument 3: Java",
+    "explanation": "Command line arguments provide a way to pass data to programs at runtime.",
+    "commonMistakes": [
+      "Accessing args without checking length",
+      "Forgetting the main method signature"
+    ],
+    "relatedTopics": [
+      "Main Method",
+      "Input Handling"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 7,
+    "unitId": 1,
+    "topicId": 7,
+    "title": "Scanner Class",
+    "slug": "scanner-class",
+    "type": "Programming",
+    "difficulty": "Easy",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Scanner",
+      "Input",
+      "User Input"
+    ],
+    "question": "Write a Java program using Scanner to read a name, age, and salary, then display them.",
+    "shortAnswer": "Create Scanner object with System.in, use nextLine(), nextInt(), nextDouble() to read input.",
+    "detailedAnswer": "Scanner class is used for reading user input from keyboard.\n\n**Steps**:\n1. Import java.util.Scanner\n2. Create Scanner object: Scanner sc = new Scanner(System.in)\n3. Use methods: nextLine(), nextInt(), nextDouble(), etc.\n4. Close Scanner when done",
+    "code": "import java.util.Scanner;\npublic class ScannerDemo {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        System.out.print(\"Enter name: \");\n        String name = sc.nextLine();\n        System.out.print(\"Enter age: \");\n        int age = sc.nextInt();\n        System.out.print(\"Enter salary: \");\n        double salary = sc.nextDouble();\n        System.out.println(\"\\nName: \" + name);\n        System.out.println(\"Age: \" + age);\n        System.out.println(\"Salary: $\" + salary);\n        sc.close();\n    }\n}",
+    "output": "Enter name: John\nEnter age: 25\nEnter salary: 50000.50\n\nName: John\nAge: 25\nSalary: $50000.5",
+    "explanation": "Scanner provides convenient methods for reading different data types from user input.",
+    "commonMistakes": [
+      "Not importing Scanner class",
+      "Not closing Scanner object",
+      "Input mismatch errors"
+    ],
+    "relatedTopics": [
+      "Input Handling",
+      "System.out"
+    ],
+    "previousYear": [
+      "2025",
+      "2024",
+      "2023"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 8,
+    "unitId": 1,
+    "topicId": 8,
+    "title": "OOP Principles Overview",
+    "slug": "oop-principles-overview",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 10,
+    "estimatedTime": 15,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "OOP",
+      "Encapsulation",
+      "Inheritance",
+      "Polymorphism",
+      "Abstraction"
+    ],
+    "question": "Explain the four main principles of Object-Oriented Programming with examples.",
+    "shortAnswer": "Encapsulation, Inheritance, Polymorphism, and Abstraction are the four OOP principles.",
+    "detailedAnswer": "**Four OOP Principles:**\n\n1. **Encapsulation**:\n   - Wrapping data and methods together\n   - Hiding internal details using private fields\n   - Example: Getters and setters\n\n2. **Inheritance**:\n   - Creating new classes from existing ones\n   - Code reuse and hierarchical classification\n   - Example: Class Dog extends Animal\n\n3. **Polymorphism**:\n   - Objects taking multiple forms\n   - Method overloading (compile-time)\n   - Method overriding (runtime)\n\n4. **Abstraction**:\n   - Hiding implementation details\n   - Showing only essential features\n   - Example: Abstract classes and interfaces",
+    "code": "// OOP Principles Example\nclass Animal {  // Abstraction\n    void sound() { }\n}\n\nclass Dog extends Animal {  // Inheritance\n    private String name;  // Encapsulation\n    \n    void sound() {  // Polymorphism (Overriding)\n        System.out.println(\"Dog barks\");\n    }\n}\n\npublic class OOPDemo {\n    public static void main(String[] args) {\n        Animal a = new Dog();\n        a.sound();  // Runtime polymorphism\n    }\n}",
+    "output": "Dog barks",
+    "explanation": "These principles form the foundation of OOP in Java.",
+    "commonMistakes": [
+      "Confusing abstraction with encapsulation",
+      "Not understanding polymorphism types"
+    ],
+    "relatedTopics": [
+      "Encapsulation",
+      "Inheritance",
+      "Polymorphism"
+    ],
+    "previousYear": [
+      "2025",
+      "2024",
+      "2023"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "A",
+      "marks": 10
+    }
+  }
+]

@@ -1,0 +1,432 @@
+[
+  {
+    "id": 69,
+    "unitId": 9,
+    "topicId": 69,
+    "title": "File Class and File Operations",
+    "slug": "file-class-and-file-operations",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "File Class",
+      "File Operations",
+      "I/O"
+    ],
+    "question": "Write a Java program to demonstrate File class operations.",
+    "shortAnswer": "File class provides methods for file and directory operations.",
+    "detailedAnswer": "**File Class**:\n- Represents file/directory path\n- Methods for operations\n- Not for file content\n\n**Common Operations**:\n1. Create/Delete\n2. Check existence\n3. Get properties\n4. List directory contents\n5. Rename/Move",
+    "code": "import java.io.*;\n\npublic class FileClassDemo {\n    public static void main(String[] args) throws IOException {\n        System.out.println(\"=== File Class Operations ===\\n\");\n        \n        // Create File object\n        File file = new File(\"test.txt\");\n        File dir = new File(\"testdir\");\n        \n        // Check existence\n        System.out.println(\"File exists: \" + file.exists());\n        \n        // Create file\n        if (!file.exists()) {\n            file.createNewFile();\n            System.out.println(\"File created: \" + file.getName());\n        }\n        \n        // File properties\n        System.out.println(\"\\n=== File Properties ===\");\n        System.out.println(\"Name: \" + file.getName());\n        System.out.println(\"Path: \" + file.getPath());\n        System.out.println(\"Absolute path: \" + file.getAbsolutePath());\n        System.out.println(\"Parent: \" + file.getParent());\n        System.out.println(\"Size: \" + file.length() + \" bytes\");\n        System.out.println(\"Can read: \" + file.canRead());\n        System.out.println(\"Can write: \" + file.canWrite());\n        System.out.println(\"Is file: \" + file.isFile());\n        System.out.println(\"Is directory: \" + file.isDirectory());\n        \n        // Directory operations\n        System.out.println(\"\\n=== Directory Operations ===\");\n        if (!dir.exists()) {\n            dir.mkdir();\n            System.out.println(\"Directory created: \" + dir.getName());\n        }\n        \n        // List directory contents\n        File currentDir = new File(\".\");\n        System.out.println(\"\\nDirectory contents:\");\n        String[] files = currentDir.list();\n        if (files != null) {\n            for (String f : files) {\n                File fObj = new File(f);\n                String type = fObj.isDirectory() ? \"[DIR]\" : \"[FILE]\";\n                System.out.println(type + \" \" + f);\n            }\n        }\n        \n        // Rename\n        File renamed = new File(\"renamed.txt\");\n        if (file.renameTo(renamed)) {\n            System.out.println(\"\\nFile renamed to: \" + renamed.getName());\n        }\n        \n        // Delete\n        if (renamed.delete()) {\n            System.out.println(\"File deleted\");\n        }\n        \n        // Delete directory\n        if (dir.delete()) {\n            System.out.println(\"Directory deleted\");\n        }\n    }\n}",
+    "output": "=== File Class Operations ===\n\nFile exists: false\nFile created: test.txt\n\n=== File Properties ===\nName: test.txt\nPath: test.txt\nAbsolute path: /home/user/test.txt\nParent: null\nSize: 0 bytes\nCan read: true\nCan write: true\nIs file: true\nIs directory: false\n\n=== Directory Operations ===\nDirectory created: testdir\n\nDirectory contents:\n[DIR] testdir\n[FILE] test.txt\n\nFile renamed to: renamed.txt\nFile deleted\nDirectory deleted",
+    "explanation": "File class provides operations for file system manipulation.",
+    "commonMistakes": [
+      "Using File for content operations",
+      "Not handling exceptions",
+      "Platform-specific path issues"
+    ],
+    "relatedTopics": [
+      "File I/O",
+      "NIO"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 70,
+    "unitId": 9,
+    "topicId": 70,
+    "title": "Byte Streams",
+    "slug": "byte-streams",
+    "type": "Programming",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Byte Streams",
+      "FileInputStream",
+      "FileOutputStream"
+    ],
+    "question": "Write a Java program to demonstrate byte streams using FileInputStream and FileOutputStream.",
+    "shortAnswer": "Byte streams handle binary data using FileInputStream and FileOutputStream.",
+    "detailedAnswer": "**Byte Streams**:\n- Handle binary data\n- InputStream/OutputStream\n- FileInputStream/FileOutputStream\n\n**Operations**:\n1. Read bytes\n2. Write bytes\n3. Copy files\n4. Binary data handling\n\n**Advantages**:\n- Any file type\n- Binary data\n- Raw bytes",
+    "code": "import java.io.*;\n\npublic class ByteStreamDemo {\n    public static void main(String[] args) {\n        System.out.println(\"=== Byte Streams Demonstration ===\\n\");\n        \n        // Write bytes to file\n        try (FileOutputStream fos = new FileOutputStream(\"data.bin\")) {\n            byte[] data = {10, 20, 30, 40, 50};\n            fos.write(data);\n            System.out.println(\"Data written: \" + java.util.Arrays.toString(data));\n        } catch (IOException e) {\n            System.err.println(\"Error writing: \" + e.getMessage());\n        }\n        \n        // Read bytes from file\n        try (FileInputStream fis = new FileInputStream(\"data.bin\")) {\n            System.out.println(\"\\nReading bytes:\");\n            int b;\n            while ((b = fis.read()) != -1) {\n                System.out.print(b + \" \");\n            }\n            System.out.println();\n        } catch (IOException e) {\n            System.err.println(\"Error reading: \" + e.getMessage());\n        }\n        \n        // Copy file\n        try {\n            copyFile(\"data.bin\", \"data_copy.bin\");\n            System.out.println(\"\\nFile copied successfully\");\n        } catch (IOException e) {\n            System.err.println(\"Error copying: \" + e.getMessage());\n        }\n        \n        // Write with DataOutputStream\n        System.out.println(\"\\n=== DataOutputStream ===\");\n        try (DataOutputStream dos = new DataOutputStream(\n                new FileOutputStream(\"data.dat\"))) {\n            dos.writeInt(100);\n            dos.writeDouble(3.14);\n            dos.writeUTF(\"Hello Java\");\n            System.out.println(\"Primitive data written\");\n        } catch (IOException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n        }\n        \n        // Read with DataInputStream\n        System.out.println(\"\\n=== DataInputStream ===\");\n        try (DataInputStream dis = new DataInputStream(\n                new FileInputStream(\"data.dat\"))) {\n            int i = dis.readInt();\n            double d = dis.readDouble();\n            String s = dis.readUTF();\n            System.out.println(\"Read: \" + i + \", \" + d + \", \" + s);\n        } catch (IOException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n        }\n    }\n    \n    public static void copyFile(String source, String dest) throws IOException {\n        try (FileInputStream fis = new FileInputStream(source);\n             FileOutputStream fos = new FileOutputStream(dest)) {\n            byte[] buffer = new byte[1024];\n            int bytesRead;\n            while ((bytesRead = fis.read(buffer)) != -1) {\n                fos.write(buffer, 0, bytesRead);\n            }\n        }\n    }\n}",
+    "output": "=== Byte Streams Demonstration ===\n\nData written: [10, 20, 30, 40, 50]\n\nReading bytes:\n10 20 30 40 50 \n\nFile copied successfully\n\n=== DataOutputStream ===\nPrimitive data written\n\n=== DataInputStream ===\nRead: 100, 3.14, Hello Java",
+    "explanation": "Byte streams handle raw binary data and are suitable for any file type.",
+    "commonMistakes": [
+      "Using byte streams for text files",
+      "Not flushing streams",
+      "Closing resources incorrectly"
+    ],
+    "relatedTopics": [
+      "Character Streams",
+      "NIO"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 71,
+    "unitId": 9,
+    "topicId": 71,
+    "title": "Character Streams",
+    "slug": "character-streams",
+    "type": "Programming",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Character Streams",
+      "FileReader",
+      "FileWriter"
+    ],
+    "question": "Write a Java program to demonstrate character streams using FileReader and FileWriter.",
+    "shortAnswer": "Character streams handle text data using FileReader and FileWriter.",
+    "detailedAnswer": "**Character Streams**:\n- Handle text data\n- Reader/Writer\n- FileReader/FileWriter\n\n**Operations**:\n1. Read characters\n2. Write characters\n3. Handle Unicode\n4. Text file operations\n\n**Advantages**:\n- Unicode support\n- Text processing\n- Character encoding",
+    "code": "import java.io.*;\n\npublic class CharacterStreamDemo {\n    public static void main(String[] args) {\n        System.out.println(\"=== Character Streams Demonstration ===\\n\");\n        \n        // Write to file\n        try (FileWriter fw = new FileWriter(\"text.txt\")) {\n            String content = \"Hello, Java!\\nThis is a text file.\\nCharacter streams are used for text.\";\n            fw.write(content);\n            System.out.println(\"Text written to file\");\n        } catch (IOException e) {\n            System.err.println(\"Error writing: \" + e.getMessage());\n        }\n        \n        // Read from file\n        System.out.println(\"\\n=== Reading Text File ===\");\n        try (FileReader fr = new FileReader(\"text.txt\")) {\n            int ch;\n            System.out.print(\"File content: \");\n            while ((ch = fr.read()) != -1) {\n                System.out.print((char) ch);\n            }\n            System.out.println();\n        } catch (IOException e) {\n            System.err.println(\"Error reading: \" + e.getMessage());\n        }\n        \n        // Read with character array\n        System.out.println(\"\\n=== Reading with Character Array ===\");\n        try (FileReader fr = new FileReader(\"text.txt\")) {\n            char[] buffer = new char[50];\n            int charsRead = fr.read(buffer);\n            System.out.print(\"Buffer: \");\n            for (int i = 0; i < charsRead; i++) {\n                System.out.print(buffer[i]);\n            }\n            System.out.println();\n        } catch (IOException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n        }\n        \n        // Append to file\n        System.out.println(\"\\n=== Appending to File ===\");\n        try (FileWriter fw = new FileWriter(\"text.txt\", true)) {\n            fw.write(\"\\nThis line is appended!\");\n            System.out.println(\"Text appended\");\n        } catch (IOException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n        }\n        \n        // Read appended file\n        System.out.println(\"\\n=== Reading Appended File ===\");\n        try (FileReader fr = new FileReader(\"text.txt\")) {\n            System.out.print(\"File content: \");\n            int ch;\n            while ((ch = fr.read()) != -1) {\n                System.out.print((char) ch);\n            }\n            System.out.println();\n        } catch (IOException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n        }\n    }\n}",
+    "output": "=== Character Streams Demonstration ===\n\nText written to file\n\n=== Reading Text File ===\nFile content: Hello, Java!\nThis is a text file.\nCharacter streams are used for text.\n\n=== Reading with Character Array ===\nBuffer: Hello, Java!\nThis is a text file.\nCharacter str\n\n=== Appending to File ===\nText appended\n\n=== Reading Appended File ===\nFile content: Hello, Java!\nThis is a text file.\nCharacter streams are used for text.\nThis line is appended!",
+    "explanation": "Character streams handle text data with proper character encoding.",
+    "commonMistakes": [
+      "Using byte streams for text files",
+      "Wrong encoding issues",
+      "Not handling Unicode properly"
+    ],
+    "relatedTopics": [
+      "Byte Streams",
+      "Buffered Streams"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 72,
+    "unitId": 9,
+    "topicId": 72,
+    "title": "BufferedReader and BufferedWriter",
+    "slug": "bufferedreader-and-bufferedwriter",
+    "type": "Programming",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "BufferedReader",
+      "BufferedWriter",
+      "Buffered Streams"
+    ],
+    "question": "Write a Java program to demonstrate BufferedReader and BufferedWriter.",
+    "shortAnswer": "BufferedReader/BufferedWriter improve I/O performance with buffering.",
+    "detailedAnswer": "**BufferedReader**:\n- Reads text from character stream\n- Buffered for efficiency\n- Reads lines: readLine()\n- Default buffer size: 8192 chars\n\n**BufferedWriter**:\n- Writes text to character stream\n- Buffered for efficiency\n- Writes lines: newLine()\n- Flushes automatically\n\n**Benefits**:\n- Better performance\n- Line-by-line reading\n- Reduced I/O operations",
+    "code": "import java.io.*;\n\npublic class BufferedReaderDemo {\n    public static void main(String[] args) {\n        System.out.println(\"=== BufferedReader and BufferedWriter ===\\n\");\n        \n        // Write with BufferedWriter\n        try (BufferedWriter writer = new BufferedWriter(\n                new FileWriter(\"buffered.txt\"))) {\n            writer.write(\"First line\");\n            writer.newLine();\n            writer.write(\"Second line\");\n            writer.newLine();\n            writer.write(\"Third line\");\n            writer.newLine();\n            System.out.println(\"File written with BufferedWriter\");\n        } catch (IOException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n        }\n        \n        // Read with BufferedReader\n        System.out.println(\"\\n=== Reading with BufferedReader ===\");\n        try (BufferedReader reader = new BufferedReader(\n                new FileReader(\"buffered.txt\"))) {\n            String line;\n            int lineNum = 1;\n            while ((line = reader.readLine()) != null) {\n                System.out.println(\"Line \" + lineNum + \": \" + line);\n                lineNum++;\n            }\n        } catch (IOException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n        }\n        \n        // Reading from keyboard\n        System.out.println(\"\\n=== Reading from Keyboard ===\");\n        try (BufferedReader reader = new BufferedReader(\n                new InputStreamReader(System.in))) {\n            System.out.print(\"Enter your name: \");\n            String name = reader.readLine();\n            System.out.println(\"Hello, \" + name + \"!\");\n            \n            System.out.print(\"Enter your age: \");\n            String ageStr = reader.readLine();\n            int age = Integer.parseInt(ageStr);\n            System.out.println(\"You are \" + age + \" years old\");\n        } catch (IOException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n        }\n        \n        // Copy file with buffered streams\n        System.out.println(\"\\n=== Copying File with Buffered Streams ===\");\n        try (BufferedReader reader = new BufferedReader(\n                new FileReader(\"buffered.txt\"));\n             BufferedWriter writer = new BufferedWriter(\n                new FileWriter(\"buffered_copy.txt\"))) {\n            String line;\n            while ((line = reader.readLine()) != null) {\n                writer.write(line);\n                writer.newLine();\n            }\n            System.out.println(\"File copied successfully\");\n        } catch (IOException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n        }\n        \n        // Mark and reset\n        System.out.println(\"\\n=== Mark and Reset ===\");\n        try (BufferedReader reader = new BufferedReader(\n                new FileReader(\"buffered.txt\"))) {\n            // Mark position\n            reader.mark(100);\n            System.out.println(\"Line 1: \" + reader.readLine());\n            System.out.println(\"Line 2: \" + reader.readLine());\n            reader.reset();  // Go back to marked position\n            System.out.println(\"After reset - Line 1: \" + reader.readLine());\n        } catch (IOException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n        }\n    }\n}",
+    "output": "=== BufferedReader and BufferedWriter ===\n\nFile written with BufferedWriter\n\n=== Reading with BufferedReader ===\nLine 1: First line\nLine 2: Second line\nLine 3: Third line\n\n=== Reading from Keyboard ===\nEnter your name: John\nHello, John!\nEnter your age: 25\nYou are 25 years old\n\n=== Copying File with Buffered Streams ===\nFile copied successfully\n\n=== Mark and Reset ===\nLine 1: First line\nLine 2: Second line\nAfter reset - Line 1: First line",
+    "explanation": "BufferedReader/BufferedWriter improve I/O performance through buffering.",
+    "commonMistakes": [
+      "Not closing BufferedReader",
+      "Using BufferedReader for binary files",
+      "Not handling null from readLine()"
+    ],
+    "relatedTopics": [
+      "FileReader",
+      "FileWriter",
+      "I/O Performance"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 73,
+    "unitId": 9,
+    "topicId": 73,
+    "title": "PrintWriter",
+    "slug": "printwriter",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": false,
+    "tags": [
+      "PrintWriter",
+      "Formatted Output"
+    ],
+    "question": "Write a Java program to demonstrate PrintWriter for formatted output.",
+    "shortAnswer": "PrintWriter provides convenient methods for writing formatted text.",
+    "detailedAnswer": "**PrintWriter**:\n- Writes formatted text\n- Methods: print(), println(), printf()\n- Autoflush option\n- Convenient for text output\n\n**Features**:\n1. Formatting with printf()\n2. Autoflush\n3. Error handling\n4. Appending\n\n**Uses**:\n- File output\n- Logging\n- Formatted reports",
+    "code": "import java.io.*;\n\npublic class PrintWriterDemo {\n    public static void main(String[] args) {\n        System.out.println(\"=== PrintWriter Demonstration ===\\n\");\n        \n        // PrintWriter with autoflush\n        try (PrintWriter writer = new PrintWriter(\n                new FileWriter(\"report.txt\"), true)) {\n            \n            // Print methods\n            writer.println(\"=== Report ===\");\n            writer.println();\n            \n            // printf with formatting\n            writer.printf(\"Name: %-15s Age: %3d%n\", \"Alice\", 25);\n            writer.printf(\"Name: %-15s Age: %3d%n\", \"Bob\", 30);\n            writer.printf(\"Name: %-15s Age: %3d%n\", \"Charlie\", 35);\n            writer.println();\n            \n            // Formatting numbers\n            writer.printf(\"Price: $%10.2f%n\", 123.456);\n            writer.printf(\"Quantity: %5d%n\", 10);\n            writer.printf(\"Total: $%10.2f%n\", 1234.56);\n            writer.println();\n            \n            // Date formatting\n            writer.printf(\"Date: %tD%n\", System.currentTimeMillis());\n            writer.printf(\"Time: %tT%n\", System.currentTimeMillis());\n            writer.println();\n            \n            // Various formats\n            writer.println(\"=== Various Formats ===\");\n            writer.printf(\"Integer: %d%n\", 100);\n            writer.printf(\"Hex: %X%n\", 255);\n            writer.printf(\"Octal: %o%n\", 8);\n            writer.printf(\"Float: %.2f%n\", 3.14159);\n            writer.printf(\"Scientific: %e%n\", 12345.67);\n            writer.printf(\"String: %s%n\", \"Hello\");\n            \n            System.out.println(\"Report written to report.txt\");\n        } catch (IOException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n        }\n        \n        // Reading the report\n        System.out.println(\"\\n=== Reading the Report ===\");\n        try (BufferedReader reader = new BufferedReader(\n                new FileReader(\"report.txt\"))) {\n            String line;\n            while ((line = reader.readLine()) != null) {\n                System.out.println(line);\n            }\n        } catch (IOException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n        }\n        \n        // PrintWriter with System.out\n        System.out.println(\"\\n=== PrintWriter with System.out ===\");\n        PrintWriter console = new PrintWriter(System.out, true);\n        console.println(\"This is from PrintWriter to console\");\n        console.printf(\"Format: %d + %d = %d%n\", 5, 3, 8);\n    }\n}",
+    "output": "=== PrintWriter Demonstration ===\n\nReport written to report.txt\n\n=== Reading the Report ===\n=== Report ===\n\nName: Alice          Age:  25\nName: Bob            Age:  30\nName: Charlie        Age:  35\n\nPrice: $    123.46\nQuantity:    10\nTotal: $  1234.56\n\nDate: 01/15/26\nTime: 14:30:25\n\n=== Various Formats ===\nInteger: 100\nHex: FF\nOctal: 10\nFloat: 3.14\nScientific: 1.234567e+04\nString: Hello\n\n=== PrintWriter with System.out ===\nThis is from PrintWriter to console\nFormat: 5 + 3 = 8",
+    "explanation": "PrintWriter provides convenient formatted output capabilities.",
+    "commonMistakes": [
+      "Not using autoflush when needed",
+      "Forgetting to check error status",
+      "Using PrintWriter for binary data"
+    ],
+    "relatedTopics": [
+      "BufferedWriter",
+      "Formatted Output"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 74,
+    "unitId": 9,
+    "topicId": 74,
+    "title": "RandomAccessFile",
+    "slug": "randomaccessfile",
+    "type": "Programming",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": false,
+    "tags": [
+      "RandomAccessFile",
+      "Random Access",
+      "File I/O"
+    ],
+    "question": "Write a Java program to demonstrate RandomAccessFile for random file access.",
+    "shortAnswer": "RandomAccessFile allows read/write at any position in the file.",
+    "detailedAnswer": "**RandomAccessFile**:\n- Read/write anywhere in file\n- File pointer management\n- Both read and write\n\n**Key Methods**:\n- seek(): Move to position\n- getFilePointer(): Get current position\n- read()/write(): Read/write data\n- length(): Get file size\n\n**Modes**:\n- \"r\": Read only\n- \"rw\": Read/write\n- \"rws\": Read/write + sync\n- \"rwd\": Read/write + data sync",
+    "code": "import java.io.*;\n\npublic class RandomAccessFileDemo {\n    public static void main(String[] args) throws IOException {\n        System.out.println(\"=== RandomAccessFile Demonstration ===\\n\");\n        \n        String filename = \"random.dat\";\n        \n        // Write data\n        try (RandomAccessFile raf = new RandomAccessFile(filename, \"rw\")) {\n            System.out.println(\"Writing data...\");\n            \n            // Write records\n            writeRecord(raf, 1, \"Alice\", 25, 50000.0);\n            writeRecord(raf, 2, \"Bob\", 30, 60000.0);\n            writeRecord(raf, 3, \"Charlie\", 35, 70000.0);\n            writeRecord(raf, 4, \"David\", 40, 80000.0);\n            \n            System.out.println(\"Data written successfully\");\n        }\n        \n        // Read specific record\n        System.out.println(\"\\n=== Reading Specific Record ===\");\n        try (RandomAccessFile raf = new RandomAccessFile(filename, \"r\")) {\n            // Read record 2\n            System.out.println(\"Reading record 2:\");\n            readRecord(raf, 2);\n            \n            // Read record 4\n            System.out.println(\"\\nReading record 4:\");\n            readRecord(raf, 4);\n        }\n        \n        // Update record\n        System.out.println(\"\\n=== Updating Record ===\");\n        try (RandomAccessFile raf = new RandomAccessFile(filename, \"rw\")) {\n            System.out.println(\"Updating record 3...\");\n            \n            // Move to record 3 position\n            raf.seek(3 * 64);  // 64 bytes per record\n            \n            // Update data\n            raf.writeInt(3);  // ID\n            raf.writeUTF(\"Charlie Updated\");  // Name\n            raf.writeInt(36);  // Age\n            raf.writeDouble(72000.0);  // Salary\n            \n            System.out.println(\"Record 3 updated\");\n        }\n        \n        // Read all records\n        System.out.println(\"\\n=== Reading All Records ===\");\n        try (RandomAccessFile raf = new RandomAccessFile(filename, \"r\")) {\n            System.out.println(\"All records:\");\n            while (raf.getFilePointer() < raf.length()) {\n                readRecordAtPosition(raf);\n            }\n        }\n        \n        // File pointer operations\n        System.out.println(\"\\n=== File Pointer Operations ===\");\n        try (RandomAccessFile raf = new RandomAccessFile(filename, \"r\")) {\n            System.out.println(\"Initial position: \" + raf.getFilePointer());\n            raf.seek(100);\n            System.out.println(\"After seek(100): \" + raf.getFilePointer());\n            raf.skipBytes(50);\n            System.out.println(\"After skipBytes(50): \" + raf.getFilePointer());\n            System.out.println(\"File length: \" + raf.length());\n        }\n        \n        // Clean up\n        new File(filename).delete();\n    }\n    \n    static void writeRecord(RandomAccessFile raf, int id, String name, \n                           int age, double salary) throws IOException {\n        raf.writeInt(id);\n        raf.writeUTF(name);\n        raf.writeInt(age);\n        raf.writeDouble(salary);\n    }\n    \n    static void readRecord(RandomAccessFile raf, int id) throws IOException {\n        // Move to record position\n        raf.seek(id * 64);  // Each record takes 64 bytes\n        readRecordAtPosition(raf);\n    }\n    \n    static void readRecordAtPosition(RandomAccessFile raf) throws IOException {\n        int id = raf.readInt();\n        String name = raf.readUTF();\n        int age = raf.readInt();\n        double salary = raf.readDouble();\n        System.out.printf(\"ID: %d, Name: %s, Age: %d, Salary: $%.2f%n\", \n                         id, name, age, salary);\n    }\n}",
+    "output": "=== RandomAccessFile Demonstration ===\n\nWriting data...\nData written successfully\n\n=== Reading Specific Record ===\nReading record 2:\nID: 2, Name: Bob, Age: 30, Salary: $60000.00\n\nReading record 4:\nID: 4, Name: David, Age: 40, Salary: $80000.00\n\n=== Updating Record ===\nUpdating record 3...\nRecord 3 updated\n\n=== Reading All Records ===\nAll records:\nID: 1, Name: Alice, Age: 25, Salary: $50000.00\nID: 2, Name: Bob, Age: 30, Salary: $60000.00\nID: 3, Name: Charlie Updated, Age: 36, Salary: $72000.00\nID: 4, Name: David, Age: 40, Salary: $80000.00\n\n=== File Pointer Operations ===\nInitial position: 0\nAfter seek(100): 100\nAfter skipBytes(50): 150\nFile length: 256",
+    "explanation": "RandomAccessFile enables direct access to any position in a file.",
+    "commonMistakes": [
+      "Using wrong mode for operations",
+      "Not handling EOF properly",
+      "Incorrect file pointer management"
+    ],
+    "relatedTopics": [
+      "File I/O",
+      "NIO"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 75,
+    "unitId": 9,
+    "topicId": 75,
+    "title": "Serialization",
+    "slug": "serialization",
+    "type": "Programming",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Serialization",
+      "ObjectOutputStream",
+      "ObjectInputStream"
+    ],
+    "question": "Write a Java program to demonstrate serialization and deserialization of objects.",
+    "shortAnswer": "Serialization converts objects to byte stream using Serializable interface.",
+    "detailedAnswer": "**Serialization**:\n- Convert object to byte stream\n- Save to file or send over network\n- Implements Serializable\n\n**Key Classes**:\n1. ObjectOutputStream: Serialize\n2. ObjectInputStream: Deserialize\n3. Serializable: Marker interface\n\n**Features**:\n- transient fields (not serialized)\n- serialVersionUID\n- Custom serialization",
+    "code": "import java.io.*;\nimport java.util.*;\n\n// Serializable class\nclass Employee implements Serializable {\n    private static final long serialVersionUID = 1L;\n    \n    private int id;\n    private String name;\n    private double salary;\n    private transient String password;  // Not serialized\n    private Date hireDate;\n    \n    public Employee(int id, String name, double salary, String password) {\n        this.id = id;\n        this.name = name;\n        this.salary = salary;\n        this.password = password;\n        this.hireDate = new Date();\n    }\n    \n    @Override\n    public String toString() {\n        return String.format(\"ID: %d, Name: %s, Salary: $%.2f, Password: %s, Hired: %s\",\n                           id, name, salary, password, hireDate);\n    }\n}\n\npublic class SerializationDemo {\n    public static void main(String[] args) {\n        System.out.println(\"=== Serialization Demonstration ===\\n\");\n        \n        String filename = \"employees.ser\";\n        \n        // Create objects to serialize\n        Employee[] employees = {\n            new Employee(1, \"Alice\", 50000, \"pass123\"),\n            new Employee(2, \"Bob\", 60000, \"secret456\"),\n            new Employee(3, \"Charlie\", 70000, \"hidden789\")\n        };\n        \n        // Serialize\n        System.out.println(\"=== Serializing Objects ===\");\n        try (ObjectOutputStream oos = new ObjectOutputStream(\n                new FileOutputStream(filename))) {\n            // Write array\n            oos.writeObject(employees);\n            System.out.println(\"Objects serialized successfully\");\n        } catch (IOException e) {\n            System.err.println(\"Serialization error: \" + e.getMessage());\n        }\n        \n        // Deserialize\n        System.out.println(\"\\n=== Deserializing Objects ===\");\n        try (ObjectInputStream ois = new ObjectInputStream(\n                new FileInputStream(filename))) {\n            Employee[] deserialized = (Employee[]) ois.readObject();\n            System.out.println(\"Objects deserialized successfully\\n\");\n            for (Employee emp : deserialized) {\n                System.out.println(emp);\n            }\n        } catch (IOException | ClassNotFoundException e) {\n            System.err.println(\"Deserialization error: \" + e.getMessage());\n        }\n        \n        // Serialize with ArrayList\n        System.out.println(\"\\n=== Serializing ArrayList ===\");\n        List<String> list = Arrays.asList(\"Java\", \"Python\", \"C++\");\n        try (ObjectOutputStream oos = new ObjectOutputStream(\n                new FileOutputStream(\"list.ser\"))) {\n            oos.writeObject(list);\n            System.out.println(\"ArrayList serialized\");\n        } catch (IOException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n        }\n        \n        // Deserialize ArrayList\n        System.out.println(\"\\n=== Deserializing ArrayList ===\");\n        try (ObjectInputStream ois = new ObjectInputStream(\n                new FileInputStream(\"list.ser\"))) {\n            List<String> deserializedList = (List<String>) ois.readObject();\n            System.out.println(\"Deserialized list: \" + deserializedList);\n        } catch (IOException | ClassNotFoundException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n        }\n        \n        // Clean up\n        new File(filename).delete();\n        new File(\"list.ser\").delete();\n        \n        // Demonstrate transient field\n        System.out.println(\"\\n=== Transient Field ===\");\n        System.out.println(\"Note: Password (transient) is not serialized and appears as 'null'\");\n    }\n}",
+    "output": "=== Serialization Demonstration ===\n\n=== Serializing Objects ===\nObjects serialized successfully\n\n=== Deserializing Objects ===\nObjects deserialized successfully\n\nID: 1, Name: Alice, Salary: $50000.00, Password: null, Hired: Mon Jan 15 14:30:25 EST 2026\nID: 2, Name: Bob, Salary: $60000.00, Password: null, Hired: Mon Jan 15 14:30:25 EST 2026\nID: 3, Name: Charlie, Salary: $70000.00, Password: null, Hired: Mon Jan 15 14:30:25 EST 2026\n\n=== Serializing ArrayList ===\nArrayList serialized\n\n=== Deserializing ArrayList ===\nDeserialized list: [Java, Python, C++]\n\n=== Transient Field ===\nNote: Password (transient) is not serialized and appears as 'null'",
+    "explanation": "Serialization enables object persistence and transmission.",
+    "commonMistakes": [
+      "Not implementing Serializable",
+      "Not handling version compatibility",
+      "Serializing sensitive data (use transient)"
+    ],
+    "relatedTopics": [
+      "Object I/O",
+      "transient",
+      "serialVersionUID"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 76,
+    "unitId": 9,
+    "topicId": 76,
+    "title": "NIO.2 API",
+    "slug": "nio-2-api",
+    "type": "Programming",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": false,
+    "tags": [
+      "NIO.2",
+      "Path",
+      "Files",
+      "Paths"
+    ],
+    "question": "Write a Java program to demonstrate NIO.2 API (Path, Files, Paths).",
+    "shortAnswer": "NIO.2 provides modern file I/O with Path, Files, and Paths classes.",
+    "detailedAnswer": "**NIO.2 API**:\n- Java 7+ file I/O\n- More functionality\n- Better performance\n\n**Key Classes**:\n1. **Path**: File path representation\n2. **Paths**: Utility methods for Path\n3. **Files**: File operations\n\n**Features**:\n- Symbolic link support\n- File attributes\n- Directory traversal\n- File watching",
+    "code": "import java.nio.file.*;\nimport java.nio.file.attribute.*;\nimport java.io.*;\nimport java.util.*;\n\npublic class NIO2Demo {\n    public static void main(String[] args) throws IOException {\n        System.out.println(\"=== NIO.2 API Demonstration ===\\n\");\n        \n        // Create Path\n        Path path = Paths.get(\"nio_test.txt\");\n        System.out.println(\"Path: \" + path);\n        System.out.println(\"Absolute path: \" + path.toAbsolutePath());\n        System.out.println(\"File name: \" + path.getFileName());\n        System.out.println(\"Parent: \" + path.getParent());\n        \n        // Create and write file\n        System.out.println(\"\\n=== Writing File ===\");\n        List<String> lines = Arrays.asList(\"Line 1\", \"Line 2\", \"Line 3\");\n        Files.write(path, lines);\n        System.out.println(\"File written: \" + Files.exists(path));\n        \n        // Read file\n        System.out.println(\"\\n=== Reading File ===\");\n        List<String> readLines = Files.readAllLines(path);\n        System.out.println(\"File content:\");\n        for (String line : readLines) {\n            System.out.println(\"  \" + line);\n        }\n        \n        // File operations\n        System.out.println(\"\\n=== File Operations ===\");\n        System.out.println(\"File size: \" + Files.size(path) + \" bytes\");\n        System.out.println(\"Is directory: \" + Files.isDirectory(path));\n        System.out.println(\"Is regular file: \" + Files.isRegularFile(path));\n        System.out.println(\"Is readable: \" + Files.isReadable(path));\n        System.out.println(\"Is writable: \" + Files.isWritable(path));\n        \n        // Copy file\n        System.out.println(\"\\n=== Copying File ===\");\n        Path copyPath = Paths.get(\"nio_copy.txt\");\n        Files.copy(path, copyPath, StandardCopyOption.REPLACE_EXISTING);\n        System.out.println(\"File copied: \" + Files.exists(copyPath));\n        \n        // Move file\n        System.out.println(\"\\n=== Moving File ===\");\n        Path movePath = Paths.get(\"nio_moved.txt\");\n        Files.move(copyPath, movePath, StandardCopyOption.REPLACE_EXISTING);\n        System.out.println(\"File moved: \" + Files.exists(movePath));\n        System.out.println(\"Original exists: \" + Files.exists(copyPath));\n        \n        // File attributes\n        System.out.println(\"\\n=== File Attributes ===\");\n        BasicFileAttributes attrs = Files.readAttributes(path, BasicFileAttributes.class);\n        System.out.println(\"Creation time: \" + attrs.creationTime());\n        System.out.println(\"Last modified: \" + attrs.lastModifiedTime());\n        System.out.println(\"Size: \" + attrs.size() + \" bytes\");\n        System.out.println(\"Is directory: \" + attrs.isDirectory());\n        System.out.println(\"Is regular file: \" + attrs.isRegularFile());\n        \n        // Directory operations\n        System.out.println(\"\\n=== Directory Operations ===\");\n        Path dirPath = Paths.get(\"nio_dir\");\n        if (!Files.exists(dirPath)) {\n            Files.createDirectory(dirPath);\n            System.out.println(\"Directory created: \" + dirPath);\n        }\n        \n        // Create subdirectories\n        Path subDirPath = Paths.get(\"nio_dir/sub/sub2\");\n        Files.createDirectories(subDirPath);\n        System.out.println(\"Subdirectories created: \" + subDirPath);\n        \n        // List directory\n        System.out.println(\"\\n=== Listing Directory ===\");\n        try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(\".\"))) {\n            System.out.println(\"Current directory contents:\");\n            for (Path p : stream) {\n                System.out.println(\"  \" + p.getFileName());\n            }\n        }\n        \n        // Walk file tree\n        System.out.println(\"\\n=== Walking File Tree ===\");\n        Files.walk(Paths.get(\".\"), 2)\n             .filter(p -> !p.toString().contains(\".git\"))\n             .forEach(p -> System.out.println(\"  \" + p));\n        \n        // Clean up\n        Files.deleteIfExists(path);\n        Files.deleteIfExists(movePath);\n        Files.walk(dirPath)\n             .sorted(Comparator.reverseOrder())\n             .forEach(p -> {\n                 try {\n                     Files.deleteIfExists(p);\n                 } catch (IOException e) {\n                     e.printStackTrace();\n                 }\n             });\n        System.out.println(\"\\nCleanup completed\");\n    }\n}",
+    "output": "=== NIO.2 API Demonstration ===\n\nPath: nio_test.txt\nAbsolute path: /home/user/nio_test.txt\nFile name: nio_test.txt\nParent: null\n\n=== Writing File ===\nFile written: true\n\n=== Reading File ===\nFile content:\n  Line 1\n  Line 2\n  Line 3\n\n=== File Operations ===\nFile size: 18 bytes\nIs directory: false\nIs regular file: true\nIs readable: true\nIs writable: true\n\n=== Copying File ===\nFile copied: true\n\n=== Moving File ===\nFile moved: true\nOriginal exists: false\n\n=== File Attributes ===\nCreation time: 2026-01-15T14:30:25Z\nLast modified: 2026-01-15T14:30:25Z\nSize: 18 bytes\nIs directory: false\nIs regular file: true\n\n=== Directory Operations ===\nDirectory created: nio_dir\nSubdirectories created: nio_dir/sub/sub2\n\n=== Listing Directory ===\nCurrent directory contents:\n  nio_dir\n  nio_test.txt\n\n=== Walking File Tree ===\n  .\n  ./nio_dir\n  ./nio_dir/sub\n  ./nio_dir/sub/sub2\n\nCleanup completed",
+    "explanation": "NIO.2 provides modern, efficient file I/O operations.",
+    "commonMistakes": [
+      "Using old File class instead of Path",
+      "Not handling IOException properly",
+      "Not closing directory streams"
+    ],
+    "relatedTopics": [
+      "File I/O",
+      "Path Operations"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 77,
+    "unitId": 9,
+    "topicId": 77,
+    "title": "Console Class",
+    "slug": "console-class",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": false,
+    "tags": [
+      "Console",
+      "Input/Output",
+      "Reader/Writer"
+    ],
+    "question": "Write a Java program to demonstrate the Console class for reading password and formatted output.",
+    "shortAnswer": "Console class provides secure reading of passwords and formatted output.",
+    "detailedAnswer": "**Console Class**:\n- System.console()\n- Secure password reading\n- Formatting\n- Reader/Writer access\n\n**Key Methods**:\n1. readLine(): Read line\n2. readPassword(): Read password (hidden)\n3. printf(): Formatted output\n4. reader(): Get Reader\n5. writer(): Get Writer\n\n**Benefits**:\n- Password security\n- Formatted output\n- Standard I/O",
+    "code": "import java.io.*;\n\npublic class ConsoleDemo {\n    public static void main(String[] args) {\n        System.out.println(\"=== Console Class Demonstration ===\\n\");\n        \n        // Get console\n        Console console = System.console();\n        \n        if (console == null) {\n            System.err.println(\"No console available! Run from command line.\");\n            System.err.println(\"Alternatively, use Scanner for input.\");\n            return;\n        }\n        \n        // Read line\n        String name = console.readLine(\"Enter your name: \");\n        \n        // Read password (hidden)\n        char[] password = console.readPassword(\"Enter password: \");\n        String passStr = new String(password);\n        \n        // Read with formatting\n        int age = Integer.parseInt(console.readLine(\"Enter your age: \"));\n        \n        // Formatted output\n        console.printf(\"\\n=== User Information ===%n\");\n        console.printf(\"Name: %s%n\", name);\n        console.printf(\"Age: %d%n\", age);\n        console.printf(\"Password length: %d%n\", passStr.length());\n        console.printf(\"\\nPassword characters: \");\n        for (char c : password) {\n            console.printf(\"%c \", c);\n        }\n        console.printf(\"%n\");\n        \n        // Using writer\n        PrintWriter writer = console.writer();\n        writer.println(\"\\n=== Using Writer ===\");\n        writer.println(\"This is written using PrintWriter\");\n        writer.flush();\n        \n        // Reading with reader\n        try {\n            Reader reader = console.reader();\n            System.out.println(\"\\n=== Using Reader ===\");\n            System.out.print(\"Enter additional text: \");\n            char[] buffer = new char[100];\n            int charsRead = reader.read(buffer);\n            if (charsRead > 0) {\n                String additional = new String(buffer, 0, charsRead);\n                System.out.println(\"You entered: \" + additional);\n            }\n        } catch (IOException e) {\n            System.err.println(\"Error reading: \" + e.getMessage());\n        }\n        \n        // Formatting examples\n        console.printf(\"\\n=== Formatting Examples ===%n\");\n        console.printf(\"Integer: %d%n\", 100);\n        console.printf(\"Float: %.2f%n\", 3.14159);\n        console.printf(\"String: %s%n\", \"Hello\");\n        console.printf(\"Date: %tD%n\", System.currentTimeMillis());\n        console.printf(\"Time: %tT%n\", System.currentTimeMillis());\n        \n        // Clearing password\n        java.util.Arrays.fill(password, ' ');\n        \n        System.out.println(\"\\nPassword cleared from memory\");\n    }\n}",
+    "output": "=== Console Class Demonstration ===\n\nEnter your name: John Doe\nEnter password: [hidden]\nEnter your age: 25\n\n=== User Information ===\nName: John Doe\nAge: 25\nPassword length: 6\n\nPassword characters: s e c r e t \n\n=== Using Writer ===\nThis is written using PrintWriter\n\n=== Using Reader ===\nEnter additional text: Hello World\nYou entered: Hello World\n\n=== Formatting Examples ===\nInteger: 100\nFloat: 3.14\nString: Hello\nDate: 01/15/26\nTime: 14:30:25\n\nPassword cleared from memory",
+    "explanation": "Console class provides secure I/O operations.",
+    "commonMistakes": [
+      "Using System.console() in IDE (returns null)",
+      "Not clearing password array",
+      "Not handling null console"
+    ],
+    "relatedTopics": [
+      "Scanner",
+      "Input/Output"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  }
+]

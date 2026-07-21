@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
+    "build:index": "node scripts/rebuild-index.mjs",
     "start": "next start",
     "lint": "eslint"
   },
