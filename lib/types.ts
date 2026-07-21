@@ -1,3 +1,20 @@
+export interface QuestionIndexEntry {
+  id: number
+  unitId: number
+  topicId: number
+  title: string
+  slug: string
+  difficulty: Difficulty
+  type: QuestionType
+  tags: string[]
+  marks: number
+  estimatedTime: number
+  isProgramming: boolean
+  isImportant: boolean
+  examFrequency: string
+  shortAnswer: string
+}
+
 export interface Source {
   type: string
   year?: number
@@ -26,21 +43,8 @@ export interface FilterState {
   sortBy: SortBy
 }
 
-export interface Question {
-  id: number
-  unitId: number
-  topicId: number
-  title: string
-  slug: string
-  type: QuestionType
-  difficulty: Difficulty
-  examFrequency: string
-  marks: number
-  estimatedTime: number
-  isProgramming: boolean
-  isImportant: boolean
+export interface Question extends QuestionIndexEntry {
   isRepeated: boolean
-  tags: string[]
   question: string
   shortAnswer: string
   detailedAnswer: string
