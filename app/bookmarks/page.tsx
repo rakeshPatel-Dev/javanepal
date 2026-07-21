@@ -9,6 +9,7 @@ import { PageHeader } from "@/components/common/page-header"
 import { EmptyState } from "@/components/common/empty-state"
 import { useTracking } from "@/hooks/use-tracking"
 import { getUnitById } from "@/lib/data"
+import { Tag } from "@/components/common/tag"
 import { Badge } from "@/components/ui/badge"
 
 export default function BookmarksPage() {
@@ -93,10 +94,10 @@ export default function BookmarksPage() {
                         {question.title}
                       </h3>
 
-                      <div className="bg-secondary p-3.5 rounded-2xl mb-4 flex-grow border border-border/40">
-                        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3 italic">
-                          &ldquo;{question.question}&rdquo;
-                        </p>
+                      <div className="flex flex-wrap gap-1.5 mb-3">
+                        {question.tags?.slice(0, 3).map((tag) => (
+                          <Tag key={tag} name={tag} />
+                        ))}
                       </div>
 
                       <Link

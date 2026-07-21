@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useMemo, useState, useEffect } from "react"
 import { useParams } from "next/navigation"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
@@ -17,11 +17,12 @@ import { CompletedButton } from "@/components/common/completed-button"
 import { CodeBlock } from "@/components/common/code-block"
 import { EmptyState } from "@/components/common/empty-state"
 import { getQuestionById, getTopicById, getUnitById, getQuestions } from "@/lib/data"
+import { loadQuestionById } from "@/lib/question-loader"
 import { useTracking } from "@/hooks/use-tracking"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { TYPE_COLORS } from "@/lib/types"
+import { TYPE_COLORS, type Question } from "@/lib/types"
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema"
 import { FAQSchema } from "@/components/seo/faq-schema"
 import { PersonSchema } from "@/components/seo/person-schema"
@@ -44,27 +45,44 @@ function renderAnswer(text: string) {
 
 export default function QuestionPage() {
   const { questionId } = useParams<{ questionId: string }>()
-  const question = useMemo(() => getQuestionById(questionId!), [questionId])
-  const topic = useMemo(() => (question ? getTopicById(question.topicId) : null), [question])
+  const indexEntry = useMemo(() => getQuestionById(questionId!), [questionId])
+  const [question, setQuestion] = useState<Question | null>(null)
+  const topic = useMemo(() => (indexEntry ? getTopicById(indexEntry.topicId) : null), [indexEntry])
   const unit = useMemo(() => (topic ? getUnitById(topic.unitId) : null), [topic])
 
   const allQuestions = useMemo(() => getQuestions(), [])
   const topicQuestions = useMemo(
-    () => (question ? allQuestions.filter((q) => q.topicId === question.topicId) : []),
-    [allQuestions, question],
+    () => (indexEntry ? allQuestions.filter((q) => q.topicId === indexEntry.topicId) : []),
+    [allQuestions, indexEntry],
   )
 
-  const currentIdx = topicQuestions.findIndex((q) => q.id === question?.id)
+  const currentIdx = topicQuestions.findIndex((q) => q.id === indexEntry?.id)
   const prevQ = currentIdx > 0 ? topicQuestions[currentIdx - 1] : null
   const nextQ = currentIdx < topicQuestions.length - 1 ? topicQuestions[currentIdx + 1] : null
 
   const [answerVisible, setAnswerVisible] = useState(false)
   const { isBookmarked, toggleBookmark, isCompleted, toggleCompleted } = useTracking()
 
-  if (!question) {
+  useEffect(() => {
+    if (!indexEntry) return
+    loadQuestionById(indexEntry.id).then(setQuestion)
+  }, [indexEntry])
+
+  if (!indexEntry) {
     return (
       <div className="pb-16 min-h-screen flex items-center justify-center">
         <EmptyState icon={HelpCircle} title="Question not found" description="This question does not exist." />
+      </div>
+    )
+  }
+
+  if (!question) {
+    return (
+      <div className="pb-16 min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-6 h-6 border-2 border-primary/30 border-t-primary rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-sm text-muted-foreground">Loading question...</p>
+        </div>
       </div>
     )
   }
