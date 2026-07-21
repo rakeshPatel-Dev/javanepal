@@ -1,0 +1,153 @@
+{
+  "courseTitle": "Object Oriented Programming with Java",
+  "natureOfCourse": "Theory + Practical",
+  "semester": "II",
+  "credits": 3,
+  "lectureHours": 48,
+  "courseObjectives": "The main objective of this course is to provide students both theoretical and practical knowledge of object-oriented programming using Java programming language.",
+  "courseDescription": "This course covers different concepts of object-oriented programming with Java including fundamental concepts, different programming structures, classes and objects, inheritance, interface, package, exception handling, generic programming, modules and some essential Java classes.",
+  "units": [
+    {
+      "unitNumber": 1,
+      "unitTitle": "Introduction",
+      "lectureHours": 4,
+      "topics": [
+        "Java Introduction",
+        "Short History of Java",
+        "Java Buzzwords",
+        "Java Virtual Machine (JVM)",
+        "Java Runtime Environment (JRE)",
+        "Bytecode",
+        "Object Oriented Programming and its Principles",
+        "Writing Simple Java Programs",
+        "Compiling and Running Java Programs using Command Line and IDE",
+        "Using Command Line Arguments",
+        "Using Scanner for Reading Input and System.out.print() for Writing Output"
+      ]
+    },
+    {
+      "unitNumber": 2,
+      "unitTitle": "Fundamental Programming Structures",
+      "lectureHours": 12,
+      "topics": [
+        "Writing Comments",
+        "Primitive Data Types",
+        "Variables and Constants",
+        "Type Conversion and Casting",
+        "Operators (Arithmetic, Bitwise, Logical, Assignment, and Conditional)",
+        "Precedence and Associativity of Operators",
+        "Control Statements (if, switch, for, while, do while, for-each, nested statements, break, continue, and return)",
+        "Working with Big Numbers",
+        "Arrays (One Dimensional and Multidimensional)"
+      ]
+    },
+    {
+      "unitNumber": 3,
+      "unitTitle": "Classes and Objects",
+      "lectureHours": 10,
+      "topics": [
+        "Object Oriented Principles",
+        "Defining Classes",
+        "Adding Variables and Methods",
+        "Creating Objects and Accessing Class Members",
+        "Method Parameters and Return Types",
+        "Constructors",
+        "static Fields and Methods",
+        "Method Overloading",
+        "this Keyword",
+        "Access Control",
+        "Nested and Inner Classes",
+        "Recursive Methods",
+        "Garbage Collection",
+        "Creating and Using Packages"
+      ]
+    },
+    {
+      "unitNumber": 4,
+      "unitTitle": "Inheritance and Interface",
+      "lectureHours": 7,
+      "topics": [
+        "Inheritance Basics",
+        "Defining Subclasses",
+        "Using super and final Keywords",
+        "Abstract Class",
+        "The Object Class",
+        "Dynamic Method Dispatch",
+        "Declaring, Extending, and Implementing Interfaces"
+      ]
+    },
+    {
+      "unitNumber": 5,
+      "unitTitle": "Exception Handling",
+      "lectureHours": 4,
+      "topics": [
+        "Exception Handling Fundamentals",
+        "Exception Types",
+        "Uncaught Exceptions",
+        "Using try, catch, throw, throws, and finally",
+        "Java's Built-in Exceptions",
+        "Creating Your Own Exception"
+      ]
+    },
+    {
+      "unitNumber": 6,
+      "unitTitle": "Generics and Modules",
+      "lectureHours": 4,
+      "topics": [
+        "Importance of Generic Programming",
+        "Defining Generic Classes and Methods",
+        "Bounds for Type Variables",
+        "Generic Code and Virtual Machine",
+        "Restrictions and Limitations",
+        "Inheritance Rule",
+        "Wildcard",
+        "Reflection and Generics",
+        "Modules"
+      ]
+    },
+    {
+      "unitNumber": 7,
+      "unitTitle": "Essential Java Classes",
+      "lectureHours": 7,
+      "topics": [
+        "String, StringBuffer, and StringBuilder Classes",
+        "Primitive Type Wrappers",
+        "Math Class",
+        "I/O Classes and Interfaces",
+        "File I/O"
+      ]
+    }
+  ],
+  "laboratoryWorks": "Students should write Java programs to implement all the concepts studied in each unit of the course.",
+  "textBooks": [
+    {
+      "title": "Core Java Volume I– Fundamentals",
+      "edition": "Eleventh Edition",
+      "author": "Cay S. Horstmann",
+      "publisher": "Pearson Education",
+      "year": 2019
+    },
+    {
+      "title": "Java: The Complete Reference",
+      "edition": "Twelfth Edition",
+      "author": "Herbert Schildt",
+      "publisher": "McGraw Hill",
+      "year": 2022
+    }
+  ],
+  "referenceBooks": [
+    {
+      "title": "Effective Java",
+      "edition": "Third Edition",
+      "author": "Joshua Bloch",
+      "publisher": "Pearson Education",
+      "year": 2018
+    },
+    {
+      "title": "Learning Java– An Introduction to Real World Programming with Java",
+      "author": "Marc Loy, Patrick Niemeyer, and Daniel Leuck",
+      "publisher": "O'Reilly",
+      "year": 2020
+    }
+  ]
+}

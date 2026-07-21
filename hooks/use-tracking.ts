@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { getQuestions, getQuestionsByUnitId, getQuestionsByTopicId } from "@/lib/data"
-import type { Question, Progress } from "@/lib/types"
+import type { QuestionIndexEntry, Progress } from "@/lib/types"
 
 const BOOKMARKS_KEY = "java_hub_bookmarks"
 const COMPLETED_KEY = "java_hub_completed"
@@ -60,7 +60,7 @@ export function useTracking() {
     )
   }, [])
 
-  const getBookmarkedQuestions = useCallback((): Question[] => {
+  const getBookmarkedQuestions = useCallback((): QuestionIndexEntry[] => {
     const allQuestions = getQuestions()
     return allQuestions.filter((q) => bookmarks.includes(q.id))
   }, [bookmarks])

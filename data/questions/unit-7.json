@@ -1,0 +1,334 @@
+[
+  {
+    "id": 56,
+    "unitId": 7,
+    "topicId": 56,
+    "title": "Thread Model and Thread Lifecycle",
+    "slug": "thread-model-and-thread-lifecycle",
+    "type": "Theory",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Thread",
+      "Lifecycle",
+      "Concurrency"
+    ],
+    "question": "Explain the Java thread model and thread lifecycle.",
+    "shortAnswer": "Threads are lightweight processes. Lifecycle: New → Runnable → Running → Blocked/Waiting → Terminated.",
+    "detailedAnswer": "**Thread Model**:\n- Lightweight process\n- Concurrent execution\n- Shares memory\n- Preemptive scheduling\n\n**Thread Lifecycle States**:\n1. **New**: Created but not started\n2. **Runnable**: Ready to run (waiting for CPU)\n3. **Running**: Currently executing\n4. **Blocked**: Waiting for resource\n5. **Waiting**: Waiting for another thread\n6. **Timed Waiting**: Waiting for specified time\n7. **Terminated**: Completed execution",
+    "code": "public class ThreadLifecycleDemo {\n    public static void main(String[] args) {\n        // New state\n        Thread t = new Thread(new MyRunnable());\n        System.out.println(\"State after creation: \" + t.getState());\n        \n        // Runnable state\n        t.start();\n        System.out.println(\"State after start: \" + t.getState());\n        \n        // Showing different states\n        try {\n            // Thread in running state\n            System.out.println(\"Main thread running\");\n            \n            // Wait for thread to finish\n            t.join();  // Waiting state for main\n            System.out.println(\"Thread finished, state: \" + t.getState());\n        } catch (InterruptedException e) {\n            e.printStackTrace();\n        }\n        \n        // Thread terminated\n        System.out.println(\"Final state: \" + t.getState());\n    }\n}\n\nclass MyRunnable implements Runnable {\n    @Override\n    public void run() {\n        try {\n            System.out.println(\"Thread running, state: \" + Thread.currentThread().getState());\n            Thread.sleep(1000);  // Timed waiting\n            System.out.println(\"Thread woke up\");\n        } catch (InterruptedException e) {\n            e.printStackTrace();\n        }\n    }\n}",
+    "output": "State after creation: NEW\nState after start: RUNNABLE\nMain thread running\nThread running, state: RUNNABLE\nThread woke up\nThread finished, state: TERMINATED\nFinal state: TERMINATED",
+    "explanation": "Understanding thread lifecycle is crucial for concurrent programming.",
+    "commonMistakes": [
+      "Calling run() instead of start()",
+      "Not handling InterruptedException",
+      "Starting thread multiple times"
+    ],
+    "relatedTopics": [
+      "Thread Creation",
+      "Synchronization"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 57,
+    "unitId": 7,
+    "topicId": 57,
+    "title": "Thread Class and Runnable Interface",
+    "slug": "thread-class-and-runnable-interface",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Thread",
+      "Runnable",
+      "Concurrency"
+    ],
+    "question": "Explain Thread class and Runnable interface in Java.",
+    "shortAnswer": "Thread class provides thread functionality; Runnable interface defines task to be executed.",
+    "detailedAnswer": "**Thread Class**:\n- Extends Object, implements Runnable\n- Provides thread functionality\n- Methods: start(), run(), sleep(), join()\n\n**Runnable Interface**:\n- Functional interface\n- Single method: run()\n- Can be implemented by any class\n\n**Comparison**:\n| Thread Class | Runnable |\n|--------------|----------|\n| Extends Thread | Implements Runnable |\n| Can't extend other classes | Can extend other classes |\n| Direct thread control | More flexible |\n| Limited resource sharing | Better sharing |",
+    "code": "// Method 1: Extending Thread\nclass MyThread extends Thread {\n    public MyThread(String name) {\n        super(name);\n    }\n    \n    @Override\n    public void run() {\n        System.out.println(getName() + \" is running\");\n        System.out.println(\"Priority: \" + getPriority());\n    }\n}\n\n// Method 2: Implementing Runnable\nclass MyRunnable implements Runnable {\n    @Override\n    public void run() {\n        System.out.println(Thread.currentThread().getName() + \" is running\");\n        System.out.println(\"Priority: \" + Thread.currentThread().getPriority());\n    }\n}\n\npublic class ThreadRunnableDemo {\n    public static void main(String[] args) {\n        // Using Thread class\n        System.out.println(\"=== Using Thread Class ===\");\n        MyThread t1 = new MyThread(\"Thread-1\");\n        t1.start();\n        \n        // Using Runnable interface\n        System.out.println(\"\\n=== Using Runnable Interface ===\");\n        Thread t2 = new Thread(new MyRunnable(), \"Runnable-1\");\n        t2.start();\n        \n        // Using lambda with Runnable\n        System.out.println(\"\\n=== Using Lambda ===\");\n        Thread t3 = new Thread(() -> {\n            System.out.println(Thread.currentThread().getName() + \" running with lambda\");\n        }, \"Lambda-Thread\");\n        t3.start();\n        \n        // Setting thread priority\n        t1.setPriority(Thread.MAX_PRIORITY);\n        t2.setPriority(Thread.MIN_PRIORITY);\n    }\n}",
+    "output": "=== Using Thread Class ===\nThread-1 is running\nPriority: 10\n\n=== Using Runnable Interface ===\nRunnable-1 is running\nPriority: 1\n\n=== Using Lambda ===\nLambda-Thread running with lambda",
+    "explanation": "Both approaches can create threads; Runnable is more flexible.",
+    "commonMistakes": [
+      "Calling run() directly instead of start()",
+      "Not overriding run() correctly",
+      "Thread synchronization issues"
+    ],
+    "relatedTopics": [
+      "Thread Creation",
+      "Concurrency"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 58,
+    "unitId": 7,
+    "topicId": 58,
+    "title": "Creating Threads",
+    "slug": "creating-threads",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Thread Creation",
+      "Multithreading"
+    ],
+    "question": "Write a Java program to create multiple threads using both Thread class and Runnable interface.",
+    "shortAnswer": "Create threads by extending Thread or implementing Runnable, then call start().",
+    "detailedAnswer": "**Creating Threads**:\n\n1. **Extending Thread**:\n   - Override run()\n   - Create object and call start()\n\n2. **Implementing Runnable**:\n   - Implement run()\n   - Create Thread with Runnable object\n   - Call start()\n\n**Multiple Threads**:\n- Each thread runs independently\n- Can create many threads\n- Concurrent execution",
+    "code": "// Extending Thread\nclass CounterThread extends Thread {\n    private String name;\n    \n    CounterThread(String name) {\n        this.name = name;\n    }\n    \n    @Override\n    public void run() {\n        for (int i = 1; i <= 5; i++) {\n            System.out.println(name + \": \" + i);\n            try {\n                Thread.sleep(100);\n            } catch (InterruptedException e) {\n                e.printStackTrace();\n            }\n        }\n    }\n}\n\n// Implementing Runnable\nclass NumberPrinter implements Runnable {\n    private String name;\n    \n    NumberPrinter(String name) {\n        this.name = name;\n    }\n    \n    @Override\n    public void run() {\n        for (int i = 1; i <= 5; i++) {\n            System.out.println(name + \": \" + (i * 10));\n            try {\n                Thread.sleep(100);\n            } catch (InterruptedException e) {\n                e.printStackTrace();\n            }\n        }\n    }\n}\n\npublic class CreateThreadsDemo {\n    public static void main(String[] args) {\n        System.out.println(\"=== Multiple Threads Demo ===\\n\");\n        \n        // Threads from extending Thread\n        CounterThread t1 = new CounterThread(\"Thread-1\");\n        CounterThread t2 = new CounterThread(\"Thread-2\");\n        \n        // Threads from implementing Runnable\n        Thread t3 = new Thread(new NumberPrinter(\"Runnable-1\"));\n        Thread t4 = new Thread(new NumberPrinter(\"Runnable-2\"));\n        \n        // Lambda thread\n        Thread t5 = new Thread(() -> {\n            for (int i = 1; i <= 5; i++) {\n                System.out.println(\"Lambda: \" + i * 100);\n                try {\n                    Thread.sleep(100);\n                } catch (InterruptedException e) {\n                    e.printStackTrace();\n                }\n            }\n        });\n        \n        // Start all threads\n        t1.start();\n        t2.start();\n        t3.start();\n        t4.start();\n        t5.start();\n        \n        // Wait for all threads to finish\n        try {\n            t1.join();\n            t2.join();\n            t3.join();\n            t4.join();\n            t5.join();\n        } catch (InterruptedException e) {\n            e.printStackTrace();\n        }\n        \n        System.out.println(\"\\nAll threads completed!\");\n    }\n}",
+    "output": "=== Multiple Threads Demo ===\n\nThread-1: 1\nThread-2: 1\nRunnable-1: 10\nRunnable-2: 10\nLambda: 100\nThread-1: 2\nThread-2: 2\nRunnable-1: 20\nRunnable-2: 20\nLambda: 200\n... (continues for all threads)\n\nAll threads completed!",
+    "explanation": "Multiple threads run concurrently, interleaving their execution.",
+    "commonMistakes": [
+      "Calling run() instead of start()",
+      "Not handling InterruptedException",
+      "Thread interference without synchronization"
+    ],
+    "relatedTopics": [
+      "Synchronization",
+      "Thread Priorities"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 59,
+    "unitId": 7,
+    "topicId": 59,
+    "title": "isAlive() and join() Methods",
+    "slug": "isalive-and-join-methods",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "isAlive",
+      "join",
+      "Thread Control"
+    ],
+    "question": "Write a Java program to demonstrate isAlive() and join() methods.",
+    "shortAnswer": "isAlive() checks if thread is running; join() waits for thread to finish.",
+    "detailedAnswer": "**isAlive()**:\n- Returns true if thread is running\n- Used to check thread status\n- Can be called before/after completion\n\n**join()**:\n- Waits for thread to die\n- Blocks current thread\n- Overloaded: join(), join(millis), join(millis, nanos)",
+    "code": "public class IsAliveJoinDemo {\n    public static void main(String[] args) throws InterruptedException {\n        // isAlive() demonstration\n        System.out.println(\"=== isAlive() Demonstration ===\");\n        Thread t1 = new Thread(new Worker(), \"Worker-1\");\n        \n        System.out.println(\"Before start: \" + t1.isAlive());\n        t1.start();\n        System.out.println(\"After start: \" + t1.isAlive());\n        \n        Thread.sleep(100);\n        System.out.println(\"During execution: \" + t1.isAlive());\n        \n        t1.join();\n        System.out.println(\"After join: \" + t1.isAlive());\n        \n        // join() demonstration\n        System.out.println(\"\\n=== join() Demonstration ===\");\n        Thread t2 = new Thread(new Worker(), \"Worker-2\");\n        Thread t3 = new Thread(new Worker(), \"Worker-3\");\n        \n        t2.start();\n        t3.start();\n        \n        System.out.println(\"Waiting for threads to finish...\");\n        t2.join();  // Wait for t2\n        t3.join();  // Wait for t3\n        System.out.println(\"All threads completed!\");\n        \n        // Multiple join with timeout\n        System.out.println(\"\\n=== join() with Timeout ===\");\n        Thread t4 = new Thread(new LongWorker(), \"Worker-4\");\n        t4.start();\n        \n        // Wait for 2 seconds max\n        t4.join(2000);\n        System.out.println(\"Main thread continued after 2 seconds\");\n        \n        if (t4.isAlive()) {\n            System.out.println(\"Worker-4 is still running\");\n            t4.interrupt();\n        } else {\n            System.out.println(\"Worker-4 completed\");\n        }\n    }\n}\n\nclass Worker implements Runnable {\n    @Override\n    public void run() {\n        try {\n            System.out.println(Thread.currentThread().getName() + \" started\");\n            Thread.sleep(500);\n            System.out.println(Thread.currentThread().getName() + \" finished\");\n        } catch (InterruptedException e) {\n            System.out.println(Thread.currentThread().getName() + \" interrupted\");\n        }\n    }\n}\n\nclass LongWorker implements Runnable {\n    @Override\n    public void run() {\n        try {\n            System.out.println(\"LongWorker started\");\n            Thread.sleep(5000);\n            System.out.println(\"LongWorker completed\");\n        } catch (InterruptedException e) {\n            System.out.println(\"LongWorker interrupted\");\n        }\n    }\n}",
+    "output": "=== isAlive() Demonstration ===\nBefore start: false\nAfter start: true\nWorker-1 started\nDuring execution: true\nWorker-1 finished\nAfter join: false\n\n=== join() Demonstration ===\nWaiting for threads to finish...\nWorker-2 started\nWorker-3 started\nWorker-2 finished\nWorker-3 finished\nAll threads completed!\n\n=== join() with Timeout ===\nLongWorker started\nMain thread continued after 2 seconds\nWorker-4 is still running\nLongWorker interrupted",
+    "explanation": "isAlive() and join() are essential for thread coordination.",
+    "commonMistakes": [
+      "Calling join() on thread not started",
+      "Deadlock scenarios with join",
+      "Not handling InterruptedException"
+    ],
+    "relatedTopics": [
+      "Thread Lifecycle",
+      "Synchronization"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 60,
+    "unitId": 7,
+    "topicId": 60,
+    "title": "Thread Priorities",
+    "slug": "thread-priorities",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": false,
+    "tags": [
+      "Thread Priorities",
+      "Scheduling"
+    ],
+    "question": "Explain thread priorities in Java.",
+    "shortAnswer": "Thread priorities (1-10) influence thread scheduling; higher priority threads get more CPU time.",
+    "detailedAnswer": "**Thread Priorities**:\n- Range: 1 (MIN_PRIORITY) to 10 (MAX_PRIORITY)\n- Default: 5 (NORM_PRIORITY)\n- Set with: setPriority()\n- Get with: getPriority()\n\n**Constants**:\n- Thread.MIN_PRIORITY = 1\n- Thread.NORM_PRIORITY = 5\n- Thread.MAX_PRIORITY = 10\n\n**Scheduling**:\n- Higher priority gets more CPU time\n- Not guaranteed\n- Platform dependent",
+    "code": "public class PriorityDemo {\n    public static void main(String[] args) {\n        System.out.println(\"=== Thread Priority Demonstration ===\\n\");\n        \n        // Create threads with different priorities\n        PriorityThread low = new PriorityThread(\"Low\");\n        PriorityThread normal = new PriorityThread(\"Normal\");\n        PriorityThread high = new PriorityThread(\"High\");\n        \n        // Set priorities\n        low.setPriority(Thread.MIN_PRIORITY);\n        normal.setPriority(Thread.NORM_PRIORITY);\n        high.setPriority(Thread.MAX_PRIORITY);\n        \n        System.out.println(\"Low priority: \" + low.getPriority());\n        System.out.println(\"Normal priority: \" + normal.getPriority());\n        System.out.println(\"High priority: \" + high.getPriority());\n        \n        // Start threads\n        low.start();\n        normal.start();\n        high.start();\n        \n        // Wait for threads\n        try {\n            low.join();\n            normal.join();\n            high.join();\n        } catch (InterruptedException e) {\n            e.printStackTrace();\n        }\n        \n        System.out.println(\"\\nAll threads completed\");\n        System.out.println(\"Count - Low: \" + PriorityThread.lowCount);\n        System.out.println(\"Count - Normal: \" + PriorityThread.normalCount);\n        System.out.println(\"Count - High: \" + PriorityThread.highCount);\n    }\n}\n\nclass PriorityThread extends Thread {\n    static int lowCount = 0;\n    static int normalCount = 0;\n    static int highCount = 0;\n    \n    PriorityThread(String name) {\n        super(name);\n    }\n    \n    @Override\n    public void run() {\n        for (int i = 0; i < 1000000; i++) {\n            // Increment appropriate counter\n            if (getPriority() == Thread.MIN_PRIORITY) {\n                lowCount++;\n            } else if (getPriority() == Thread.MAX_PRIORITY) {\n                highCount++;\n            } else {\n                normalCount++;\n            }\n        }\n        System.out.println(getName() + \" priority thread completed\");\n    }\n}",
+    "output": "=== Thread Priority Demonstration ===\n\nLow priority: 1\nNormal priority: 5\nHigh priority: 10\nLow priority thread completed\nNormal priority thread completed\nHigh priority thread completed\n\nAll threads completed\nCount - Low: 1000000\nCount - Normal: 1000000\nCount - High: 1000000",
+    "explanation": "Thread priorities influence scheduling but are not absolute.",
+    "commonMistakes": [
+      "Assuming priorities guarantee execution order",
+      "Setting priorities outside valid range",
+      "Platform-dependent priority behavior"
+    ],
+    "relatedTopics": [
+      "Thread Scheduling",
+      "Concurrency"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 61,
+    "unitId": 7,
+    "topicId": 61,
+    "title": "Synchronization",
+    "slug": "synchronization",
+    "type": "Programming",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 10,
+    "estimatedTime": 15,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Synchronization",
+      "Thread Safety",
+      "Concurrency"
+    ],
+    "question": "Write a Java program to demonstrate synchronization using synchronized methods and blocks.",
+    "shortAnswer": "Synchronization prevents thread interference using synchronized methods or blocks.",
+    "detailedAnswer": "**Synchronization**:\n- Prevents race conditions\n- Thread-safe access to shared resources\n- Two types:\n  1. Synchronized methods\n  2. Synchronized blocks\n\n**Benefits**:\n- Thread safety\n- Data consistency\n- Controlled access\n\n**Drawbacks**:\n- Performance overhead\n- Potential deadlocks",
+    "code": "class TicketCounter {\n    private int availableSeats = 10;\n    \n    // Synchronized method\n    public synchronized boolean bookTicket(String threadName, int seats) {\n        System.out.println(threadName + \" attempting to book \" + seats + \" seats\");\n        \n        if (seats <= availableSeats) {\n            availableSeats -= seats;\n            System.out.println(threadName + \" booked \" + seats + \" seats. Remaining: \" + availableSeats);\n            return true;\n        } else {\n            System.out.println(threadName + \" failed. Only \" + availableSeats + \" seats available\");\n            return false;\n        }\n    }\n    \n    // Synchronized block example\n    public void processBooking(String threadName, int seats) {\n        // Other code\n        synchronized(this) {\n            if (seats <= availableSeats) {\n                availableSeats -= seats;\n                System.out.println(threadName + \" (block) booked \" + seats + \" seats. Remaining: \" + availableSeats);\n            }\n        }\n    }\n}\n\nclass BookingThread extends Thread {\n    private TicketCounter counter;\n    private int seats;\n    \n    BookingThread(String name, TicketCounter counter, int seats) {\n        super(name);\n        this.counter = counter;\n        this.seats = seats;\n    }\n    \n    @Override\n    public void run() {\n        counter.bookTicket(getName(), seats);\n    }\n}\n\npublic class SynchronizationDemo {\n    public static void main(String[] args) throws InterruptedException {\n        System.out.println(\"=== Ticket Booking System (Synchronized) ===\\n\");\n        \n        TicketCounter counter = new TicketCounter();\n        \n        // Create multiple threads booking tickets\n        Thread t1 = new BookingThread(\"Thread-1\", counter, 3);\n        Thread t2 = new BookingThread(\"Thread-2\", counter, 2);\n        Thread t3 = new BookingThread(\"Thread-3\", counter, 4);\n        Thread t4 = new BookingThread(\"Thread-4\", counter, 5);\n        \n        t1.start();\n        t2.start();\n        t3.start();\n        t4.start();\n        \n        t1.join();\n        t2.join();\n        t3.join();\n        t4.join();\n        \n        // Demonstrate without synchronization\n        System.out.println(\"\\n=== Without Synchronization ===\");\n        UnsafeCounter unsafe = new UnsafeCounter();\n        Thread[] threads = new Thread[10];\n        \n        for (int i = 0; i < 10; i++) {\n            threads[i] = new Thread(() -> {\n                for (int j = 0; j < 1000; j++) {\n                    unsafe.increment();\n                }\n            });\n            threads[i].start();\n        }\n        \n        for (Thread t : threads) {\n            t.join();\n        }\n        \n        System.out.println(\"Unsafe counter (should be 10000): \" + unsafe.getCount());\n        \n        // With synchronization\n        System.out.println(\"\\n=== With Synchronization ===\");\n        SafeCounter safe = new SafeCounter();\n        Thread[] safeThreads = new Thread[10];\n        \n        for (int i = 0; i < 10; i++) {\n            safeThreads[i] = new Thread(() -> {\n                for (int j = 0; j < 1000; j++) {\n                    safe.increment();\n                }\n            });\n            safeThreads[i].start();\n        }\n        \n        for (Thread t : safeThreads) {\n            t.join();\n        }\n        \n        System.out.println(\"Safe counter (should be 10000): \" + safe.getCount());\n    }\n}\n\nclass UnsafeCounter {\n    private int count = 0;\n    \n    void increment() {\n        count++;\n    }\n    \n    int getCount() {\n        return count;\n    }\n}\n\nclass SafeCounter {\n    private int count = 0;\n    \n    synchronized void increment() {\n        count++;\n    }\n    \n    int getCount() {\n        return count;\n    }\n}",
+    "output": "=== Ticket Booking System (Synchronized) ===\n\nThread-1 attempting to book 3 seats\nThread-1 booked 3 seats. Remaining: 7\nThread-2 attempting to book 2 seats\nThread-2 booked 2 seats. Remaining: 5\nThread-3 attempting to book 4 seats\nThread-3 booked 4 seats. Remaining: 1\nThread-4 attempting to book 5 seats\nThread-4 failed. Only 1 seats available\n\n=== Without Synchronization ===\nUnsafe counter (should be 10000): 8476\n\n=== With Synchronization ===\nSafe counter (should be 10000): 10000",
+    "explanation": "Synchronization prevents race conditions and ensures thread safety.",
+    "commonMistakes": [
+      "Synchronizing too much (performance issues)",
+      "Deadlock from nested synchronization",
+      "Not synchronizing shared resources"
+    ],
+    "relatedTopics": [
+      "Thread Safety",
+      "Race Conditions",
+      "Deadlock"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 10
+    }
+  },
+  {
+    "id": 62,
+    "unitId": 7,
+    "topicId": 62,
+    "title": "Race Conditions",
+    "slug": "race-conditions",
+    "type": "Theory",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Race Conditions",
+      "Thread Safety",
+      "Concurrency"
+    ],
+    "question": "Explain race conditions in multithreading and how to prevent them.",
+    "shortAnswer": "Race conditions occur when multiple threads access shared data concurrently, causing unpredictable results.",
+    "detailedAnswer": "**Race Condition**:\n- Multiple threads access shared data\n- Inconsistent results\n- Time-dependent errors\n- Hard to reproduce\n\n**Causes**:\n1. Non-atomic operations\n2. Thread interleaving\n3. No synchronization\n\n**Prevention**:\n1. Synchronized methods/blocks\n2. Atomic variables\n3. Locks (ReentrantLock)\n4. Immutable objects\n5. Thread-local variables",
+    "code": "// Example of race condition\npublic class RaceConditionDemo {\n    public static void main(String[] args) throws InterruptedException {\n        // Race condition example\n        System.out.println(\"=== Race Condition Example ===\");\n        Counter counter = new Counter();\n        Thread[] threads = new Thread[5];\n        \n        // Create threads that increment counter\n        for (int i = 0; i < 5; i++) {\n            threads[i] = new Thread(() -> {\n                for (int j = 0; j < 10000; j++) {\n                    counter.increment();\n                }\n            });\n            threads[i].start();\n        }\n        \n        // Wait for all threads\n        for (Thread t : threads) {\n            t.join();\n        }\n        \n        System.out.println(\"Expected: 50000, Actual: \" + counter.getValue());\n        \n        // Fixed version with synchronization\n        System.out.println(\"\\n=== Fixed with Synchronization ===\");\n        SafeCounter safeCounter = new SafeCounter();\n        Thread[] safeThreads = new Thread[5];\n        \n        for (int i = 0; i < 5; i++) {\n            safeThreads[i] = new Thread(() -> {\n                for (int j = 0; j < 10000; j++) {\n                    safeCounter.increment();\n                }\n            });\n            safeThreads[i].start();\n        }\n        \n        for (Thread t : safeThreads) {\n            t.join();\n        }\n        \n        System.out.println(\"Expected: 50000, Actual: \" + safeCounter.getValue());\n    }\n}\n\nclass Counter {\n    private int value = 0;\n    \n    void increment() {\n        // Non-atomic operation: read-modify-write\n        int temp = value;  // Read\n        temp = temp + 1;   // Modify\n        value = temp;      // Write\n    }\n    \n    int getValue() {\n        return value;\n    }\n}\n\nclass SafeCounter {\n    private int value = 0;\n    \n    synchronized void increment() {\n        value++;\n    }\n    \n    synchronized int getValue() {\n        return value;\n    }\n}",
+    "output": "=== Race Condition Example ===\nExpected: 50000, Actual: 38472\n\n=== Fixed with Synchronization ===\nExpected: 50000, Actual: 50000",
+    "explanation": "Race conditions can cause inconsistent results; synchronization prevents them.",
+    "commonMistakes": [
+      "Not identifying shared resources",
+      "Partial synchronization",
+      "Assuming thread interleaving won't happen"
+    ],
+    "relatedTopics": [
+      "Synchronization",
+      "Thread Safety"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  }
+]

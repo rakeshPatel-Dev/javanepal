@@ -12,7 +12,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { TYPE_COLORS } from "@/lib/types"
-import type { Question } from "@/lib/types"
+import type { QuestionIndexEntry } from "@/lib/types"
 
 export function QuestionCard({
   question,
@@ -21,7 +21,7 @@ export function QuestionCard({
   isCompleted,
   onToggleCompleted,
 }: {
-  question: Question
+  question: QuestionIndexEntry
   isBookmarked: boolean
   onToggleBookmark: () => void
   isCompleted: boolean

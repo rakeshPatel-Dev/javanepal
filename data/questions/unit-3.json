@@ -1,0 +1,527 @@
+[
+  {
+    "id": 18,
+    "unitId": 3,
+    "topicId": 18,
+    "title": "Defining Classes and Objects",
+    "slug": "defining-classes-and-objects",
+    "type": "Programming",
+    "difficulty": "Easy",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Classes",
+      "Objects",
+      "OOP"
+    ],
+    "question": "Define a class Student with fields and methods, and create objects to demonstrate.",
+    "shortAnswer": "Class has fields (data) and methods (behavior), objects are instances of class.",
+    "detailedAnswer": "**Class Definition**:\n```java\nclass Student {\n    // Fields\n    String name;\n    int age;\n    String id;\n    \n    // Constructor\n    Student(String name, int age, String id) {\n        this.name = name;\n        this.age = age;\n        this.id = id;\n    }\n    \n    // Method\n    void display() {\n        System.out.println(name + \", \" + age + \", \" + id);\n    }\n}\n```",
+    "code": "class Student {\n    String name;\n    int age;\n    String id;\n    \n    Student(String name, int age, String id) {\n        this.name = name;\n        this.age = age;\n        this.id = id;\n    }\n    \n    void display() {\n        System.out.println(\"Name: \" + name + \", Age: \" + age + \", ID: \" + id);\n    }\n}\n\npublic class ClassDemo {\n    public static void main(String[] args) {\n        Student s1 = new Student(\"John\", 20, \"S001\");\n        Student s2 = new Student(\"Alice\", 22, \"S002\");\n        s1.display();\n        s2.display();\n    }\n}",
+    "output": "Name: John, Age: 20, ID: S001\nName: Alice, Age: 22, ID: S002",
+    "explanation": "Class is blueprint, objects are instances with their own data.",
+    "commonMistakes": [
+      "Using class name instead of object name",
+      "Not defining constructor properly"
+    ],
+    "relatedTopics": [
+      "Constructors",
+      "Methods"
+    ],
+    "previousYear": [
+      "2025",
+      "2024",
+      "2023"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 19,
+    "unitId": 3,
+    "topicId": 19,
+    "title": "Method Overloading",
+    "slug": "method-overloading",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Overloading",
+      "Methods",
+      "Polymorphism"
+    ],
+    "question": "Explain method overloading with an example. Also demonstrate variable length arguments.",
+    "shortAnswer": "Method overloading allows multiple methods with same name but different parameters.",
+    "detailedAnswer": "**Method Overloading**:\n- Same method name\n- Different parameters (number, type, order)\n- Compile-time polymorphism\n\n**Varargs**:\n- Variable number of arguments\n- Syntax: type... variableName\n- Automatically creates array",
+    "code": "public class OverloadDemo {\n    // Overloaded methods\n    public int add(int a, int b) {\n        return a + b;\n    }\n    \n    public int add(int a, int b, int c) {\n        return a + b + c;\n    }\n    \n    public double add(double a, double b) {\n        return a + b;\n    }\n    \n    // Varargs\n    public int sum(int... numbers) {\n        int total = 0;\n        for (int num : numbers) total += num;\n        return total;\n    }\n    \n    public static void main(String[] args) {\n        OverloadDemo obj = new OverloadDemo();\n        System.out.println(\"add(5,10): \" + obj.add(5, 10));\n        System.out.println(\"add(5,10,15): \" + obj.add(5, 10, 15));\n        System.out.println(\"add(5.5,10.5): \" + obj.add(5.5, 10.5));\n        System.out.println(\"sum(1,2,3,4,5): \" + obj.sum(1, 2, 3, 4, 5));\n    }\n}",
+    "output": "add(5,10): 15\nadd(5,10,15): 30\nadd(5.5,10.5): 16.0\nsum(1,2,3,4,5): 15",
+    "explanation": "Overloading provides flexibility with different parameter variations.",
+    "commonMistakes": [
+      "Changing only return type (not valid)",
+      "Confusing overloading with overriding"
+    ],
+    "relatedTopics": [
+      "Constructor Overloading",
+      "Polymorphism"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 20,
+    "unitId": 3,
+    "topicId": 20,
+    "title": "Constructors and Constructor Overloading",
+    "slug": "constructors-and-constructor-overloading",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Constructors",
+      "Overloading",
+      "Initialization"
+    ],
+    "question": "Demonstrate constructor overloading with an example.",
+    "shortAnswer": "Constructor overloading allows multiple constructors with different parameters.",
+    "detailedAnswer": "**Constructor Overloading**:\n- Multiple constructors in a class\n- Different parameter lists\n- Called based on arguments\n- Enables flexible object creation",
+    "code": "class Employee {\n    String name;\n    int id;\n    double salary;\n    \n    // Default constructor\n    Employee() {\n        this.name = \"Unknown\";\n        this.id = 0;\n        this.salary = 0.0;\n    }\n    \n    // Parameterized constructor\n    Employee(String name) {\n        this.name = name;\n        this.id = 0;\n        this.salary = 0.0;\n    }\n    \n    Employee(String name, int id) {\n        this.name = name;\n        this.id = id;\n        this.salary = 0.0;\n    }\n    \n    Employee(String name, int id, double salary) {\n        this.name = name;\n        this.id = id;\n        this.salary = salary;\n    }\n    \n    void display() {\n        System.out.println(name + \", ID: \" + id + \", Salary: $\" + salary);\n    }\n}\n\npublic class ConstructorDemo {\n    public static void main(String[] args) {\n        Employee e1 = new Employee();\n        Employee e2 = new Employee(\"John\");\n        Employee e3 = new Employee(\"Alice\", 101);\n        Employee e4 = new Employee(\"Bob\", 102, 50000);\n        e1.display(); e2.display(); e3.display(); e4.display();\n    }\n}",
+    "output": "Unknown, ID: 0, Salary: $0.0\nJohn, ID: 0, Salary: $0.0\nAlice, ID: 101, Salary: $0.0\nBob, ID: 102, Salary: $50000.0",
+    "explanation": "Constructor overloading provides multiple ways to initialize objects.",
+    "commonMistakes": [
+      "Using wrong constructor arguments",
+      "Not initializing all fields"
+    ],
+    "relatedTopics": [
+      "Constructors",
+      "this Keyword",
+      "Method Overloading"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 21,
+    "unitId": 3,
+    "topicId": 21,
+    "title": "this Keyword",
+    "slug": "this-keyword",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 8,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "this",
+      "Keyword",
+      "Object Reference"
+    ],
+    "question": "What is the purpose of 'this' keyword in Java?",
+    "shortAnswer": "this refers to current object and is used to distinguish instance variables from parameters.",
+    "detailedAnswer": "**Uses of this**:\n1. Differentiate instance variables from parameters\n2. Call other constructors (this())\n3. Return current object\n4. Pass current object as parameter",
+    "code": "class Person {\n    String name;\n    int age;\n    \n    Person(String name, int age) {\n        this.name = name;  // Distinguishes instance variable\n        this.age = age;\n    }\n    \n    Person(String name) {\n        this(name, 0);  // Calls another constructor\n    }\n    \n    Person setAge(int age) {\n        this.age = age;\n        return this;  // Returns current object (method chaining)\n    }\n    \n    void display() {\n        System.out.println(name + \", \" + age);\n    }\n}\n\npublic class ThisDemo {\n    public static void main(String[] args) {\n        Person p = new Person(\"John\").setAge(25);\n        p.display();\n    }\n}",
+    "output": "John, 25",
+    "explanation": "this is a reference to the current object.",
+    "commonMistakes": [
+      "Using this in static context",
+      "Forgetting to use this to distinguish variables"
+    ],
+    "relatedTopics": [
+      "Constructors",
+      "Objects"
+    ],
+    "previousYear": [
+      "2025",
+      "2024",
+      "2023"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "A",
+      "marks": 5
+    }
+  },
+  {
+    "id": 22,
+    "unitId": 3,
+    "topicId": 22,
+    "title": "Variable Length Arguments (varargs)",
+    "slug": "variable-length-arguments-varargs",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 8,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Varargs",
+      "Arguments",
+      "Methods"
+    ],
+    "question": "Explain variable length arguments (varargs) in Java with an example.",
+    "shortAnswer": "Varargs allow methods to accept variable number of arguments using ... notation.",
+    "detailedAnswer": "**Varargs (Variable Arguments)**:\n- Syntax: type... variableName\n- Handles zero or more arguments\n- Internally creates array\n- Must be last parameter\n\n**Rules**:\n1. Only one varargs per method\n2. Must be last parameter\n3. Can be combined with normal parameters",
+    "code": "public class VarargsDemo {\n    // Varargs method\n    public static int sum(int... numbers) {\n        int total = 0;\n        for (int num : numbers) {\n            total += num;\n        }\n        return total;\n    }\n    \n    // With other parameters\n    public static void printValues(String message, int... values) {\n        System.out.print(message + \": \");\n        for (int val : values) {\n            System.out.print(val + \" \");\n        }\n        System.out.println();\n    }\n    \n    public static void main(String[] args) {\n        System.out.println(\"sum(1,2): \" + sum(1, 2));\n        System.out.println(\"sum(1,2,3,4,5): \" + sum(1, 2, 3, 4, 5));\n        System.out.println(\"sum(): \" + sum());\n        printValues(\"Numbers\", 10, 20, 30);\n    }\n}",
+    "output": "sum(1,2): 3\nsum(1,2,3,4,5): 15\nsum(): 0\nNumbers: 10 20 30",
+    "explanation": "Varargs provide flexibility in method parameter lists.",
+    "commonMistakes": [
+      "Using varargs as first parameter",
+      "Multiple varargs in one method"
+    ],
+    "relatedTopics": [
+      "Methods",
+      "Arrays",
+      "Overloading"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 23,
+    "unitId": 3,
+    "topicId": 23,
+    "title": "Access Control",
+    "slug": "access-control",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Access Modifiers",
+      "public",
+      "private",
+      "protected",
+      "default"
+    ],
+    "question": "Explain different access modifiers in Java with their visibility scope.",
+    "shortAnswer": "public, private, protected, and default access modifiers control visibility.",
+    "detailedAnswer": "**Access Modifiers**:\n\n1. **public**: Accessible from anywhere\n2. **private**: Accessible only within same class\n3. **protected**: Accessible in same package and subclasses\n4. **default (no modifier)**: Accessible only within same package\n\n**Visibility Table**:\n| Modifier | Class | Package | Subclass | World |\n|----------|-------|---------|----------|-------|\n| private | ✓ | ✗ | ✗ | ✗ |\n| default | ✓ | ✓ | ✗ | ✗ |\n| protected | ✓ | ✓ | ✓ | ✗ |\n| public | ✓ | ✓ | ✓ | ✓ |",
+    "code": "package com.example;\n\npublic class AccessDemo {\n    public int pub = 1;\n    private int pri = 2;\n    protected int pro = 3;\n    int def = 4;  // default\n    \n    void demo() {\n        System.out.println(pub + \" \" + pri + \" \" + pro + \" \" + def);  // All accessible within class\n    }\n}",
+    "output": "All modifiers accessible within the same class",
+    "explanation": "Access modifiers implement encapsulation by controlling visibility.",
+    "commonMistakes": [
+      "Using private when public needed",
+      "Forgetting default access modifier behavior"
+    ],
+    "relatedTopics": [
+      "Encapsulation",
+      "Classes"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 24,
+    "unitId": 3,
+    "topicId": 24,
+    "title": "Static Members",
+    "slug": "static-members",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "static",
+      "Class Members",
+      "Instance"
+    ],
+    "question": "Explain static fields and methods in Java with examples.",
+    "shortAnswer": "Static members belong to class, not instances. Shared by all objects.",
+    "detailedAnswer": "**Static Members**:\n\n**Static Variables**:\n- Belong to class\n- One copy shared by all objects\n- Access: ClassName.variable\n- Initialize once when class loads\n\n**Static Methods**:\n- Belong to class\n- Can access only static members\n- Called using ClassName.method()\n- Cannot use this keyword\n\n**Static Block**:\n- Executed when class loads\n- Used for static initialization",
+    "code": "class Counter {\n    static int count = 0;  // Static variable\n    int instanceVar = 0;\n    \n    Counter() {\n        count++;\n        instanceVar++;\n    }\n    \n    static void showCount() {  // Static method\n        System.out.println(\"Count: \" + count);\n    }\n    \n    void showInstance() {\n        System.out.println(\"Instance: \" + instanceVar);\n    }\n    \n    static {\n        System.out.println(\"Static block executed\");\n    }\n}\n\npublic class StaticDemo {\n    public static void main(String[] args) {\n        Counter c1 = new Counter();\n        Counter c2 = new Counter();\n        Counter c3 = new Counter();\n        \n        Counter.showCount();  // Static method call\n        c1.showInstance();\n        c2.showInstance();\n        c3.showInstance();\n    }\n}",
+    "output": "Static block executed\nCount: 3\nInstance: 1\nInstance: 1\nInstance: 1",
+    "explanation": "Static members are shared and accessed via class name.",
+    "commonMistakes": [
+      "Accessing instance members from static methods",
+      "Using this in static context"
+    ],
+    "relatedTopics": [
+      "Classes",
+      "Objects",
+      "final"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 25,
+    "unitId": 3,
+    "topicId": 25,
+    "title": "final Keyword",
+    "slug": "final-keyword",
+    "type": "Theory",
+    "difficulty": "Easy",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 8,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "final",
+      "Constants",
+      "Immutability"
+    ],
+    "question": "Explain the use of final keyword with variables, methods, and classes.",
+    "shortAnswer": "final makes variable constant, prevents method overriding, and prevents class inheritance.",
+    "detailedAnswer": "**Uses of final**:\n\n1. **final variable**:\n   - Constant value\n   - Cannot be changed after initialization\n\n2. **final method**:\n   - Cannot be overridden by subclasses\n\n3. **final class**:\n   - Cannot be inherited\n\n**Benefits**:\n- Security\n- Performance optimization\n- Intent clarity",
+    "code": "final class Parent {  // Cannot be inherited\n    final int VALUE = 100;  // Constant\n    \n    final void display() {  // Cannot be overridden\n        System.out.println(\"VALUE: \" + VALUE);\n    }\n}\n\n// class Child extends Parent {}  // Error: cannot inherit final class\n\npublic class FinalDemo {\n    public static void main(String[] args) {\n        Parent p = new Parent();\n        p.display();\n        // p.VALUE = 200;  // Error: cannot change final variable\n    }\n}",
+    "output": "VALUE: 100",
+    "explanation": "final provides immutability and security.",
+    "commonMistakes": [
+      "Trying to modify final variables",
+      "Inheriting from final class"
+    ],
+    "relatedTopics": [
+      "static",
+      "Constants",
+      "Inheritance"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 26,
+    "unitId": 3,
+    "topicId": 26,
+    "title": "Object Class and Garbage Collection",
+    "slug": "object-class-and-garbage-collection",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Object Class",
+      "Garbage Collection",
+      "Memory Management"
+    ],
+    "question": "Explain the Object class and garbage collection in Java.",
+    "shortAnswer": "Object class is the root class; garbage collection automatically manages memory.",
+    "detailedAnswer": "**Object Class**:\n- Root class of all Java classes\n- Methods: toString(), equals(), hashCode()\n- Should be overridden appropriately\n\n**Garbage Collection**:\n- Automatic memory management\n- Reclaims memory from unreachable objects\n- System.gc() can request GC\n- finalize() called before GC",
+    "code": "class Student {\n    String name;\n    Student(String name) { this.name = name; }\n    \n    @Override\n    public String toString() {\n        return \"Student: \" + name;\n    }\n    \n    @Override\n    protected void finalize() throws Throwable {\n        System.out.println(name + \" is being garbage collected\");\n    }\n}\n\npublic class ObjectDemo {\n    public static void main(String[] args) {\n        Student s1 = new Student(\"John\");\n        System.out.println(s1.toString());  // Object class method\n        \n        s1 = null;  // Eligible for garbage collection\n        System.gc();  // Request GC\n        \n        Student s2 = new Student(\"Alice\");\n        Student s3 = new Student(\"Bob\");\n        System.out.println(\"s2 equals s3: \" + s2.equals(s3));\n    }\n}",
+    "output": "Student: John\ns2 equals s3: false\nAlice is being garbage collected",
+    "explanation": "Object class provides basic methods; garbage collection manages memory automatically.",
+    "commonMistakes": [
+      "Not overriding toString() for debugging",
+      "Relying on finalize() for cleanup"
+    ],
+    "relatedTopics": [
+      "toString",
+      "equals",
+      "Memory Management"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 27,
+    "unitId": 3,
+    "topicId": 27,
+    "title": "Nested and Inner Classes",
+    "slug": "nested-and-inner-classes",
+    "type": "Theory",
+    "difficulty": "Hard",
+    "examFrequency": "Medium",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": false,
+    "isRepeated": false,
+    "tags": [
+      "Nested",
+      "Inner",
+      "Static Nested",
+      "Anonymous"
+    ],
+    "question": "Explain different types of nested and inner classes in Java.",
+    "shortAnswer": "Nested classes include static nested, non-static inner, local, and anonymous classes.",
+    "detailedAnswer": "**Nested Classes**:\n\n1. **Static Nested Class**:\n   - Defined with static modifier\n   - Can access static members of outer class\n   - Instantiated without outer instance\n\n2. **Inner Class (Non-static)**:\n   - Defined without static\n   - Has access to all outer class members\n   - Requires outer class instance\n\n3. **Local Inner Class**:\n   - Defined inside a method\n   - Scope limited to method\n\n4. **Anonymous Inner Class**:\n   - No name\n   - Used for one-time use",
+    "code": "class Outer {\n    static class StaticNested {\n        void display() {\n            System.out.println(\"Static Nested Class\");\n        }\n    }\n    \n    class Inner {\n        void display() {\n            System.out.println(\"Inner Class\");\n        }\n    }\n    \n    void method() {\n        class Local {\n            void display() {\n                System.out.println(\"Local Class\");\n            }\n        }\n        Local l = new Local();\n        l.display();\n    }\n}\n\npublic class NestedDemo {\n    public static void main(String[] args) {\n        Outer.StaticNested staticNested = new Outer.StaticNested();\n        staticNested.display();\n        \n        Outer outer = new Outer();\n        Outer.Inner inner = outer.new Inner();\n        inner.display();\n        \n        outer.method();\n    }\n}",
+    "output": "Static Nested Class\nInner Class\nLocal Class",
+    "explanation": "Nested classes help group related classes and improve encapsulation.",
+    "commonMistakes": [
+      "Instantiating inner class incorrectly",
+      "Not understanding scope differences"
+    ],
+    "relatedTopics": [
+      "Classes",
+      "Encapsulation"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 28,
+    "unitId": 3,
+    "topicId": 28,
+    "title": "Packages and import statements",
+    "slug": "packages-and-import-statements",
+    "type": "Theory",
+    "difficulty": "Easy",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 8,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Packages",
+      "import",
+      "CLASSPATH"
+    ],
+    "question": "Explain packages and import statements in Java.",
+    "shortAnswer": "Packages organize classes, import allows using classes from other packages.",
+    "detailedAnswer": "**Packages**:\n- Group related classes\n- Provide namespace management\n- File organization\n- Access control\n\n**Package Declaration**:\n```java\npackage com.example.mypackage;\n```\n\n**Import Statement**:\n- Access classes from other packages\n- `import java.util.Scanner;`\n- `import java.util.*;`\n\n**CLASSPATH**:\n- Location where JVM looks for classes\n- Can be set during compilation/runtime",
+    "code": "// File: com/example/MyClass.java\npackage com.example;\npublic class MyClass {\n    public void display() {\n        System.out.println(\"Package Demo\");\n    }\n}\n\n// File: Test.java\nimport com.example.MyClass;\npublic class PackageDemo {\n    public static void main(String[] args) {\n        MyClass obj = new MyClass();\n        obj.display();\n    }\n}",
+    "output": "Package Demo",
+    "explanation": "Packages provide organization and namespace management.",
+    "commonMistakes": [
+      "Forgetting import statements",
+      "Wrong package structure",
+      "CLASSPATH issues"
+    ],
+    "relatedTopics": [
+      "Classes",
+      "Access Control"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  }
+]

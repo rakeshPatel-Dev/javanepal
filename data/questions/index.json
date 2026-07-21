@@ -1,0 +1,1548 @@
+[
+  {
+    "id": 1,
+    "unitId": 1,
+    "topicId": 1,
+    "title": "History and Creation of Java",
+    "slug": "history-and-creation-of-java",
+    "difficulty": "Easy",
+    "type": "Theory",
+    "tags": [
+      "History",
+      "Java",
+      "Creation"
+    ],
+    "marks": 5,
+    "estimatedTime": 8,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Java was developed by James Gosling at Sun Microsystems in 1991 as part of the Green Project, initially called Oak, later renamed to Java in 1995."
+  },
+  {
+    "id": 2,
+    "unitId": 1,
+    "topicId": 2,
+    "title": "Java Buzzwords",
+    "slug": "java-buzzwords",
+    "difficulty": "Easy",
+    "type": "Theory",
+    "tags": [
+      "Buzzwords",
+      "Features"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Java buzzwords are: Simple, Object-Oriented, Robust, Multithreaded, Architecture Neutral, Interpreted, High Performance, Distributed, Dynamic."
+  },
+  {
+    "id": 3,
+    "unitId": 1,
+    "topicId": 3,
+    "title": "JVM, JRE, JDK Architecture",
+    "slug": "jvm-jre-jdk-architecture",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "JVM",
+      "JRE",
+      "JDK",
+      "Architecture"
+    ],
+    "marks": 10,
+    "estimatedTime": 15,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "JVM executes bytecode, JRE provides runtime environment, JDK provides development tools."
+  },
+  {
+    "id": 4,
+    "unitId": 1,
+    "topicId": 4,
+    "title": "Bytecode and Platform Independence",
+    "slug": "bytecode-and-platform-independence",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Bytecode",
+      "Platform Independence"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Java source code compiles to bytecode, which runs on any platform with JVM, making it platform independent."
+  },
+  {
+    "id": 5,
+    "unitId": 1,
+    "topicId": 5,
+    "title": "Writing, Compiling, Running Java Programs",
+    "slug": "writing-compiling-running-java-programs",
+    "difficulty": "Easy",
+    "type": "Programming",
+    "tags": [
+      "Compilation",
+      "Execution",
+      "Basic Program"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Write source code, save as .java file, compile with javac, run with java command."
+  },
+  {
+    "id": 6,
+    "unitId": 1,
+    "topicId": 6,
+    "title": "Command Line Arguments",
+    "slug": "command-line-arguments",
+    "difficulty": "Easy",
+    "type": "Programming",
+    "tags": [
+      "Command Line",
+      "Arguments",
+      "Main"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Use the String[] args parameter in main method to access command line arguments."
+  },
+  {
+    "id": 7,
+    "unitId": 1,
+    "topicId": 7,
+    "title": "Scanner Class",
+    "slug": "scanner-class",
+    "difficulty": "Easy",
+    "type": "Programming",
+    "tags": [
+      "Scanner",
+      "Input",
+      "User Input"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Create Scanner object with System.in, use nextLine(), nextInt(), nextDouble() to read input."
+  },
+  {
+    "id": 8,
+    "unitId": 1,
+    "topicId": 8,
+    "title": "OOP Principles Overview",
+    "slug": "oop-principles-overview",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "OOP",
+      "Encapsulation",
+      "Inheritance",
+      "Polymorphism",
+      "Abstraction"
+    ],
+    "marks": 10,
+    "estimatedTime": 15,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Encapsulation, Inheritance, Polymorphism, and Abstraction are the four OOP principles."
+  },
+  {
+    "id": 9,
+    "unitId": 2,
+    "topicId": 9,
+    "title": "Comments and Data Types",
+    "slug": "comments-and-data-types",
+    "difficulty": "Easy",
+    "type": "Theory",
+    "tags": [
+      "Comments",
+      "Data Types",
+      "Primitive"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Java has 8 primitive data types: byte, short, int, long, float, double, char, boolean."
+  },
+  {
+    "id": 10,
+    "unitId": 2,
+    "topicId": 10,
+    "title": "Type Conversion and Casting",
+    "slug": "type-conversion-and-casting",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "Type Conversion",
+      "Casting",
+      "Data Types"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Widening (implicit) and narrowing (explicit) casting with examples."
+  },
+  {
+    "id": 11,
+    "unitId": 2,
+    "topicId": 11,
+    "title": "Operators and Precedence",
+    "slug": "operators-and-precedence",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Operators",
+      "Precedence",
+      "Arithmetic",
+      "Logical"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Java has Arithmetic, Relational, Logical, Bitwise, Assignment, and Conditional operators."
+  },
+  {
+    "id": 12,
+    "unitId": 2,
+    "topicId": 12,
+    "title": "Control Statements (if, switch)",
+    "slug": "control-statements-if-switch",
+    "difficulty": "Easy",
+    "type": "Programming",
+    "tags": [
+      "if",
+      "switch",
+      "Control Flow"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Use if-else-if for ranges and switch for discrete values."
+  },
+  {
+    "id": 13,
+    "unitId": 2,
+    "topicId": 13,
+    "title": "Loops",
+    "slug": "loops",
+    "difficulty": "Easy",
+    "type": "Programming",
+    "tags": [
+      "Loops",
+      "for",
+      "while",
+      "do-while"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "for: known iterations, while: unknown iterations, do-while: executes at least once, enhanced for: collections/arrays."
+  },
+  {
+    "id": 14,
+    "unitId": 2,
+    "topicId": 14,
+    "title": "Jump Statements",
+    "slug": "jump-statements",
+    "difficulty": "Easy",
+    "type": "Theory",
+    "tags": [
+      "break",
+      "continue",
+      "return"
+    ],
+    "marks": 5,
+    "estimatedTime": 8,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "Medium",
+    "shortAnswer": "break exits loop, continue skips iteration, return exits method."
+  },
+  {
+    "id": 15,
+    "unitId": 2,
+    "topicId": 15,
+    "title": "BigInteger and BigDecimal",
+    "slug": "biginteger-and-bigdecimal",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "BigInteger",
+      "BigDecimal",
+      "Arithmetic"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": false,
+    "examFrequency": "Low",
+    "shortAnswer": "BigInteger handles large integers, BigDecimal handles precise decimal calculations."
+  },
+  {
+    "id": 16,
+    "unitId": 2,
+    "topicId": 16,
+    "title": "Arrays (1D and 2D)",
+    "slug": "arrays-1d-and-2d",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "Arrays",
+      "1D",
+      "2D",
+      "Matrix"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "1D array: type[] name = new type[size]; 2D array: type[][] name = new type[rows][cols];"
+  },
+  {
+    "id": 17,
+    "unitId": 2,
+    "topicId": 17,
+    "title": "Passing Arrays to Methods",
+    "slug": "passing-arrays-to-methods",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "Arrays",
+      "Methods",
+      "Passing"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Arrays are passed by reference, so modifications in method affect original array."
+  },
+  {
+    "id": 18,
+    "unitId": 3,
+    "topicId": 18,
+    "title": "Defining Classes and Objects",
+    "slug": "defining-classes-and-objects",
+    "difficulty": "Easy",
+    "type": "Programming",
+    "tags": [
+      "Classes",
+      "Objects",
+      "OOP"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Class has fields (data) and methods (behavior), objects are instances of class."
+  },
+  {
+    "id": 19,
+    "unitId": 3,
+    "topicId": 19,
+    "title": "Method Overloading",
+    "slug": "method-overloading",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "Overloading",
+      "Methods",
+      "Polymorphism"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Method overloading allows multiple methods with same name but different parameters."
+  },
+  {
+    "id": 20,
+    "unitId": 3,
+    "topicId": 20,
+    "title": "Constructors and Constructor Overloading",
+    "slug": "constructors-and-constructor-overloading",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "Constructors",
+      "Overloading",
+      "Initialization"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Constructor overloading allows multiple constructors with different parameters."
+  },
+  {
+    "id": 21,
+    "unitId": 3,
+    "topicId": 21,
+    "title": "this Keyword",
+    "slug": "this-keyword",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "this",
+      "Keyword",
+      "Object Reference"
+    ],
+    "marks": 5,
+    "estimatedTime": 8,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "this refers to current object and is used to distinguish instance variables from parameters."
+  },
+  {
+    "id": 22,
+    "unitId": 3,
+    "topicId": 22,
+    "title": "Variable Length Arguments (varargs)",
+    "slug": "variable-length-arguments-varargs",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Varargs",
+      "Arguments",
+      "Methods"
+    ],
+    "marks": 5,
+    "estimatedTime": 8,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Varargs allow methods to accept variable number of arguments using ... notation."
+  },
+  {
+    "id": 23,
+    "unitId": 3,
+    "topicId": 23,
+    "title": "Access Control",
+    "slug": "access-control",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Access Modifiers",
+      "public",
+      "private",
+      "protected",
+      "default"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "public, private, protected, and default access modifiers control visibility."
+  },
+  {
+    "id": 24,
+    "unitId": 3,
+    "topicId": 24,
+    "title": "Static Members",
+    "slug": "static-members",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "static",
+      "Class Members",
+      "Instance"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Static members belong to class, not instances. Shared by all objects."
+  },
+  {
+    "id": 25,
+    "unitId": 3,
+    "topicId": 25,
+    "title": "final Keyword",
+    "slug": "final-keyword",
+    "difficulty": "Easy",
+    "type": "Theory",
+    "tags": [
+      "final",
+      "Constants",
+      "Immutability"
+    ],
+    "marks": 5,
+    "estimatedTime": 8,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "final makes variable constant, prevents method overriding, and prevents class inheritance."
+  },
+  {
+    "id": 26,
+    "unitId": 3,
+    "topicId": 26,
+    "title": "Object Class and Garbage Collection",
+    "slug": "object-class-and-garbage-collection",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Object Class",
+      "Garbage Collection",
+      "Memory Management"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Object class is the root class; garbage collection automatically manages memory."
+  },
+  {
+    "id": 27,
+    "unitId": 3,
+    "topicId": 27,
+    "title": "Nested and Inner Classes",
+    "slug": "nested-and-inner-classes",
+    "difficulty": "Hard",
+    "type": "Theory",
+    "tags": [
+      "Nested",
+      "Inner",
+      "Static Nested",
+      "Anonymous"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": false,
+    "examFrequency": "Medium",
+    "shortAnswer": "Nested classes include static nested, non-static inner, local, and anonymous classes."
+  },
+  {
+    "id": 28,
+    "unitId": 3,
+    "topicId": 28,
+    "title": "Packages and import statements",
+    "slug": "packages-and-import-statements",
+    "difficulty": "Easy",
+    "type": "Theory",
+    "tags": [
+      "Packages",
+      "import",
+      "CLASSPATH"
+    ],
+    "marks": 5,
+    "estimatedTime": 8,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Packages organize classes, import allows using classes from other packages."
+  },
+  {
+    "id": 29,
+    "unitId": 4,
+    "topicId": 29,
+    "title": "Inheritance Basics",
+    "slug": "inheritance-basics",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Inheritance",
+      "extends",
+      "IS-A"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Inheritance allows a class to inherit properties and methods from another class using extends."
+  },
+  {
+    "id": 30,
+    "unitId": 4,
+    "topicId": 30,
+    "title": "super Keyword",
+    "slug": "super-keyword",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "super",
+      "Inheritance",
+      "Parent Class"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "super refers to parent class and is used to call parent constructor or access parent members."
+  },
+  {
+    "id": 31,
+    "unitId": 4,
+    "topicId": 31,
+    "title": "Method Overriding",
+    "slug": "method-overriding",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Overriding",
+      "Polymorphism",
+      "@Override"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Method overriding allows subclass to provide specific implementation of parent method."
+  },
+  {
+    "id": 32,
+    "unitId": 4,
+    "topicId": 32,
+    "title": "Dynamic Method Dispatch",
+    "slug": "dynamic-method-dispatch",
+    "difficulty": "Hard",
+    "type": "Theory",
+    "tags": [
+      "Dynamic Dispatch",
+      "Runtime Polymorphism",
+      "Method Overriding"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Dynamic method dispatch is runtime polymorphism where method call is resolved at runtime based on object type."
+  },
+  {
+    "id": 33,
+    "unitId": 4,
+    "topicId": 33,
+    "title": "Abstract Classes",
+    "slug": "abstract-classes",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Abstract",
+      "Classes",
+      "Abstraction"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Abstract classes cannot be instantiated and may contain abstract methods."
+  },
+  {
+    "id": 34,
+    "unitId": 4,
+    "topicId": 34,
+    "title": "Interfaces",
+    "slug": "interfaces",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Interfaces",
+      "Implementation",
+      "Multiple Inheritance"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Interfaces define contracts that classes must implement, supporting multiple inheritance."
+  },
+  {
+    "id": 35,
+    "unitId": 4,
+    "topicId": 35,
+    "title": "Default and Static Methods in Interfaces",
+    "slug": "default-and-static-methods-in-interfaces",
+    "difficulty": "Hard",
+    "type": "Theory",
+    "tags": [
+      "Default Methods",
+      "Static Methods",
+      "Interface",
+      "Java 8"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Default methods provide default implementation, static methods are utility methods in interfaces."
+  },
+  {
+    "id": 36,
+    "unitId": 4,
+    "topicId": 36,
+    "title": "Functional Interfaces",
+    "slug": "functional-interfaces",
+    "difficulty": "Hard",
+    "type": "Theory",
+    "tags": [
+      "Functional Interface",
+      "@FunctionalInterface",
+      "Lambda"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Functional interface has exactly one abstract method and can be used with lambda expressions."
+  },
+  {
+    "id": 37,
+    "unitId": 4,
+    "topicId": 37,
+    "title": "Sealed Classes",
+    "slug": "sealed-classes",
+    "difficulty": "Hard",
+    "type": "Theory",
+    "tags": [
+      "Sealed Classes",
+      "Java 17",
+      "Inheritance Control"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Sealed classes restrict which classes can extend them, providing controlled inheritance."
+  },
+  {
+    "id": 38,
+    "unitId": 4,
+    "topicId": 38,
+    "title": "Liskov Substitution Principle",
+    "slug": "liskov-substitution-principle",
+    "difficulty": "Hard",
+    "type": "Theory",
+    "tags": [
+      "LSP",
+      "SOLID",
+      "Design Principles"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": false,
+    "examFrequency": "Medium",
+    "shortAnswer": "Subtypes must be substitutable for their base types without changing program behavior."
+  },
+  {
+    "id": 39,
+    "unitId": 5,
+    "topicId": 39,
+    "title": "Exception Hierarchy",
+    "slug": "exception-hierarchy",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Exceptions",
+      "Hierarchy",
+      "Throwable"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Throwable is root, Error and Exception are subclasses. RuntimeException extends Exception."
+  },
+  {
+    "id": 40,
+    "unitId": 5,
+    "topicId": 40,
+    "title": "Checked vs Unchecked Exceptions",
+    "slug": "checked-vs-unchecked-exceptions",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Checked",
+      "Unchecked",
+      "Exceptions"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Checked exceptions are checked at compile-time; unchecked exceptions are checked at runtime."
+  },
+  {
+    "id": 41,
+    "unitId": 5,
+    "topicId": 41,
+    "title": "try, catch, finally Blocks",
+    "slug": "try-catch-finally-blocks",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "try",
+      "catch",
+      "finally",
+      "Exception Handling"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "try contains code that may throw exception, catch handles exception, finally always executes."
+  },
+  {
+    "id": 42,
+    "unitId": 5,
+    "topicId": 42,
+    "title": "Multiple Catch and Multi-catch",
+    "slug": "multiple-catch-and-multi-catch",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "Multiple Catch",
+      "Multi-catch",
+      "Java 7"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Multiple catch blocks handle different exceptions; multi-catch uses | to catch multiple exceptions in one block."
+  },
+  {
+    "id": 43,
+    "unitId": 5,
+    "topicId": 43,
+    "title": "Nested try Statements",
+    "slug": "nested-try-statements",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "Nested try",
+      "Exception Handling",
+      "Hierarchy"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Inner try blocks handle exceptions locally; if not caught, exception propagates to outer try."
+  },
+  {
+    "id": 44,
+    "unitId": 5,
+    "topicId": 44,
+    "title": "try-with-resources",
+    "slug": "try-with-resources",
+    "difficulty": "Hard",
+    "type": "Programming",
+    "tags": [
+      "try-with-resources",
+      "AutoCloseable",
+      "Java 7"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "try-with-resources automatically closes resources that implement AutoCloseable."
+  },
+  {
+    "id": 45,
+    "unitId": 5,
+    "topicId": 45,
+    "title": "throw and throws Keywords",
+    "slug": "throw-and-throws-keywords",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "throw",
+      "throws",
+      "Exception"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "throw explicitly throws an exception; throws declares exceptions that a method can throw."
+  },
+  {
+    "id": 46,
+    "unitId": 5,
+    "topicId": 46,
+    "title": "Custom Exceptions",
+    "slug": "custom-exceptions",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "Custom Exception",
+      "User-defined Exception"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Custom exceptions extend Exception or RuntimeException with custom constructor."
+  },
+  {
+    "id": 47,
+    "unitId": 5,
+    "topicId": 47,
+    "title": "Exception Chaining",
+    "slug": "exception-chaining",
+    "difficulty": "Hard",
+    "type": "Theory",
+    "tags": [
+      "Exception Chaining",
+      "Causes",
+      "initCause"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": false,
+    "examFrequency": "Medium",
+    "shortAnswer": "Exception chaining links exceptions to preserve the original cause using initCause() or constructor."
+  },
+  {
+    "id": 48,
+    "unitId": 6,
+    "topicId": 48,
+    "title": "Generic Classes and Methods",
+    "slug": "generic-classes-and-methods",
+    "difficulty": "Hard",
+    "type": "Programming",
+    "tags": [
+      "Generics",
+      "Generic Classes",
+      "Generic Methods"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Generic classes use type parameters (T, E, K, V) for type safety and reusability."
+  },
+  {
+    "id": 49,
+    "unitId": 6,
+    "topicId": 49,
+    "title": "Bounded Wildcards",
+    "slug": "bounded-wildcards",
+    "difficulty": "Hard",
+    "type": "Theory",
+    "tags": [
+      "Wildcards",
+      "Bounded",
+      "Generics"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Bounded wildcards limit the types that can be used: ? extends T and ? super T."
+  },
+  {
+    "id": 50,
+    "unitId": 6,
+    "topicId": 50,
+    "title": "Type Erasure",
+    "slug": "type-erasure",
+    "difficulty": "Hard",
+    "type": "Theory",
+    "tags": [
+      "Type Erasure",
+      "Generics",
+      "Compilation"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": false,
+    "examFrequency": "High",
+    "shortAnswer": "Type erasure removes generic type information at compile-time, replacing it with raw types."
+  },
+  {
+    "id": 51,
+    "unitId": 6,
+    "topicId": 51,
+    "title": "Collections Framework",
+    "slug": "collections-framework",
+    "difficulty": "Hard",
+    "type": "Programming",
+    "tags": [
+      "Collections",
+      "List",
+      "Set",
+      "Map",
+      "Queue"
+    ],
+    "marks": 10,
+    "estimatedTime": 15,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "List (ordered), Set (unique), Map (key-value), Queue (FIFO) are main collection interfaces."
+  },
+  {
+    "id": 52,
+    "unitId": 6,
+    "topicId": 52,
+    "title": "Iterators",
+    "slug": "iterators",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "Iterator",
+      "Iterable",
+      "Collection"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Iterator provides methods to traverse collections: hasNext(), next(), remove()."
+  },
+  {
+    "id": 53,
+    "unitId": 6,
+    "topicId": 53,
+    "title": "Enhanced for Loop with Collections",
+    "slug": "enhanced-for-loop-with-collections",
+    "difficulty": "Easy",
+    "type": "Programming",
+    "tags": [
+      "Enhanced for",
+      "Collections",
+      "Iteration"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Enhanced for loop (for-each) simplifies iteration over arrays and collections."
+  },
+  {
+    "id": 54,
+    "unitId": 6,
+    "topicId": 54,
+    "title": "Wrapper Classes",
+    "slug": "wrapper-classes",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Wrapper Classes",
+      "Type Wrappers"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Wrapper classes encapsulate primitive types as objects: Integer, Double, Boolean, etc."
+  },
+  {
+    "id": 55,
+    "unitId": 6,
+    "topicId": 55,
+    "title": "Autoboxing and Unboxing",
+    "slug": "autoboxing-and-unboxing",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Autoboxing",
+      "Unboxing",
+      "Wrapper Classes"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Autoboxing automatically converts primitives to wrappers; unboxing converts wrappers to primitives."
+  },
+  {
+    "id": 56,
+    "unitId": 7,
+    "topicId": 56,
+    "title": "Thread Model and Thread Lifecycle",
+    "slug": "thread-model-and-thread-lifecycle",
+    "difficulty": "Hard",
+    "type": "Theory",
+    "tags": [
+      "Thread",
+      "Lifecycle",
+      "Concurrency"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Threads are lightweight processes. Lifecycle: New → Runnable → Running → Blocked/Waiting → Terminated."
+  },
+  {
+    "id": 57,
+    "unitId": 7,
+    "topicId": 57,
+    "title": "Thread Class and Runnable Interface",
+    "slug": "thread-class-and-runnable-interface",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Thread",
+      "Runnable",
+      "Concurrency"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Thread class provides thread functionality; Runnable interface defines task to be executed."
+  },
+  {
+    "id": 58,
+    "unitId": 7,
+    "topicId": 58,
+    "title": "Creating Threads",
+    "slug": "creating-threads",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "Thread Creation",
+      "Multithreading"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Create threads by extending Thread or implementing Runnable, then call start()."
+  },
+  {
+    "id": 59,
+    "unitId": 7,
+    "topicId": 59,
+    "title": "isAlive() and join() Methods",
+    "slug": "isalive-and-join-methods",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "isAlive",
+      "join",
+      "Thread Control"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "isAlive() checks if thread is running; join() waits for thread to finish."
+  },
+  {
+    "id": 60,
+    "unitId": 7,
+    "topicId": 60,
+    "title": "Thread Priorities",
+    "slug": "thread-priorities",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Thread Priorities",
+      "Scheduling"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Thread priorities (1-10) influence thread scheduling; higher priority threads get more CPU time."
+  },
+  {
+    "id": 61,
+    "unitId": 7,
+    "topicId": 61,
+    "title": "Synchronization",
+    "slug": "synchronization",
+    "difficulty": "Hard",
+    "type": "Programming",
+    "tags": [
+      "Synchronization",
+      "Thread Safety",
+      "Concurrency"
+    ],
+    "marks": 10,
+    "estimatedTime": 15,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Synchronization prevents thread interference using synchronized methods or blocks."
+  },
+  {
+    "id": 62,
+    "unitId": 7,
+    "topicId": 62,
+    "title": "Race Conditions",
+    "slug": "race-conditions",
+    "difficulty": "Hard",
+    "type": "Theory",
+    "tags": [
+      "Race Conditions",
+      "Thread Safety",
+      "Concurrency"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Race conditions occur when multiple threads access shared data concurrently, causing unpredictable results."
+  },
+  {
+    "id": 63,
+    "unitId": 8,
+    "topicId": 63,
+    "title": "String Class and Methods",
+    "slug": "string-class-and-methods",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "String",
+      "Methods",
+      "Manipulation"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "String methods include charAt(), length(), substring(), concat(), replace(), trim(), etc."
+  },
+  {
+    "id": 64,
+    "unitId": 8,
+    "topicId": 64,
+    "title": "StringBuffer and StringBuilder",
+    "slug": "stringbuffer-and-stringbuilder",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "StringBuffer",
+      "StringBuilder",
+      "Mutable Strings"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "StringBuffer/StringBuilder are mutable and efficient for string operations."
+  },
+  {
+    "id": 65,
+    "unitId": 8,
+    "topicId": 65,
+    "title": "Math Class",
+    "slug": "math-class",
+    "difficulty": "Easy",
+    "type": "Programming",
+    "tags": [
+      "Math",
+      "Mathematical Methods"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Math class provides static methods for mathematical operations."
+  },
+  {
+    "id": 66,
+    "unitId": 8,
+    "topicId": 66,
+    "title": "Primitive Type Wrappers",
+    "slug": "primitive-type-wrappers",
+    "difficulty": "Medium",
+    "type": "Theory",
+    "tags": [
+      "Wrappers",
+      "Primitive",
+      "Type Conversion"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Wrapper classes encapsulate primitive types and provide utility methods."
+  },
+  {
+    "id": 67,
+    "unitId": 8,
+    "topicId": 67,
+    "title": "Lambda Expressions Introduction",
+    "slug": "lambda-expressions-introduction",
+    "difficulty": "Hard",
+    "type": "Theory",
+    "tags": [
+      "Lambda",
+      "Functional",
+      "Java 8"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Lambda expressions provide a concise way to implement functional interfaces."
+  },
+  {
+    "id": 68,
+    "unitId": 8,
+    "topicId": 68,
+    "title": "Stream API Overview",
+    "slug": "stream-api-overview",
+    "difficulty": "Hard",
+    "type": "Theory",
+    "tags": [
+      "Stream API",
+      "Java 8",
+      "Functional"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Stream API provides functional operations on collections: filter, map, reduce, etc."
+  },
+  {
+    "id": 69,
+    "unitId": 9,
+    "topicId": 69,
+    "title": "File Class and File Operations",
+    "slug": "file-class-and-file-operations",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "File Class",
+      "File Operations",
+      "I/O"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "File class provides methods for file and directory operations."
+  },
+  {
+    "id": 70,
+    "unitId": 9,
+    "topicId": 70,
+    "title": "Byte Streams",
+    "slug": "byte-streams",
+    "difficulty": "Hard",
+    "type": "Programming",
+    "tags": [
+      "Byte Streams",
+      "FileInputStream",
+      "FileOutputStream"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Byte streams handle binary data using FileInputStream and FileOutputStream."
+  },
+  {
+    "id": 71,
+    "unitId": 9,
+    "topicId": 71,
+    "title": "Character Streams",
+    "slug": "character-streams",
+    "difficulty": "Hard",
+    "type": "Programming",
+    "tags": [
+      "Character Streams",
+      "FileReader",
+      "FileWriter"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Character streams handle text data using FileReader and FileWriter."
+  },
+  {
+    "id": 72,
+    "unitId": 9,
+    "topicId": 72,
+    "title": "BufferedReader and BufferedWriter",
+    "slug": "bufferedreader-and-bufferedwriter",
+    "difficulty": "Hard",
+    "type": "Programming",
+    "tags": [
+      "BufferedReader",
+      "BufferedWriter",
+      "Buffered Streams"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "BufferedReader/BufferedWriter improve I/O performance with buffering."
+  },
+  {
+    "id": 73,
+    "unitId": 9,
+    "topicId": 73,
+    "title": "PrintWriter",
+    "slug": "printwriter",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "PrintWriter",
+      "Formatted Output"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "PrintWriter provides convenient methods for writing formatted text."
+  },
+  {
+    "id": 74,
+    "unitId": 9,
+    "topicId": 74,
+    "title": "RandomAccessFile",
+    "slug": "randomaccessfile",
+    "difficulty": "Hard",
+    "type": "Programming",
+    "tags": [
+      "RandomAccessFile",
+      "Random Access",
+      "File I/O"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "RandomAccessFile allows read/write at any position in the file."
+  },
+  {
+    "id": 75,
+    "unitId": 9,
+    "topicId": 75,
+    "title": "Serialization",
+    "slug": "serialization",
+    "difficulty": "Hard",
+    "type": "Programming",
+    "tags": [
+      "Serialization",
+      "ObjectOutputStream",
+      "ObjectInputStream"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Serialization converts objects to byte stream using Serializable interface."
+  },
+  {
+    "id": 76,
+    "unitId": 9,
+    "topicId": 76,
+    "title": "NIO.2 API",
+    "slug": "nio-2-api",
+    "difficulty": "Hard",
+    "type": "Programming",
+    "tags": [
+      "NIO.2",
+      "Path",
+      "Files",
+      "Paths"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "NIO.2 provides modern file I/O with Path, Files, and Paths classes."
+  },
+  {
+    "id": 77,
+    "unitId": 9,
+    "topicId": 77,
+    "title": "Console Class",
+    "slug": "console-class",
+    "difficulty": "Medium",
+    "type": "Programming",
+    "tags": [
+      "Console",
+      "Input/Output",
+      "Reader/Writer"
+    ],
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "examFrequency": "High",
+    "shortAnswer": "Console class provides secure reading of passwords and formatted output."
+  }
+]

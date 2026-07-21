@@ -1,0 +1,386 @@
+[
+  {
+    "id": 48,
+    "unitId": 6,
+    "topicId": 48,
+    "title": "Generic Classes and Methods",
+    "slug": "generic-classes-and-methods",
+    "type": "Programming",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Generics",
+      "Generic Classes",
+      "Generic Methods"
+    ],
+    "question": "Write a Java program to demonstrate generic classes and methods.",
+    "shortAnswer": "Generic classes use type parameters (T, E, K, V) for type safety and reusability.",
+    "detailedAnswer": "**Generics**:\n- Type safety at compile-time\n- Code reusability\n- Type parameters: T, E, K, V\n\n**Generic Class**:\n```java\nclass MyClass<T> {\n    private T data;\n    // Methods using T\n}\n```\n\n**Generic Method**:\n```java\npublic <T> T method(T value) {\n    return value;\n}\n```\n\n**Benefits**:\n- Type safety\n- Elimination of casting\n- Reusable code",
+    "code": "// Generic class\nclass Box<T> {\n    private T content;\n    \n    public Box(T content) {\n        this.content = content;\n    }\n    \n    public void setContent(T content) {\n        this.content = content;\n    }\n    \n    public T getContent() {\n        return content;\n    }\n    \n    public void display() {\n        System.out.println(\"Content: \" + content + \" (Type: \" + content.getClass().getSimpleName() + \")\");\n    }\n}\n\n// Generic method\nclass Utility {\n    public static <T> void printArray(T[] array) {\n        for (T element : array) {\n            System.out.print(element + \" \");\n        }\n        System.out.println();\n    }\n    \n    public static <T> T getMiddle(T[] array) {\n        return array[array.length / 2];\n    }\n}\n\npublic class GenericDemo {\n    public static void main(String[] args) {\n        // Generic class with different types\n        Box<String> stringBox = new Box<>(\"Hello Generics\");\n        Box<Integer> intBox = new Box<>(100);\n        Box<Double> doubleBox = new Box<>(3.14);\n        \n        stringBox.display();\n        intBox.display();\n        doubleBox.display();\n        \n        // Generic method\n        String[] words = {\"Java\", \"Generics\", \"are\", \"powerful\"};\n        Integer[] numbers = {1, 2, 3, 4, 5, 6, 7};\n        \n        System.out.print(\"Words: \");\n        Utility.printArray(words);\n        \n        System.out.print(\"Numbers: \");\n        Utility.printArray(numbers);\n        \n        System.out.println(\"Middle word: \" + Utility.getMiddle(words));\n        System.out.println(\"Middle number: \" + Utility.getMiddle(numbers));\n    }\n}",
+    "output": "Content: Hello Generics (Type: String)\nContent: 100 (Type: Integer)\nContent: 3.14 (Type: Double)\nWords: Java Generics are powerful \nNumbers: 1 2 3 4 5 6 7 \nMiddle word: Generics\nMiddle number: 4",
+    "explanation": "Generics provide type safety and eliminate casting.",
+    "commonMistakes": [
+      "Using raw types",
+      "Not understanding type erasure",
+      "Creating generic arrays"
+    ],
+    "relatedTopics": [
+      "Collections Framework",
+      "Type Erasure"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 49,
+    "unitId": 6,
+    "topicId": 49,
+    "title": "Bounded Wildcards",
+    "slug": "bounded-wildcards",
+    "type": "Theory",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": false,
+    "tags": [
+      "Wildcards",
+      "Bounded",
+      "Generics"
+    ],
+    "question": "Explain bounded wildcards in Java generics with examples.",
+    "shortAnswer": "Bounded wildcards limit the types that can be used: ? extends T and ? super T.",
+    "detailedAnswer": "**Bounded Wildcards**:\n\n1. **Upper Bounded**: `? extends T`\n   - Accepts T or its subtypes\n   - Used for read operations\n\n2. **Lower Bounded**: `? super T`\n   - Accepts T or its supertypes\n   - Used for write operations\n\n3. **Unbounded**: `?`\n   - Accepts any type\n   - Used when type doesn't matter\n\n**PECS Principle**:\n- Producer Extends (read)\n- Consumer Super (write)",
+    "code": "import java.util.*;\n\nclass Animal {\n    void makeSound() { System.out.println(\"Animal sound\"); }\n}\n\nclass Dog extends Animal {\n    void makeSound() { System.out.println(\"Dog barks\"); }\n}\n\nclass Cat extends Animal {\n    void makeSound() { System.out.println(\"Cat meows\"); }\n}\n\npublic class WildcardDemo {\n    \n    // Upper bounded wildcard - extends\n    public static void printAnimals(List<? extends Animal> animals) {\n        for (Animal animal : animals) {\n            animal.makeSound();\n        }\n    }\n    \n    // Lower bounded wildcard - super\n    public static void addDogs(List<? super Dog> list) {\n        list.add(new Dog());\n        list.add(new Dog());\n    }\n    \n    // Unbounded wildcard\n    public static void printList(List<?> list) {\n        for (Object obj : list) {\n            System.out.println(obj);\n        }\n    }\n    \n    public static void main(String[] args) {\n        List<Dog> dogs = Arrays.asList(new Dog(), new Dog());\n        List<Cat> cats = Arrays.asList(new Cat(), new Cat());\n        List<Animal> animals = new ArrayList<>();\n        \n        System.out.println(\"Dog list:\");\n        printAnimals(dogs);\n        \n        System.out.println(\"Cat list:\");\n        printAnimals(cats);\n        \n        System.out.println(\"Animal list:\");\n        addDogs(animals);  // Animals is superclass of Dog\n        printAnimals(animals);\n        \n        System.out.println(\"\\nUnbounded wildcard:\");\n        printList(Arrays.asList(1, \"Hello\", 3.14));\n    }\n}",
+    "output": "Dog list:\nDog barks\nDog barks\nCat list:\nCat meows\nCat meows\nAnimal list:\nDog barks\nDog barks\n\nUnbounded wildcard:\n1\nHello\n3.14",
+    "explanation": "Bounded wildcards provide flexibility while maintaining type safety.",
+    "commonMistakes": [
+      "Using extends when super is needed",
+      "Modifying collection with extends wildcard",
+      "Not following PECS principle"
+    ],
+    "relatedTopics": [
+      "Generics",
+      "Collections"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 50,
+    "unitId": 6,
+    "topicId": 50,
+    "title": "Type Erasure",
+    "slug": "type-erasure",
+    "type": "Theory",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": false,
+    "isRepeated": false,
+    "tags": [
+      "Type Erasure",
+      "Generics",
+      "Compilation"
+    ],
+    "question": "Explain type erasure in Java generics.",
+    "shortAnswer": "Type erasure removes generic type information at compile-time, replacing it with raw types.",
+    "detailedAnswer": "**Type Erasure**:\n- Compile-time process\n- Removes generic type parameters\n- Replaces with raw types\n- Adds casting where needed\n\n**Effects**:\n1. No runtime generic type info\n2. Cannot create generic arrays\n3. Runtime type checks limited\n\n**Compiler Actions**:\n1. Replace type parameters with Object or bounds\n2. Insert cast operations\n3. Generate bridge methods",
+    "code": "import java.util.*;\n\npublic class TypeErasureDemo {\n    public static void main(String[] args) {\n        // Generic class\n        List<String> strings = new ArrayList<>();\n        List<Integer> integers = new ArrayList<>();\n        \n        // Type erasure means same class at runtime\n        System.out.println(\"strings class: \" + strings.getClass().getName());\n        System.out.println(\"integers class: \" + integers.getClass().getName());\n        System.out.println(\"Same class? \" + strings.getClass().equals(integers.getClass()));\n        \n        // Cannot use instanceof with generic type\n        // if (strings instanceof List<String>) // Error\n        \n        // Generic class example\n        Box<String> stringBox = new Box<>(\"Hello\");\n        Box<Integer> intBox = new Box<>(100);\n        \n        // At runtime, both are Box class\n        System.out.println(\"stringBox class: \" + stringBox.getClass().getName());\n        System.out.println(\"intBox class: \" + intBox.getClass().getName());\n        System.out.println(\"Same class? \" + stringBox.getClass().equals(intBox.getClass()));\n        \n        // Bridge methods example\n        Parent p = new Child();\n        p.print(\"Hello\");  // Calls Child's print\n        \n        // Erasure effects\n        System.out.println(\"\\nErasure effects:\");\n        // Cannot overload methods with same erasure\n        // void method(List<String> list) {}\n        // void method(List<Integer> list) {}  // Error: same erasure\n    }\n}\n\nclass Box<T> {\n    private T data;\n    Box(T data) { this.data = data; }\n    T getData() { return data; }\n}\n\nclass Parent<T> {\n    void print(T value) {\n        System.out.println(\"Parent: \" + value);\n    }\n}\n\nclass Child extends Parent<String> {\n    @Override\n    void print(String value) {\n        System.out.println(\"Child: \" + value);\n    }\n}",
+    "output": "strings class: java.util.ArrayList\nintegers class: java.util.ArrayList\nSame class? true\nstringBox class: Box\nintBox class: Box\nSame class? true\nChild: Hello\n\nErasure effects:",
+    "explanation": "Type erasure ensures backward compatibility but limits runtime type information.",
+    "commonMistakes": [
+      "Using instanceof with generic types",
+      "Creating arrays of generic types",
+      "Overloading with same erasure"
+    ],
+    "relatedTopics": [
+      "Generics",
+      "Compilation"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 51,
+    "unitId": 6,
+    "topicId": 51,
+    "title": "Collections Framework",
+    "slug": "collections-framework",
+    "type": "Programming",
+    "difficulty": "Hard",
+    "examFrequency": "High",
+    "marks": 10,
+    "estimatedTime": 15,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Collections",
+      "List",
+      "Set",
+      "Map",
+      "Queue"
+    ],
+    "question": "Write a Java program demonstrating the use of List, Set, Map, and Queue collections.",
+    "shortAnswer": "List (ordered), Set (unique), Map (key-value), Queue (FIFO) are main collection interfaces.",
+    "detailedAnswer": "**Collections Framework**:\n\n**List**: Ordered, allows duplicates, indexed\n- ArrayList: Dynamic array\n- LinkedList: Doubly-linked list\n- Vector: Synchronized\n\n**Set**: No duplicates, unordered\n- HashSet: Hash table\n- TreeSet: Sorted\n- LinkedHashSet: Insertion order\n\n**Map**: Key-value pairs\n- HashMap: Hash table\n- TreeMap: Sorted\n- LinkedHashMap: Insertion order\n\n**Queue**: FIFO ordering\n- PriorityQueue: Priority based",
+    "code": "import java.util.*;\n\npublic class CollectionsDemo {\n    public static void main(String[] args) {\n        // List\n        System.out.println(\"=== List ===\");\n        List<String> list = new ArrayList<>();\n        list.add(\"Apple\");\n        list.add(\"Banana\");\n        list.add(\"Orange\");\n        list.add(\"Apple\");  // Allows duplicates\n        System.out.println(\"List: \" + list);\n        System.out.println(\"Element at index 1: \" + list.get(1));\n        \n        // Set\n        System.out.println(\"\\n=== Set ===\");\n        Set<Integer> set = new HashSet<>();\n        set.add(10);\n        set.add(20);\n        set.add(30);\n        set.add(20);  // Duplicate ignored\n        System.out.println(\"Set: \" + set);\n        System.out.println(\"Contains 20? \" + set.contains(20));\n        \n        // Map\n        System.out.println(\"\\n=== Map ===\");\n        Map<String, Integer> map = new HashMap<>();\n        map.put(\"Apple\", 10);\n        map.put(\"Banana\", 20);\n        map.put(\"Orange\", 30);\n        System.out.println(\"Map: \" + map);\n        System.out.println(\"Value for 'Apple': \" + map.get(\"Apple\"));\n        System.out.println(\"Keys: \" + map.keySet());\n        System.out.println(\"Values: \" + map.values());\n        \n        // Queue\n        System.out.println(\"\\n=== Queue ===\");\n        Queue<String> queue = new LinkedList<>();\n        queue.offer(\"First\");\n        queue.offer(\"Second\");\n        queue.offer(\"Third\");\n        System.out.println(\"Queue: \" + queue);\n        System.out.println(\"Peek: \" + queue.peek());\n        System.out.println(\"Poll: \" + queue.poll());\n        System.out.println(\"Queue after poll: \" + queue);\n        \n        // Priority Queue\n        System.out.println(\"\\n=== Priority Queue ===\");\n        PriorityQueue<Integer> pq = new PriorityQueue<>();\n        pq.add(5);\n        pq.add(1);\n        pq.add(3);\n        pq.add(2);\n        pq.add(4);\n        System.out.println(\"Priority Queue: \" + pq);\n        while (!pq.isEmpty()) {\n            System.out.print(pq.poll() + \" \");\n        }\n        System.out.println();\n    }\n}",
+    "output": "=== List ===\nList: [Apple, Banana, Orange, Apple]\nElement at index 1: Banana\n\n=== Set ===\nSet: [10, 20, 30]\nContains 20? true\n\n=== Map ===\nMap: {Apple=10, Banana=20, Orange=30}\nValue for 'Apple': 10\nKeys: [Apple, Banana, Orange]\nValues: [10, 20, 30]\n\n=== Queue ===\nQueue: [First, Second, Third]\nPeek: First\nPoll: First\nQueue after poll: [Second, Third]\n\n=== Priority Queue ===\nPriority Queue: [1, 2, 3, 5, 4]\n1 2 3 4 5",
+    "explanation": "Collections Framework provides data structures for efficient data management.",
+    "commonMistakes": [
+      "Using wrong collection type",
+      "Not using generics",
+      "Modifying collection during iteration",
+      "Not handling null values properly"
+    ],
+    "relatedTopics": [
+      "Generics",
+      "Iterators",
+      "Wrapper Classes"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 10
+    }
+  },
+  {
+    "id": 52,
+    "unitId": 6,
+    "topicId": 52,
+    "title": "Iterators",
+    "slug": "iterators",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Iterator",
+      "Iterable",
+      "Collection"
+    ],
+    "question": "Write a Java program to demonstrate the use of Iterator and Iterable interface.",
+    "shortAnswer": "Iterator provides methods to traverse collections: hasNext(), next(), remove().",
+    "detailedAnswer": "**Iterator**:\n- Interface for traversing collections\n- Methods: hasNext(), next(), remove()\n- Fail-fast behavior\n\n**Iterable Interface**:\n- Provides iterator() method\n- Enables enhanced for loop\n- Implemented by all collections\n\n**ListIterator**:\n- Extends Iterator\n- Bidirectional traversal\n- Methods: hasPrevious(), previous()",
+    "code": "import java.util.*;\n\npublic class IteratorDemo {\n    public static void main(String[] args) {\n        // Basic Iterator\n        System.out.println(\"=== Basic Iterator ===\");\n        List<String> fruits = new ArrayList<>();\n        fruits.add(\"Apple\");\n        fruits.add(\"Banana\");\n        fruits.add(\"Orange\");\n        fruits.add(\"Grapes\");\n        \n        Iterator<String> it = fruits.iterator();\n        System.out.print(\"Iterating: \");\n        while (it.hasNext()) {\n            System.out.print(it.next() + \" \");\n        }\n        System.out.println();\n        \n        // Iterator with removal\n        System.out.println(\"\\n=== Iterator with Removal ===\");\n        List<Integer> numbers = new ArrayList<>();\n        for (int i = 1; i <= 10; i++) numbers.add(i);\n        System.out.println(\"Original: \" + numbers);\n        \n        Iterator<Integer> numIt = numbers.iterator();\n        while (numIt.hasNext()) {\n            int num = numIt.next();\n            if (num % 2 == 0) {\n                numIt.remove();  // Remove even numbers\n            }\n        }\n        System.out.println(\"After removing even: \" + numbers);\n        \n        // ListIterator\n        System.out.println(\"\\n=== ListIterator (Bidirectional) ===\");\n        List<String> names = new ArrayList<>();\n        names.add(\"Alice\");\n        names.add(\"Bob\");\n        names.add(\"Charlie\");\n        \n        ListIterator<String> listIt = names.listIterator();\n        System.out.print(\"Forward: \");\n        while (listIt.hasNext()) {\n            System.out.print(listIt.next() + \" \");\n        }\n        System.out.println();\n        \n        System.out.print(\"Backward: \");\n        while (listIt.hasPrevious()) {\n            System.out.print(listIt.previous() + \" \");\n        }\n        System.out.println();\n        \n        // Enhanced for loop (uses Iterator internally)\n        System.out.println(\"\\n=== Enhanced for loop ===\");\n        for (String name : names) {\n            System.out.print(name + \" \");\n        }\n        System.out.println();\n        \n        // Custom Iterable implementation\n        System.out.println(\"\\n=== Custom Iterable ===\");\n        MyCollection myCol = new MyCollection();\n        for (String item : myCol) {\n            System.out.print(item + \" \");\n        }\n        System.out.println();\n    }\n}\n\nclass MyCollection implements Iterable<String> {\n    private String[] data = {\"A\", \"B\", \"C\", \"D\"};\n    \n    @Override\n    public Iterator<String> iterator() {\n        return new Iterator<String>() {\n            int index = 0;\n            @Override\n            public boolean hasNext() {\n                return index < data.length;\n            }\n            @Override\n            public String next() {\n                return data[index++];\n            }\n        };\n    }\n}",
+    "output": "=== Basic Iterator ===\nIterating: Apple Banana Orange Grapes \n\n=== Iterator with Removal ===\nOriginal: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nAfter removing even: [1, 3, 5, 7, 9]\n\n=== ListIterator (Bidirectional) ===\nForward: Alice Bob Charlie \nBackward: Charlie Bob Alice \n\n=== Enhanced for loop ===\nAlice Bob Charlie \n\n=== Custom Iterable ===\nA B C D",
+    "explanation": "Iterators provide a uniform way to traverse collections safely.",
+    "commonMistakes": [
+      "Modifying collection while iterating (ConcurrentModificationException)",
+      "Not using hasNext() before next()",
+      "Using remove() without next() call"
+    ],
+    "relatedTopics": [
+      "Collections",
+      "Enhanced for loop"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 53,
+    "unitId": 6,
+    "topicId": 53,
+    "title": "Enhanced for Loop with Collections",
+    "slug": "enhanced-for-loop-with-collections",
+    "type": "Programming",
+    "difficulty": "Easy",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Enhanced for",
+      "Collections",
+      "Iteration"
+    ],
+    "question": "Write a Java program demonstrating enhanced for loop with different collections.",
+    "shortAnswer": "Enhanced for loop (for-each) simplifies iteration over arrays and collections.",
+    "detailedAnswer": "**Enhanced for loop**:\n- Syntax: `for (type var : collection) { }`\n- Works with arrays and Iterable\n- Simplifies code\n- Cannot modify collection\n\n**Benefits**:\n- No index management\n- No iterator object\n- Less verbose\n- Type-safe",
+    "code": "import java.util.*;\n\npublic class EnhancedForDemo {\n    public static void main(String[] args) {\n        // Array\n        System.out.println(\"=== Array ===\");\n        int[] numbers = {10, 20, 30, 40, 50};\n        for (int num : numbers) {\n            System.out.print(num + \" \");\n        }\n        System.out.println();\n        \n        // List\n        System.out.println(\"\\n=== List ===\");\n        List<String> fruits = Arrays.asList(\"Apple\", \"Banana\", \"Orange\");\n        for (String fruit : fruits) {\n            System.out.print(fruit + \" \");\n        }\n        System.out.println();\n        \n        // Set\n        System.out.println(\"\\n=== Set ===\");\n        Set<Integer> set = new HashSet<>(Arrays.asList(5, 3, 1, 4, 2));\n        for (int num : set) {\n            System.out.print(num + \" \");\n        }\n        System.out.println();\n        \n        // Map (entry iteration)\n        System.out.println(\"\\n=== Map ===\");\n        Map<String, Integer> map = new HashMap<>();\n        map.put(\"A\", 1);\n        map.put(\"B\", 2);\n        map.put(\"C\", 3);\n        \n        for (Map.Entry<String, Integer> entry : map.entrySet()) {\n            System.out.println(entry.getKey() + \" = \" + entry.getValue());\n        }\n        \n        // Custom object\n        System.out.println(\"\\n=== Custom Objects ===\");\n        List<Person> people = Arrays.asList(\n            new Person(\"Alice\", 25),\n            new Person(\"Bob\", 30),\n            new Person(\"Charlie\", 35)\n        );\n        \n        for (Person p : people) {\n            System.out.println(p.getName() + \": \" + p.getAge());\n        }\n    }\n}\n\nclass Person {\n    private String name;\n    private int age;\n    \n    Person(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n    \n    String getName() { return name; }\n    int getAge() { return age; }\n}",
+    "output": "=== Array ===\n10 20 30 40 50 \n\n=== List ===\nApple Banana Orange \n\n=== Set ===\n1 2 3 4 5 \n\n=== Map ===\nA = 1\nB = 2\nC = 3\n\n=== Custom Objects ===\nAlice: 25\nBob: 30\nCharlie: 35",
+    "explanation": "Enhanced for loop provides concise iteration for arrays and collections.",
+    "commonMistakes": [
+      "Modifying collection during iteration",
+      "Using enhanced for with non-Iterable",
+      "Not using Map.Entry for map iteration"
+    ],
+    "relatedTopics": [
+      "Iterators",
+      "Collections"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 54,
+    "unitId": 6,
+    "topicId": 54,
+    "title": "Wrapper Classes",
+    "slug": "wrapper-classes",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Wrapper Classes",
+      "Type Wrappers"
+    ],
+    "question": "What are wrapper classes in Java? Explain with examples.",
+    "shortAnswer": "Wrapper classes encapsulate primitive types as objects: Integer, Double, Boolean, etc.",
+    "detailedAnswer": "**Wrapper Classes**:\n\n| Primitive | Wrapper |\n|-----------|---------|\n| byte | Byte |\n| short | Short |\n| int | Integer |\n| long | Long |\n| float | Float |\n| double | Double |\n| char | Character |\n| boolean | Boolean |\n\n**Uses**:\n1. Collections (only objects)\n2. Generic types\n3. Utility methods\n4. Null values\n\n**Key Methods**:\n- parseXxx(): String to primitive\n- valueOf(): String/primitive to wrapper\n- xxxValue(): wrapper to primitive",
+    "code": "public class WrapperDemo {\n    public static void main(String[] args) {\n        // Creating wrappers\n        Integer intObj = Integer.valueOf(100);\n        Double doubleObj = Double.valueOf(3.14);\n        Boolean boolObj = Boolean.valueOf(true);\n        Character charObj = Character.valueOf('A');\n        \n        // Converting String to primitive\n        int intVal = Integer.parseInt(\"123\");\n        double doubleVal = Double.parseDouble(\"3.1415\");\n        boolean boolVal = Boolean.parseBoolean(\"true\");\n        \n        System.out.println(\"Integer object: \" + intObj);\n        System.out.println(\"Double object: \" + doubleObj);\n        System.out.println(\"Boolean object: \" + boolObj);\n        System.out.println(\"Character object: \" + charObj);\n        \n        System.out.println(\"\\nParsed int: \" + intVal);\n        System.out.println(\"Parsed double: \" + doubleVal);\n        System.out.println(\"Parsed boolean: \" + boolVal);\n        \n        // Utility methods\n        System.out.println(\"\\nInteger utilities:\");\n        System.out.println(\"Min: \" + Integer.MIN_VALUE);\n        System.out.println(\"Max: \" + Integer.MAX_VALUE);\n        System.out.println(\"Binary: \" + Integer.toBinaryString(10));\n        System.out.println(\"Hex: \" + Integer.toHexString(255));\n        System.out.println(\"Octal: \" + Integer.toOctalString(10));\n    }\n}",
+    "output": "Integer object: 100\nDouble object: 3.14\nBoolean object: true\nCharacter object: A\n\nParsed int: 123\nParsed double: 3.1415\nParsed boolean: true\n\nInteger utilities:\nMin: -2147483648\nMax: 2147483647\nBinary: 1010\nHex: ff\nOctal: 12",
+    "explanation": "Wrapper classes bridge primitive types and object-oriented features.",
+    "commonMistakes": [
+      "Using wrapper objects for performance-critical code",
+      "Null pointer exceptions with wrappers",
+      "Wrong parsing methods"
+    ],
+    "relatedTopics": [
+      "Autoboxing/Unboxing",
+      "Primitive Types"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 55,
+    "unitId": 6,
+    "topicId": 55,
+    "title": "Autoboxing and Unboxing",
+    "slug": "autoboxing-and-unboxing",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Autoboxing",
+      "Unboxing",
+      "Wrapper Classes"
+    ],
+    "question": "Explain autoboxing and unboxing in Java with examples.",
+    "shortAnswer": "Autoboxing automatically converts primitives to wrappers; unboxing converts wrappers to primitives.",
+    "detailedAnswer": "**Autoboxing**:\n- Automatic primitive → wrapper conversion\n- Compiler adds wrapper code\n- Examples: int → Integer, double → Double\n\n**Unboxing**:\n- Automatic wrapper → primitive conversion\n- Compiler adds unwrapping code\n- Examples: Integer → int, Double → double\n\n**Benefits**:\n- Simplifies code\n- Collections with primitives\n- Automatic conversions\n\n**When occurs**:\n- Method arguments\n- Assignments\n- Expressions",
+    "code": "import java.util.*;\n\npublic class AutoboxingDemo {\n    public static void main(String[] args) {\n        // Autoboxing\n        int primitiveInt = 100;\n        Integer wrapperInt = primitiveInt;  // Autoboxing\n        double primitiveDouble = 3.14;\n        Double wrapperDouble = primitiveDouble;  // Autoboxing\n        \n        System.out.println(\"Autoboxing:\");\n        System.out.println(\"int to Integer: \" + wrapperInt);\n        System.out.println(\"double to Double: \" + wrapperDouble);\n        \n        // Unboxing\n        Integer intWrapper = 200;\n        int unboxedInt = intWrapper;  // Unboxing\n        Double doubleWrapper = 2.718;\n        double unboxedDouble = doubleWrapper;  // Unboxing\n        \n        System.out.println(\"\\nUnboxing:\");\n        System.out.println(\"Integer to int: \" + unboxedInt);\n        System.out.println(\"Double to double: \" + unboxedDouble);\n        \n        // Autoboxing in collections\n        List<Integer> numbers = new ArrayList<>();\n        numbers.add(10);  // Autoboxing int to Integer\n        numbers.add(20);\n        numbers.add(30);\n        \n        int sum = 0;\n        for (int num : numbers) {  // Unboxing Integer to int\n            sum += num;\n        }\n        System.out.println(\"\\nSum: \" + sum);\n        \n        // Autoboxing in expressions\n        Integer a = 5;\n        Integer b = 3;\n        Integer result = a + b;  // Unboxing, addition, autoboxing\n        System.out.println(\"5 + 3 = \" + result);\n        \n        // Autoboxing in method calls\n        printNumber(42);  // Autoboxing\n        printNumber(3.14);  // Autoboxing\n        \n        // Potential issues\n        Integer nullWrapper = null;\n        try {\n            int nullInt = nullWrapper;  // NullPointerException\n        } catch (NullPointerException e) {\n            System.out.println(\"\\nUnboxing null throws NullPointerException\");\n        }\n    }\n    \n    static void printNumber(Integer n) {\n        System.out.println(\"Number: \" + n);\n    }\n}",
+    "output": "Autoboxing:\nint to Integer: 100\ndouble to Double: 3.14\n\nUnboxing:\nInteger to int: 200\nDouble to double: 2.718\n\nSum: 60\n5 + 3 = 8\nNumber: 42\nNumber: 3\n\nUnboxing null throws NullPointerException",
+    "explanation": "Autoboxing and unboxing simplify working with primitives in object-oriented contexts.",
+    "commonMistakes": [
+      "NullPointerException from unboxing null",
+      "Performance implications in loops",
+      "Comparing wrapper objects with == vs equals()"
+    ],
+    "relatedTopics": [
+      "Wrapper Classes",
+      "Collections"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  }
+]

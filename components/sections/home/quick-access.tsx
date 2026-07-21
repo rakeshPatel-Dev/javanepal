@@ -2,13 +2,14 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Search, Bookmark, BarChart3, ArrowRight } from "lucide-react"
+import { Search, Bookmark, BarChart3, GraduationCap, ArrowRight } from "lucide-react"
 
 export default function QuickAccess() {
   const links = [
     { to: "/search", icon: Search, label: "Search Questions", desc: "Find any question instantly", color: "bg-blue-500/10 text-blue-600 dark:text-blue-400" },
     { to: "/bookmarks", icon: Bookmark, label: "My Bookmarks", desc: "Review saved questions", color: "bg-amber-500/10 text-amber-600 dark:text-amber-400" },
     { to: "/units", icon: BarChart3, label: "All Units", desc: "Complete curriculum overview", color: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400" },
+    { to: "/syllabus", icon: GraduationCap, label: "View Syllabus", desc: "Full course structure", color: "bg-violet-500/10 text-violet-600 dark:text-violet-400" },
   ]
 
   return (
@@ -17,7 +18,7 @@ export default function QuickAccess() {
         <div className="flex items-center gap-2 mb-6">
           <span className="text-xs font-bold text-muted-foreground uppercase tracking-[0.15em]">Quick Navigation</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {links.map(({ to, icon: Icon, label, desc, color }, i) => (
             <motion.div key={to} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06, duration: 0.4 }}>
               <Link href={to} className="group flex items-center gap-4 p-5 bg-card border border-border rounded-2xl hover:border-primary/40 hover:shadow-md transition-all duration-300">

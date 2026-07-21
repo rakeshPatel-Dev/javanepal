@@ -1,0 +1,428 @@
+[
+  {
+    "id": 9,
+    "unitId": 2,
+    "topicId": 9,
+    "title": "Comments and Data Types",
+    "slug": "comments-and-data-types",
+    "type": "Theory",
+    "difficulty": "Easy",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Comments",
+      "Data Types",
+      "Primitive"
+    ],
+    "question": "What are the primitive data types in Java? Explain with their sizes.",
+    "shortAnswer": "Java has 8 primitive data types: byte, short, int, long, float, double, char, boolean.",
+    "detailedAnswer": "**Primitive Data Types:**\n\n1. **byte**: 1 byte, -128 to 127\n2. **short**: 2 bytes, -32,768 to 32,767\n3. **int**: 4 bytes, -2^31 to 2^31-1\n4. **long**: 8 bytes, -2^63 to 2^63-1\n5. **float**: 4 bytes, ~3.4e-38 to ~3.4e+38\n6. **double**: 8 bytes, ~1.7e-308 to ~1.7e+308\n7. **char**: 2 bytes, '\\u0000' to '\\uffff'\n8. **boolean**: 1 bit, true or false\n\n**Comments in Java**:\n- Single-line: //\n- Multi-line: /* */\n- Documentation: /** */",
+    "code": "// Demonstrating primitive data types\npublic class DataTypes {\n    public static void main(String[] args) {\n        byte b = 100;\n        int i = 1000;\n        double d = 3.14;\n        char c = 'A';\n        boolean flag = true;\n        System.out.println(\"byte: \" + b + \", int: \" + i + \", double: \" + d);\n        System.out.println(\"char: \" + c + \", boolean: \" + flag);\n    }\n}",
+    "output": "byte: 100, int: 1000, double: 3.14\nchar: A, boolean: true",
+    "explanation": "Each primitive type has specific size and range for memory efficiency.",
+    "commonMistakes": [
+      "Using wrong suffixes (L for long, f for float)",
+      "Exceeding range limits"
+    ],
+    "relatedTopics": [
+      "Variables",
+      "Type Conversion"
+    ],
+    "previousYear": [
+      "2025",
+      "2024",
+      "2023"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "A",
+      "marks": 5
+    }
+  },
+  {
+    "id": 10,
+    "unitId": 2,
+    "topicId": 10,
+    "title": "Type Conversion and Casting",
+    "slug": "type-conversion-and-casting",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Type Conversion",
+      "Casting",
+      "Data Types"
+    ],
+    "question": "Write a Java program to demonstrate type conversion and casting between different data types.",
+    "shortAnswer": "Widening (implicit) and narrowing (explicit) casting with examples.",
+    "detailedAnswer": "**Type Conversion Types:**\n\n1. **Widening (Implicit)**:\n   - Automatic conversion\n   - Smaller to larger type\n   - No data loss\n   - byte → short → int → long → float → double\n\n2. **Narrowing (Explicit)**:\n   - Manual casting required\n   - Larger to smaller type\n   - Potential data loss\n   - Syntax: (type) value",
+    "code": "public class TypeConversionDemo {\n    public static void main(String[] args) {\n        // Widening (Implicit)\n        int intVal = 100;\n        long longVal = intVal;\n        double doubleVal = longVal;\n        System.out.println(\"Widening: int(\" + intVal + \") → long(\" + longVal + \") → double(\" + doubleVal + \")\");\n        \n        // Narrowing (Explicit)\n        double d = 123.456;\n        int i = (int) d;\n        byte b = (byte) d;\n        System.out.println(\"Narrowing: double(\" + d + \") → int(\" + i + \") → byte(\" + b + \")\");\n    }\n}",
+    "output": "Widening: int(100) → long(100) → double(100.0)\nNarrowing: double(123.456) → int(123) → byte(123)",
+    "explanation": "Understanding type conversion prevents data loss and runtime errors.",
+    "commonMistakes": [
+      "Data loss during narrowing",
+      "Not using casting syntax correctly"
+    ],
+    "relatedTopics": [
+      "Data Types",
+      "Operators"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 11,
+    "unitId": 2,
+    "topicId": 11,
+    "title": "Operators and Precedence",
+    "slug": "operators-and-precedence",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Operators",
+      "Precedence",
+      "Arithmetic",
+      "Logical"
+    ],
+    "question": "Explain different types of operators in Java with examples.",
+    "shortAnswer": "Java has Arithmetic, Relational, Logical, Bitwise, Assignment, and Conditional operators.",
+    "detailedAnswer": "**Operator Types:**\n\n1. **Arithmetic**: +, -, *, /, %\n2. **Relational**: ==, !=, >, <, >=, <=\n3. **Logical**: &&, ||, ! (short-circuit)\n4. **Bitwise**: &, |, ^, ~, <<, >>\n5. **Assignment**: =, +=, -=, *=, /=\n6. **Conditional**: ? : (ternary)\n\n**Precedence (highest to lowest)**:\n1. Postfix: ++, --\n2. Unary: +, -, !, ~\n3. Multiplicative: *, /, %\n4. Additive: +, -\n5. Relational: >, <, >=, <=\n6. Equality: ==, !=",
+    "code": "public class OperatorsDemo {\n    public static void main(String[] args) {\n        int a = 10, b = 5;\n        System.out.println(\"a + b = \" + (a + b));\n        System.out.println(\"a > b: \" + (a > b));\n        System.out.println(\"a == 10 && b < 10: \" + (a == 10 && b < 10));\n    }\n}",
+    "output": "a + b = 15\na > b: true\na == 10 && b < 10: true",
+    "explanation": "Operators perform operations on data; precedence determines evaluation order.",
+    "commonMistakes": [
+      "Confusing = and == operators",
+      "Not understanding short-circuit evaluation"
+    ],
+    "relatedTopics": [
+      "Control Statements",
+      "Expressions"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 12,
+    "unitId": 2,
+    "topicId": 12,
+    "title": "Control Statements (if, switch)",
+    "slug": "control-statements-if-switch",
+    "type": "Programming",
+    "difficulty": "Easy",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "if",
+      "switch",
+      "Control Flow"
+    ],
+    "question": "Write a Java program using if-else-if and switch statements to find the grade of a student based on marks.",
+    "shortAnswer": "Use if-else-if for ranges and switch for discrete values.",
+    "detailedAnswer": "**if-else-if**: Used for range conditions\n**switch**: Used for discrete value matching\n\n**Grade Calculation**:\n- >= 90: A\n- >= 75: B\n- >= 60: C\n- >= 40: D\n- < 40: Fail",
+    "code": "import java.util.Scanner;\npublic class GradeDemo {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        System.out.print(\"Enter marks: \");\n        int marks = sc.nextInt();\n        \n        // if-else-if\n        char grade;\n        if (marks >= 90) grade = 'A';\n        else if (marks >= 75) grade = 'B';\n        else if (marks >= 60) grade = 'C';\n        else if (marks >= 40) grade = 'D';\n        else grade = 'F';\n        System.out.println(\"Grade: \" + grade);\n        \n        // switch (based on grade)\n        switch (grade) {\n            case 'A': System.out.println(\"Excellent!\"); break;\n            case 'B': System.out.println(\"Good!\"); break;\n            case 'C': System.out.println(\"Average!\"); break;\n            case 'D': System.out.println(\"Below Average!\"); break;\n            case 'F': System.out.println(\"Failed!\"); break;\n        }\n        sc.close();\n    }\n}",
+    "output": "Enter marks: 85\nGrade: B\nGood!",
+    "explanation": "if-else-if handles ranges, switch handles specific values.",
+    "commonMistakes": [
+      "Forgetting break in switch",
+      "Using assignment (=) instead of equality (==)"
+    ],
+    "relatedTopics": [
+      "Loops",
+      "Decision Making"
+    ],
+    "previousYear": [
+      "2025",
+      "2024",
+      "2023"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 13,
+    "unitId": 2,
+    "topicId": 13,
+    "title": "Loops",
+    "slug": "loops",
+    "type": "Programming",
+    "difficulty": "Easy",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Loops",
+      "for",
+      "while",
+      "do-while"
+    ],
+    "question": "Write a Java program demonstrating for, while, do-while, and enhanced for loops.",
+    "shortAnswer": "for: known iterations, while: unknown iterations, do-while: executes at least once, enhanced for: collections/arrays.",
+    "detailedAnswer": "**Loop Types**:\n\n1. **for**: `for(init; condition; update) { }`\n2. **while**: `while(condition) { }`\n3. **do-while**: `do { } while(condition);`\n4. **Enhanced for**: `for(type var : collection) { }`",
+    "code": "public class LoopsDemo {\n    public static void main(String[] args) {\n        System.out.print(\"for: \");\n        for (int i = 1; i <= 5; i++) System.out.print(i + \" \");\n        \n        System.out.print(\"\\nwhile: \");\n        int j = 1;\n        while (j <= 5) { System.out.print(j + \" \"); j++; }\n        \n        System.out.print(\"\\ndo-while: \");\n        int k = 1;\n        do { System.out.print(k + \" \"); k++; } while (k <= 5);\n        \n        System.out.print(\"\\nenhanced for: \");\n        int[] arr = {1, 2, 3, 4, 5};\n        for (int num : arr) System.out.print(num + \" \");\n    }\n}",
+    "output": "for: 1 2 3 4 5 \nwhile: 1 2 3 4 5 \ndo-while: 1 2 3 4 5 \nenhanced for: 1 2 3 4 5",
+    "explanation": "Different loops serve different iteration requirements.",
+    "commonMistakes": [
+      "Infinite loops (missing update)",
+      "Off-by-one errors"
+    ],
+    "relatedTopics": [
+      "Jump Statements",
+      "Arrays"
+    ],
+    "previousYear": [
+      "2025",
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 14,
+    "unitId": 2,
+    "topicId": 14,
+    "title": "Jump Statements",
+    "slug": "jump-statements",
+    "type": "Theory",
+    "difficulty": "Easy",
+    "examFrequency": "Medium",
+    "marks": 5,
+    "estimatedTime": 8,
+    "isProgramming": false,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "break",
+      "continue",
+      "return"
+    ],
+    "question": "Explain break, continue, and return statements with examples.",
+    "shortAnswer": "break exits loop, continue skips iteration, return exits method.",
+    "detailedAnswer": "**Jump Statements**:\n\n1. **break**:\n   - Exits loop or switch\n   - Control goes to next statement\n\n2. **continue**:\n   - Skips current iteration\n   - Continues with next iteration\n\n3. **return**:\n   - Exits method\n   - Returns value to caller",
+    "code": "public class JumpDemo {\n    public static void main(String[] args) {\n        // break\n        for (int i = 1; i <= 5; i++) {\n            if (i == 3) break;\n            System.out.print(i + \" \");\n        }\n        System.out.println(\"(break at 3)\");\n        \n        // continue\n        for (int i = 1; i <= 5; i++) {\n            if (i == 3) continue;\n            System.out.print(i + \" \");\n        }\n        System.out.println(\"(skipped 3)\");\n        \n        // return\n        System.out.println(\"Before return\");\n        return; // exits method\n        // System.out.println(\"After return\"); // unreachable\n    }\n}",
+    "output": "1 2 (break at 3)\n1 2 4 5 (skipped 3)\nBefore return",
+    "explanation": "Jump statements control the flow of execution in loops and methods.",
+    "commonMistakes": [
+      "Using break when continue is needed",
+      "Return in void method with no value"
+    ],
+    "relatedTopics": [
+      "Loops",
+      "Methods"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 15,
+    "unitId": 2,
+    "topicId": 15,
+    "title": "BigInteger and BigDecimal",
+    "slug": "biginteger-and-bigdecimal",
+    "type": "Theory",
+    "difficulty": "Medium",
+    "examFrequency": "Low",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": false,
+    "isImportant": false,
+    "isRepeated": false,
+    "tags": [
+      "BigInteger",
+      "BigDecimal",
+      "Arithmetic"
+    ],
+    "question": "Explain the use of BigInteger and BigDecimal classes in Java.",
+    "shortAnswer": "BigInteger handles large integers, BigDecimal handles precise decimal calculations.",
+    "detailedAnswer": "**BigInteger**:\n- Arbitrary precision integers\n- Exceeds primitive type limits\n- Methods: add(), subtract(), multiply(), divide()\n- Useful for cryptography and large numbers\n\n**BigDecimal**:\n- Arbitrary precision decimals\n- No floating-point errors\n- Scale management and rounding modes\n- Essential for financial calculations\n\n**Key Differences**:\n- BigInteger: integers\n- BigDecimal: decimals with precision",
+    "code": "import java.math.*;\npublic class BigNumbers {\n    public static void main(String[] args) {\n        BigInteger bi = new BigInteger(\"12345678901234567890\");\n        System.out.println(\"BigInteger: \" + bi.multiply(new BigInteger(\"2\")));\n        \n        BigDecimal bd = new BigDecimal(\"0.1\").add(new BigDecimal(\"0.2\"));\n        System.out.println(\"BigDecimal (exact): \" + bd);\n        // vs double: 0.1 + 0.2 = 0.30000000000000004\n    }\n}",
+    "output": "BigInteger: 24691357802469135780\nBigDecimal (exact): 0.3",
+    "explanation": "BigInteger and BigDecimal provide precision beyond primitive types.",
+    "commonMistakes": [
+      "Using double constructor for BigDecimal",
+      "Not handling division with scale"
+    ],
+    "relatedTopics": [
+      "Wrapper Classes",
+      "Math Class"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 16,
+    "unitId": 2,
+    "topicId": 16,
+    "title": "Arrays (1D and 2D)",
+    "slug": "arrays-1d-and-2d",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Arrays",
+      "1D",
+      "2D",
+      "Matrix"
+    ],
+    "question": "Write a Java program to create and manipulate one-dimensional and two-dimensional arrays.",
+    "shortAnswer": "1D array: type[] name = new type[size]; 2D array: type[][] name = new type[rows][cols];",
+    "detailedAnswer": "**1D Array**:\n- Store elements in a single row\n- Access: arr[index]\n- Length: arr.length\n\n**2D Array**:\n- Array of arrays (matrix)\n- Access: arr[row][col]\n- Rows: arr.length, Columns: arr[row].length",
+    "code": "public class ArrayDemo {\n    public static void main(String[] args) {\n        // 1D Array\n        int[] arr = {10, 20, 30, 40, 50};\n        System.out.println(\"1D Array:\");\n        for (int i = 0; i < arr.length; i++) {\n            System.out.print(arr[i] + \" \");\n        }\n        \n        // 2D Array\n        int[][] matrix = {{1,2,3}, {4,5,6}, {7,8,9}};\n        System.out.println(\"\\n\\n2D Array (Matrix):\");\n        for (int i = 0; i < matrix.length; i++) {\n            for (int j = 0; j < matrix[i].length; j++) {\n                System.out.print(matrix[i][j] + \" \");\n            }\n            System.out.println();\n        }\n    }\n}",
+    "output": "1D Array:\n10 20 30 40 50 \n\n2D Array (Matrix):\n1 2 3 \n4 5 6 \n7 8 9",
+    "explanation": "Arrays store multiple elements of the same type in contiguous memory.",
+    "commonMistakes": [
+      "IndexOutOfBounds errors",
+      "Using wrong dimensions for 2D arrays"
+    ],
+    "relatedTopics": [
+      "Passing Arrays",
+      "Multidimensional Arrays"
+    ],
+    "previousYear": [
+      "2025",
+      "2024",
+      "2023"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  },
+  {
+    "id": 17,
+    "unitId": 2,
+    "topicId": 17,
+    "title": "Passing Arrays to Methods",
+    "slug": "passing-arrays-to-methods",
+    "type": "Programming",
+    "difficulty": "Medium",
+    "examFrequency": "High",
+    "marks": 5,
+    "estimatedTime": 10,
+    "isProgramming": true,
+    "isImportant": true,
+    "isRepeated": true,
+    "tags": [
+      "Arrays",
+      "Methods",
+      "Passing"
+    ],
+    "question": "Write a Java program to demonstrate passing arrays to methods.",
+    "shortAnswer": "Arrays are passed by reference, so modifications in method affect original array.",
+    "detailedAnswer": "**Passing Arrays**:\n- Arrays are objects\n- Passed by reference\n- Changes inside method affect original\n- Return new array if modification should not affect original",
+    "code": "public class PassArrayDemo {\n    public static void main(String[] args) {\n        int[] numbers = {1, 2, 3, 4, 5};\n        System.out.print(\"Original: \");\n        printArray(numbers);\n        \n        modifyArray(numbers);\n        System.out.print(\"After modify: \");\n        printArray(numbers);\n        \n        int[] squared = squareArray(numbers);\n        System.out.print(\"Squared: \");\n        printArray(squared);\n        System.out.print(\"Original unchanged: \");\n        printArray(numbers);\n    }\n    \n    public static void printArray(int[] arr) {\n        for (int num : arr) System.out.print(num + \" \");\n        System.out.println();\n    }\n    \n    public static void modifyArray(int[] arr) {\n        for (int i = 0; i < arr.length; i++) {\n            arr[i] = arr[i] * 2;\n        }\n    }\n    \n    public static int[] squareArray(int[] arr) {\n        int[] result = new int[arr.length];\n        for (int i = 0; i < arr.length; i++) {\n            result[i] = arr[i] * arr[i];\n        }\n        return result;\n    }\n}",
+    "output": "Original: 1 2 3 4 5 \nAfter modify: 2 4 6 8 10 \nSquared: 4 16 36 64 100 \nOriginal unchanged: 2 4 6 8 10",
+    "explanation": "Arrays are passed by reference, enabling modifications and returning new arrays.",
+    "commonMistakes": [
+      "Not understanding pass by reference",
+      "Modifying original array when not intended"
+    ],
+    "relatedTopics": [
+      "Arrays",
+      "Methods"
+    ],
+    "previousYear": [
+      "2024"
+    ],
+    "references": [
+      "Java: The Complete Reference - Herbert Schildt"
+    ],
+    "source": {
+      "type": "Model Question",
+      "year": 2026,
+      "group": "B",
+      "marks": 5
+    }
+  }
+]

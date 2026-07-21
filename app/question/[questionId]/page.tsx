@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useMemo, useState, useEffect } from "react"
 import { useParams } from "next/navigation"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
@@ -17,11 +17,15 @@ import { CompletedButton } from "@/components/common/completed-button"
 import { CodeBlock } from "@/components/common/code-block"
 import { EmptyState } from "@/components/common/empty-state"
 import { getQuestionById, getTopicById, getUnitById, getQuestions } from "@/lib/data"
+import { loadQuestionById } from "@/lib/question-loader"
 import { useTracking } from "@/hooks/use-tracking"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { TYPE_COLORS } from "@/lib/types"
+import { TYPE_COLORS, type Question } from "@/lib/types"
+import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema"
+import { FAQSchema } from "@/components/seo/faq-schema"
+import { PersonSchema } from "@/components/seo/person-schema"
 
 function renderAnswer(text: string) {
   if (!text) return null
@@ -41,27 +45,44 @@ function renderAnswer(text: string) {
 
 export default function QuestionPage() {
   const { questionId } = useParams<{ questionId: string }>()
-  const question = useMemo(() => getQuestionById(questionId!), [questionId])
-  const topic = useMemo(() => (question ? getTopicById(question.topicId) : null), [question])
+  const indexEntry = useMemo(() => getQuestionById(questionId!), [questionId])
+  const [question, setQuestion] = useState<Question | null>(null)
+  const topic = useMemo(() => (indexEntry ? getTopicById(indexEntry.topicId) : null), [indexEntry])
   const unit = useMemo(() => (topic ? getUnitById(topic.unitId) : null), [topic])
 
   const allQuestions = useMemo(() => getQuestions(), [])
   const topicQuestions = useMemo(
-    () => (question ? allQuestions.filter((q) => q.topicId === question.topicId) : []),
-    [allQuestions, question],
+    () => (indexEntry ? allQuestions.filter((q) => q.topicId === indexEntry.topicId) : []),
+    [allQuestions, indexEntry],
   )
 
-  const currentIdx = topicQuestions.findIndex((q) => q.id === question?.id)
+  const currentIdx = topicQuestions.findIndex((q) => q.id === indexEntry?.id)
   const prevQ = currentIdx > 0 ? topicQuestions[currentIdx - 1] : null
   const nextQ = currentIdx < topicQuestions.length - 1 ? topicQuestions[currentIdx + 1] : null
 
   const [answerVisible, setAnswerVisible] = useState(false)
   const { isBookmarked, toggleBookmark, isCompleted, toggleCompleted } = useTracking()
 
-  if (!question) {
+  useEffect(() => {
+    if (!indexEntry) return
+    loadQuestionById(indexEntry.id).then(setQuestion)
+  }, [indexEntry])
+
+  if (!indexEntry) {
     return (
       <div className="pb-16 min-h-screen flex items-center justify-center">
         <EmptyState icon={HelpCircle} title="Question not found" description="This question does not exist." />
+      </div>
+    )
+  }
+
+  if (!question) {
+    return (
+      <div className="pb-16 min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-6 h-6 border-2 border-primary/30 border-t-primary rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-sm text-muted-foreground">Loading question...</p>
+        </div>
       </div>
     )
   }
@@ -80,6 +101,28 @@ export default function QuestionPage() {
                 ...(topic ? [{ label: topic.title, href: `/topic/${topic.slug || topic.id}` }] : []),
                 { label: `Q${question.id}` },
               ]}
+            />
+            <BreadcrumbSchema
+              items={[
+                { name: "Home", url: "https://javanepal.vercel.app" },
+                { name: "Units", url: "https://javanepal.vercel.app/units" },
+                ...(unit ? [{ name: unit.title, url: `https://javanepal.vercel.app/unit/${unit.slug || unit.id}` }] : []),
+                ...(topic ? [{ name: topic.title, url: `https://javanepal.vercel.app/topic/${topic.slug || topic.id}` }] : []),
+                { name: `Q${question.id}: ${question.title}`, url: `https://javanepal.vercel.app/question/${question.slug || question.id}` },
+              ]}
+            />
+            <FAQSchema
+              questions={[{
+                question: question.title,
+                answer: question.shortAnswer,
+              }]}
+              datePublished={question.source?.year ? `${question.source.year}-01-01` : undefined}
+            />
+            <PersonSchema
+              name="Rakesh Patel"
+              url="https://rakeshpatel.me"
+              jobTitle="Developer & Content Curator"
+              description="Creator of JavaNepal — a curated Java OOP question bank for BITM 2nd Semester students."
             />
 
             <div className="space-y-4">
@@ -215,7 +258,15 @@ export default function QuestionPage() {
                     <div className="flex flex-wrap gap-1.5 pt-2 items-center">
                       <TagIcon className="w-4 h-4 text-muted-foreground shrink-0" />
                       <span className="text-xs font-bold text-muted-foreground mr-1">Related:</span>
-                      {(question.relatedTopics ?? []).map((t) => <Tag key={t} name={t} />)}
+                      {(question.relatedTopics ?? []).map((t) => (
+                        <Link
+                          key={t}
+                          href={`/search?q=${encodeURIComponent(t)}`}
+                          className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium border border-border/80 bg-muted/40 text-muted-foreground hover:bg-accent hover:text-accent-foreground hover:border-primary/30 transition-all duration-200"
+                        >
+                          {t}
+                        </Link>
+                      ))}
                     </div>
                   )}
                 </motion.div>
@@ -252,6 +303,12 @@ export default function QuestionPage() {
                     <div className="flex justify-between items-center py-2 border-b border-border/60 text-sm">
                       <span className="text-muted-foreground font-semibold">Exam Frequency</span>
                       <span className="font-bold text-primary font-mono">{question.examFrequency}</span>
+                    </div>
+                  )}
+                  {question.source?.year && (
+                    <div className="flex justify-between items-center py-2 border-b border-border/60 text-sm">
+                      <span className="text-muted-foreground font-semibold">Last Updated</span>
+                      <span className="font-bold text-foreground font-mono">{question.source.year}</span>
                     </div>
                   )}
                   <div className="flex justify-between items-center py-2 text-sm">
