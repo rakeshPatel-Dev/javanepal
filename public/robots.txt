@@ -5,6 +5,7 @@ Allow: /topic/
 Allow: /search
 Allow: /bookmarks
 Allow: /about
+Allow: /syllabus
 Disallow: /_next/
 Disallow: /api/
 
