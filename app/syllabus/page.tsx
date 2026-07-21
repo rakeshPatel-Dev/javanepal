@@ -15,6 +15,8 @@ import {
   ExternalLink,
   ChevronRight,
   BookMarked,
+  Download,
+  FileText,
 } from "lucide-react"
 import { Container } from "@/components/common/container"
 import { Badge } from "@/components/ui/badge"
@@ -94,6 +96,18 @@ export default function SyllabusPage() {
                 <Clock className="w-3.5 h-3.5 text-primary" />
                 {syllabus.lectureHours} Hours
               </Badge>
+            </MotionDiv>
+
+            <MotionDiv {...fadeUp(0.28)}>
+              <a
+                href="/docs/OOP%20with%20Java%20Syllabus.pdf"
+                download
+                className="inline-flex items-center gap-2.5 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-bold shadow-lg shadow-primary/25 hover:brightness-110 hover:scale-[1.02] transition-all text-sm group"
+              >
+                <FileText className="w-4.5 h-4.5" />
+                Download Syllabus PDF
+                <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+              </a>
             </MotionDiv>
           </div>
         </Container>
@@ -322,6 +336,14 @@ export default function SyllabusPage() {
                 Start Practicing
                 <ChevronRight className="w-4 h-4" />
               </Link>
+              <a
+                href="/docs/OOP%20with%20Java%20Syllabus.pdf"
+                download
+                className="px-6 py-2.5 bg-transparent border border-background/20 dark:border-border text-background dark:text-foreground rounded-xl font-bold hover:bg-background/5 transition-all text-sm inline-flex items-center gap-2"
+              >
+                <Download className="w-3.5 h-3.5" />
+                Download PDF
+              </a>
               <Link
                 href="/search"
                 className="px-6 py-2.5 bg-transparent border border-background/20 dark:border-border text-background dark:text-foreground rounded-xl font-bold hover:bg-background/5 transition-all text-sm inline-flex items-center gap-2"
