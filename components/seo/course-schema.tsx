@@ -11,6 +11,15 @@ export function CourseSchema() {
       name: "JavaNepal",
       sameAs: "https://javanepal.vercel.app",
     },
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: "Online",
+      courseSchedule: {
+        "@type": "Schedule",
+        repeatFrequency: "Semester",
+      },
+    },
+    url: "https://javanepal.vercel.app/syllabus",
   }
   return <JsonLd data={data} />
 }

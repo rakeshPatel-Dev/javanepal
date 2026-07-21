@@ -54,6 +54,12 @@
       "short_name": "Bookmarks",
       "description": "Bookmarked questions",
       "url": "/bookmarks"
+    },
+    {
+      "name": "Syllabus",
+      "short_name": "Syllabus",
+      "description": "Full course syllabus",
+      "url": "/syllabus"
     }
   ]
 }
