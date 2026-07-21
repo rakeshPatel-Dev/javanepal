@@ -1,6 +1,6 @@
 import Link from "next/link"
 import {
-   BookOpen, Search, Bookmark, Info, Heart, ExternalLink, MessageCircle,
+   BookOpen, Search, Bookmark, Info, Heart, ExternalLink, MessageCircle, MessageSquare,
 } from "lucide-react"
 import { Container } from "@/components/common/container"
 import { Logo } from "@/components/common/logo"
@@ -41,6 +41,7 @@ export function Footer() {
                 { href: "/units", label: "All Units", icon: BookOpen },
                 { href: "/search", label: "Search", icon: Search },
                 { href: "/bookmarks", label: "Bookmarks", icon: Bookmark },
+                { href: "/feedback", label: "Feedback", icon: MessageSquare },
                 { href: "/about", label: "About", icon: Info },
               ].map(({ href, label, icon: Icon }) => (
                 <li key={href}>

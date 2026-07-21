@@ -6,7 +6,7 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   ChevronLeft, ChevronRight, Eye, EyeOff, Clock, Star,
-  BookOpen, AlertCircle, Tag as TagIcon, HelpCircle, Sparkles,
+  BookOpen, AlertCircle, Tag as TagIcon, HelpCircle, Sparkles, MessageSquare,
 } from "lucide-react"
 import { Container } from "@/components/common/container"
 import { Breadcrumb } from "@/components/common/breadcrumb"
@@ -383,16 +383,17 @@ export default function QuestionPage() {
             )}
 
             <div className="p-5 bg-secondary border border-border/80 rounded-2xl text-foreground">
-              <span className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-1">
-                PRO MEMBERSHIP
+              <span className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-1 flex items-center gap-1.5">
+                <MessageSquare className="size-3" />
+                FEEDBACK
               </span>
               <p className="text-xs text-muted-foreground leading-relaxed mb-4">
-                Unlock full access to 500+ syllabus questions, capstones, and expert videos.
+                Help improve JavaNepal. Report bugs, suggest questions, or share your thoughts.
               </p>
               <Button
                 className="w-full bg-primary text-primary-foreground font-bold py-2 rounded-xl text-xs hover:opacity-95 transition-all h-9 cursor-pointer"
                 nativeButton={false}
-                render={<Link href="/about">Upgrade to Pro</Link>}
+                render={<Link href="/feedback">Send Feedback</Link>}
               />
             </div>
           </aside>

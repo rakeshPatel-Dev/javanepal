@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 import {
   BookOpen, Search, Bookmark, Info,
   Menu, X, Code2, ChevronRight,
-  Zap, Home,
+  Zap, Home, MessageSquare,
 } from "lucide-react"
 import { Container } from "@/components/common/container"
 import { AnimatedThemeToggler } from "@/components/common/animated-theme-toggler"
@@ -18,6 +18,7 @@ const NAV_LINKS = [
   { href: "/units", label: "Units", icon: BookOpen },
   { href: "/search", label: "Search", icon: Search },
   { href: "/bookmarks", label: "Bookmarks", icon: Bookmark },
+  { href: "/feedback", label: "Feedback", icon: MessageSquare },
   { href: "/about", label: "About", icon: Info },
 ]
 

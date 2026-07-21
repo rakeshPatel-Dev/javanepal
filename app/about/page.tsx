@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, BookOpen, Layers, HelpCircle, Search, Bookmark, Database, Globe, Target, Code2, Heart, ExternalLink, GraduationCap } from "lucide-react"
+import { ArrowRight, BookOpen, Layers, HelpCircle, Search, Bookmark, Database, Globe, Target, Code2, Heart, ExternalLink, GraduationCap, MessageSquare } from "lucide-react"
 import { getGlobalStats } from "@/lib/data"
 import { MotionDiv } from "@/components/common/motion-div"
 import { PersonSchema } from "@/components/seo/person-schema"
@@ -258,6 +258,29 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background border-b border-border">
+        <div className="max-w-6xl mx-auto text-center">
+          <MotionDiv {...fadeUp(0)} className="flex flex-col items-center gap-4">
+            <div className="size-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+              <MessageSquare className="size-6 text-primary" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black text-foreground tracking-tight">
+              Have Feedback?
+            </h2>
+            <p className="text-sm text-muted-foreground max-w-md leading-relaxed">
+              Found a bug? Have a suggestion? I&rsquo;d love to hear from you.
+            </p>
+            <Link
+              href="/feedback"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-bold hover:brightness-110 transition-all text-sm shadow-lg shadow-primary/20"
+            >
+              <MessageSquare className="size-4" />
+              Share Feedback
+            </Link>
+          </MotionDiv>
         </div>
       </section>
 
