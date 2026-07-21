@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function FeedbackPage() {
   return (
-    <div className="min-h-dvh py-8 sm:py-12 lg:py-16">
+    <div className="min-h-dvh py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">
         <PageHeader
           title="Feedback"
