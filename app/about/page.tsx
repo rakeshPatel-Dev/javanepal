@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, BookOpen, Layers, HelpCircle, Search, Bookmark, Database, Globe, Target, Code2, Heart, ExternalLink } from "lucide-react"
+import { ArrowRight, BookOpen, Layers, HelpCircle, Search, Bookmark, Database, Globe, Target, Code2, Heart, ExternalLink, GraduationCap } from "lucide-react"
 import { getGlobalStats } from "@/lib/data"
 import { MotionDiv } from "@/components/common/motion-div"
 import { PersonSchema } from "@/components/seo/person-schema"
@@ -93,13 +93,20 @@ export default function AboutPage() {
             Programming with Java. Browse, search, and track your revision progress — all offline.
           </MotionDiv>
 
-          <MotionDiv {...fadeUp(0.22)}>
+          <MotionDiv {...fadeUp(0.22)} className="flex flex-col sm:flex-row items-center gap-3">
             <Link
               href="/units"
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground rounded-xl font-bold shadow-lg shadow-primary/20 hover:brightness-105 hover:-translate-y-0.5 transition-all text-sm"
             >
               Explore the Curriculum
               <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/syllabus"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-card text-foreground border border-border rounded-xl font-bold hover:bg-secondary hover:border-primary/30 hover:-translate-y-0.5 transition-all text-sm shadow-xs"
+            >
+              <GraduationCap className="w-4 h-4" />
+              View Syllabus
             </Link>
           </MotionDiv>
         </div>
@@ -172,13 +179,13 @@ export default function AboutPage() {
                   { value: stats.totalTopics, label: "Topics" },
                   { value: `${stats.totalQuestions}+`, label: "Questions" },
                 ].map(({ value, label }, i, arr) => (
-                  <span key={label}>
+                  <div key={label} className="flex items-center gap-5">
                     <span className="flex flex-col">
                       <span className="text-2xl font-black text-primary">{value}</span>
                       <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mt-0.5">{label}</span>
                     </span>
-                    {i < arr.length - 1 && <div className="w-px h-10 bg-border hidden sm:inline-block ml-5" />}
-                  </span>
+                    {i < arr.length - 1 && <div className="w-px h-10 bg-border hidden sm:inline-block" />}
+                  </div>
                 ))}
               </div>
             </MotionDiv>
