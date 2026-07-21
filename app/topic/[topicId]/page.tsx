@@ -17,9 +17,9 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema"
 import { FAQSchema } from "@/components/seo/faq-schema"
-import type { Question } from "@/lib/types"
+import type { QuestionIndexEntry } from "@/lib/types"
 
-function sortQuestions(questions: Question[], sortBy: string): Question[] {
+function sortQuestions(questions: QuestionIndexEntry[], sortBy: string): QuestionIndexEntry[] {
   const order: Record<string, number> = { Easy: 0, Medium: 1, Hard: 2 }
   switch (sortBy) {
     case "alphabetical":

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Search as SearchIcon, SlidersHorizontal, X } from "lucide-react"
 import { Container } from "@/components/common/container"
@@ -9,6 +9,7 @@ import { FilterBar } from "@/components/common/filter-bar"
 import { QuestionCard } from "@/components/questions/question-card"
 import { EmptyState } from "@/components/common/empty-state"
 import { getQuestions } from "@/lib/data"
+import { loadAllQuestions } from "@/lib/question-loader"
 import { useTracking } from "@/hooks/use-tracking"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -31,8 +32,17 @@ function sortQuestions(questions: Question[], sortBy: string): Question[] {
 }
 
 export default function SearchPage() {
-  const allQuestions = useMemo(() => getQuestions(), [])
+  const [allQuestions, setAllQuestions] = useState<Question[]>([])
+  const [loading, setLoading] = useState(true)
+  const totalCount = useMemo(() => getQuestions().length, [])
   const { isBookmarked, toggleBookmark, isCompleted, toggleCompleted } = useTracking()
+
+  useEffect(() => {
+    loadAllQuestions().then((qs) => {
+      setAllQuestions(qs)
+      setLoading(false)
+    })
+  }, [])
 
   const [query, setQuery] = useState("")
   const [selectedDifficulties, setSelectedDifficulties] = useState<string[]>([])
@@ -82,7 +92,7 @@ export default function SearchPage() {
           <p className="text-sm text-muted-foreground leading-relaxed">
             Search across{" "}
             <Badge variant="secondary" className="font-bold mx-0.5 rounded-lg px-2 bg-primary/10 text-primary">
-              {allQuestions.length}
+              {totalCount}
             </Badge>{" "}
             Java OOP questions by title, keyword, tag, or type.
           </p>
@@ -154,8 +164,8 @@ export default function SearchPage() {
             <div className="hidden md:flex justify-between items-center px-1">
               <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                 {hasSearch || hasFilters
-                  ? `Found ${filtered.length} result${filtered.length !== 1 ? "s" : ""}`
-                  : `Showing all ${allQuestions.length} questions`}
+                    ? `Found ${filtered.length} result${filtered.length !== 1 ? "s" : ""}`
+                    : `Showing all ${totalCount} questions`}
               </span>
               {hasFilters && (
                 <button
@@ -198,7 +208,12 @@ export default function SearchPage() {
             )}
 
             <div className="space-y-4">
-              {!hasSearch && !hasFilters ? (
+              {loading ? (
+                <div className="text-center py-20 bg-card rounded-2xl border border-dashed border-border p-6 shadow-xs">
+                  <div className="w-6 h-6 border-2 border-primary/30 border-t-primary rounded-full animate-spin mx-auto mb-4" />
+                  <p className="text-sm text-muted-foreground">Loading questions...</p>
+                </div>
+              ) : !hasSearch && !hasFilters ? (
                 <div className="text-center py-20 bg-card rounded-2xl border border-dashed border-border p-6 shadow-xs">
                   <SearchIcon className="w-12 h-12 mx-auto mb-4 text-primary opacity-30" />
                   <h3 className="text-sm font-bold text-foreground mb-1">Start Searching</h3>
