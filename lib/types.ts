@@ -117,6 +117,35 @@ export interface Progress {
   percentage: number
 }
 
+export interface SyllabusUnit {
+  unitNumber: number
+  unitTitle: string
+  lectureHours: number
+  topics: string[]
+}
+
+export interface Textbook {
+  title: string
+  edition: string
+  author: string
+  publisher: string
+  year: number
+}
+
+export interface Syllabus {
+  courseTitle: string
+  natureOfCourse: string
+  semester: string
+  credits: number
+  lectureHours: number
+  courseObjectives: string
+  courseDescription: string
+  units: SyllabusUnit[]
+  laboratoryWorks: string
+  textBooks: Textbook[]
+  referenceBooks: Textbook[]
+}
+
 export const DIFFICULTIES: Difficulty[] = ["Easy", "Medium", "Hard"]
 
 export const QUESTION_TYPES: QuestionType[] = [
