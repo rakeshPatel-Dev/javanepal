@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from "@vercel/analytics/next"
 
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { Toaster } from "@/components/ui/sonner"
@@ -88,6 +89,7 @@ export default function RootLayout({
             <Toaster position="top-right" richColors closeButton />
           </TooltipProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
