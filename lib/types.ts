@@ -122,28 +122,79 @@ export interface SyllabusUnit {
   unitTitle: string
   lectureHours: number
   topics: string[]
+  learningOutcomes: string[]
 }
 
-export interface Textbook {
+export interface LectureHours {
+  theory: number
+  practical: number
+  total: number
+}
+
+export interface AssessmentMethod {
+  type: string
+  weightage: string
+  details: string
+}
+
+export interface InternalAssessment {
+  weightage: string
+  methods: AssessmentMethod[]
+}
+
+export interface ExternalBreakdown {
+  writtenExamination: { weightage: string; description: string }
+  practicalExamination: { weightage: string; description: string }
+}
+
+export interface ExternalAssessment {
+  weightage: string
+  breakdown: ExternalBreakdown
+}
+
+export interface LearningDimensions {
+  knowledge: string
+  skills: string
+  competence: string
+}
+
+export interface PracticalTask {
+  unit: number
+  description: string
+}
+
+export interface LaboratoryWork {
+  description: string
+  practicalTasks: PracticalTask[]
+}
+
+export interface SuggestedReading {
+  authors: string
   title: string
-  edition: string
-  author: string
+  edition?: string
   publisher: string
-  year: number
+  year: string
+  url?: string
 }
 
 export interface Syllabus {
+  courseCode: string
   courseTitle: string
-  natureOfCourse: string
+  program: string
   semester: string
+  natureOfCourse: string
   credits: number
-  lectureHours: number
-  courseObjectives: string
+  lectureHours: LectureHours
   courseDescription: string
+  courseObjectives: string[]
   units: SyllabusUnit[]
-  laboratoryWorks: string
-  textBooks: Textbook[]
-  referenceBooks: Textbook[]
+  pedagogicalStrategies: string[]
+  modeOfDelivery: string[]
+  internalAssessment: InternalAssessment
+  externalAssessment: ExternalAssessment
+  courseLearningOutcomeDimensions: LearningDimensions
+  laboratoryWork: LaboratoryWork
+  suggestedReadings: SuggestedReading[]
 }
 
 export const DIFFICULTIES: Difficulty[] = ["Easy", "Medium", "Hard"]

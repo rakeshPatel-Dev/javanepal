@@ -4,9 +4,13 @@ import {
 } from "lucide-react"
 import { Container } from "@/components/common/container"
 import { Logo } from "@/components/common/logo"
+import unitsData from "@/data/units.json"
+import topicsData from "@/data/topics.json"
 
 export function Footer() {
   const year = new Date().getFullYear()
+  const unitCount = unitsData.length
+  const topicCount = topicsData.length
 
   return (
     <footer className="border-t border-border bg-background/95 backdrop-blur-md mt-auto py-12 md:py-16 px-3 sm:px-5 lg:px-8">
@@ -68,7 +72,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-primary font-bold">•</span>
-                <span>Data: 9 Units · 77 Topics</span>
+                <span>Data: {unitCount} Units · {topicCount} Topics</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-primary font-bold">•</span>

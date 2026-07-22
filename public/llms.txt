@@ -2,13 +2,15 @@
 > Curated Java OOP question bank for BITM 2nd Semester exam revision.
 
 ## About
-JavaNepal provides 500+ Java OOP questions organised by 9 units and 77 topics, with detailed answers, code examples, and explanations. Built for personal study and exam revision based on the BITM 2nd Semester Java OOP syllabus.
+JavaNepal provides Java OOP questions organised by 9 units and 77 topics, with detailed answers, code examples, and explanations. Built for personal study and exam revision based on the BITM 2nd Semester Java OOP syllabus.
 
 ## Navigation
 - Home: https://javanepal.vercel.app/
+- Syllabus: https://javanepal.vercel.app/syllabus
 - All Units: https://javanepal.vercel.app/units
 - Search: https://javanepal.vercel.app/search
 - Bookmarks: https://javanepal.vercel.app/bookmarks
+- Feedback: https://javanepal.vercel.app/feedback
 - About: https://javanepal.vercel.app/about
 
 ## Important URLs
@@ -21,6 +23,7 @@ JavaNepal provides 500+ Java OOP questions organised by 9 units and 77 topics, w
 - Unit: Multithreaded Programming: https://javanepal.vercel.app/unit/multithreaded-programming
 - Unit: Essential Java Classes: https://javanepal.vercel.app/unit/essential-java-classes
 - Unit: File Handling: https://javanepal.vercel.app/unit/file-handling
+- Syllabus: https://javanepal.vercel.app/syllabus
 
 ## Contact
 - Developer: https://rakeshpatel.me

@@ -1,79 +1,137 @@
 {
-  "courseTitle": "Object Oriented Programming with Java",
+  "courseCode": "ITM152",
+  "courseTitle": "Object Oriented Programming in Java",
+  "program": "BITM",
+  "semester": "2nd",
   "natureOfCourse": "Theory + Practical",
-  "semester": "II",
   "credits": 3,
-  "lectureHours": 48,
-  "courseObjectives": "The main objective of this course is to provide students both theoretical and practical knowledge of object-oriented programming using Java programming language.",
-  "courseDescription": "This course covers different concepts of object-oriented programming with Java including fundamental concepts, different programming structures, classes and objects, inheritance, interface, package, exception handling, generic programming, modules and some essential Java classes.",
+  "lectureHours": {
+    "theory": 48,
+    "practical": 16,
+    "total": 64
+  },
+  "courseDescription": "This course provides a comprehensive introduction to Object Oriented Programming (OOP) using Java as the primary implementation language. Building upon the foundations of Structured Programming in C, students will transition to the object-oriented paradigm and develop proficiency in Java's type system, class hierarchy, inheritance, interfaces, exception handling, file handling, generics, and essential Java library classes. The course bridges fundamental programming knowledge with modern software design principles, equipping students to design modular, reusable, and robust applications. Equal emphasis is placed on theoretical understanding and hands on laboratory work, preparing students for advanced software development courses and industry roles.",
+  "courseObjectives": [
+    "Understand the history, features, and architecture of Java (JVM, JRE, JDK) and the object-oriented paradigm.",
+    "Demonstrate knowledge of Java fundamentals including data types, variables, operators, and control statements.",
+    "Define and use classes, objects, constructors, methods, and access control to implement encapsulation.",
+    "Apply inheritance, method overriding, abstract classes, and interfaces to build extensible class hierarchies.",
+    "Utilize arrays, strings, and essential Java library classes for solving computational problems.",
+    "Handle exceptions effectively using Java's built-in and user-defined exception mechanisms.",
+    "Implement file handling operations (text, binary, serialization) for data persistence.",
+    "Apply generic programming concepts and use the Java Collections Framework.",
+    "Write multi-threaded programs and manage concurrency issues.",
+    "Develop complete Java applications using good software engineering practices."
+  ],
   "units": [
     {
       "unitNumber": 1,
-      "unitTitle": "Introduction",
-      "lectureHours": 4,
+      "unitTitle": "Introduction to Java",
+      "lectureHours": 5,
       "topics": [
-        "Java Introduction",
-        "Short History of Java",
-        "Java Buzzwords",
-        "Java Virtual Machine (JVM)",
-        "Java Runtime Environment (JRE)",
-        "Bytecode",
-        "Object Oriented Programming and its Principles",
-        "Writing Simple Java Programs",
-        "Compiling and Running Java Programs using Command Line and IDE",
+        "The Creation of Java",
+        "Java's lineage and its influence on modern programming",
+        "Java's impact on the Internet",
+        "Java Buzzwords (Simple, Object-Oriented, Robust, Multithreaded, Architecture Neutral, Interpreted, High Performance, Distributed, Dynamic)",
+        "Java Virtual Machine (JVM), Java Runtime Environment (JRE), and Java Development Kit (JDK) architecture and roles",
+        "The Bytecode",
+        "Compilation model vs. interpretation model",
+        "Platform independence",
+        "Writing, Compiling, and Running Simple Java Programs using Command Line and IDE",
+        "Object-Oriented Programming Paradigm: Overview of OOP principles (Encapsulation, Inheritance, Polymorphism, Abstraction)",
         "Using Command Line Arguments",
-        "Using Scanner for Reading Input and System.out.print() for Writing Output"
+        "Reading Input with Scanner",
+        "Writing Output with System.out"
+      ],
+      "learningOutcomes": [
+        "Describe the history, features, and architecture of Java including JVM, JRE, and JDK (Knowledge)",
+        "Write, compile, and execute simple Java programs using command line tools and IDE (Skills)",
+        "Appreciate the significance of platform independence and OOP in Java application development (Competency)"
       ]
     },
     {
       "unitNumber": 2,
       "unitTitle": "Fundamental Programming Structures",
-      "lectureHours": 12,
+      "lectureHours": 6,
       "topics": [
         "Writing Comments",
-        "Primitive Data Types",
+        "Primitive Data Types (byte, short, int, long, float, double, char, boolean)",
         "Variables and Constants",
         "Type Conversion and Casting",
-        "Operators (Arithmetic, Bitwise, Logical, Assignment, and Conditional)",
-        "Precedence and Associativity of Operators",
-        "Control Statements (if, switch, for, while, do while, for-each, nested statements, break, continue, and return)",
-        "Working with Big Numbers",
-        "Arrays (One Dimensional and Multidimensional)"
+        "Automatic Type Promotion Rules",
+        "Operators: Arithmetic, Bitwise, Relational, Logical (short-circuit), Assignment, Conditional (?:), sizeof equivalent",
+        "Operator Precedence and Associativity",
+        "Using Parentheses",
+        "Control Statements: if, if else, nested if else, else if ladder, switch",
+        "Iteration Statements: while, do while, for, enhanced for each loop, nested loops",
+        "Jump Statements: break, continue, return",
+        "Working with Big Numbers (BigInteger, BigDecimal overview)",
+        "Declaration, Initialization, and Processing of One Dimensional and Multidimensional Arrays",
+        "Passing Arrays to Methods"
+      ],
+      "learningOutcomes": [
+        "Explain Java's data types, operators, and control structures with proper syntax (Knowledge)",
+        "Write Java programs using decision making, iteration, and array processing (Skills)",
+        "Apply fundamental programming structures to develop logical and efficient Java programs (Competency)"
       ]
     },
     {
       "unitNumber": 3,
       "unitTitle": "Classes and Objects",
-      "lectureHours": 10,
+      "lectureHours": 8,
       "topics": [
-        "Object Oriented Principles",
-        "Defining Classes",
-        "Adding Variables and Methods",
+        "Object Oriented Principles: Encapsulation, Abstraction, Inheritance, Polymorphism",
+        "Defining Classes: fields, methods, and the general form of a class",
         "Creating Objects and Accessing Class Members",
-        "Method Parameters and Return Types",
-        "Constructors",
-        "static Fields and Methods",
+        "Assigning Object Reference Variables",
+        "Methods: Adding Methods, Returning Values, Method Parameters and Return Types",
         "Method Overloading",
-        "this Keyword",
-        "Access Control",
-        "Nested and Inner Classes",
-        "Recursive Methods",
-        "Garbage Collection",
-        "Creating and Using Packages"
+        "Constructors: Default and Parameterized",
+        "Constructor Overloading",
+        "the this Keyword",
+        "Variable Length Arguments",
+        "Access Control: public, private, protected, default",
+        "JavaBeans convention",
+        "static Fields and Methods",
+        "final Variables, Methods, and Classes",
+        "The Object Class",
+        "Nested and Inner Classes: static nested, inner, local, and anonymous classes",
+        "Garbage Collection and Finalization",
+        "Object Lifecycle",
+        "Creating and Using Packages",
+        "import statements",
+        "CLASSPATH"
+      ],
+      "learningOutcomes": [
+        "Describe the concepts of classes, objects, constructors, methods, and access control in Java (Knowledge)",
+        "Implement well-structured Java classes with proper encapsulation, method overloading, and package organization (Skills)",
+        "Apply OOP principles to design modular and reusable Java components (Competency)"
       ]
     },
     {
       "unitNumber": 4,
-      "unitTitle": "Inheritance and Interface",
+      "unitTitle": "Inheritance and Interfaces",
       "lectureHours": 7,
       "topics": [
-        "Inheritance Basics",
-        "Defining Subclasses",
-        "Using super and final Keywords",
-        "Abstract Class",
-        "The Object Class",
-        "Dynamic Method Dispatch",
-        "Declaring, Extending, and Implementing Interfaces"
+        "Inheritance Basics: extends keyword, member access, IS-A relationship",
+        "Using super: calling superclass constructors and overridden methods",
+        "Method Overriding: rules, @Override annotation, covariant return types",
+        "Dynamic Method Dispatch: runtime polymorphism",
+        "Why overridden methods matter",
+        "Abstract Classes: abstract methods and the template method concept",
+        "Inheritance types",
+        "Using final with Inheritance (preventing overriding and subclassing)",
+        "Interfaces: defining, implementing, and extending interfaces",
+        "Default and Static Methods in Interfaces (Java 8+)",
+        "Multiple interface inheritance",
+        "Functional Interfaces and the @FunctionalInterface annotation",
+        "Sealed Classes overview",
+        "Liskov Substitution Principle"
+      ],
+      "learningOutcomes": [
+        "Explain inheritance, method overriding, abstract classes, and interfaces in Java (Knowledge)",
+        "Implement class hierarchies using inheritance, polymorphism, and interfaces effectively (Skills)",
+        "Apply inheritance and interface-based design to build extensible and loosely coupled Java applications (Competency)"
       ]
     },
     {
@@ -82,72 +140,278 @@
       "lectureHours": 4,
       "topics": [
         "Exception Handling Fundamentals",
-        "Exception Types",
-        "Uncaught Exceptions",
-        "Using try, catch, throw, throws, and finally",
-        "Java's Built-in Exceptions",
-        "Creating Your Own Exception"
+        "Exception Hierarchy: Throwable, Error, Exception, RuntimeException",
+        "Checked vs. Unchecked Exceptions",
+        "Understanding uncaught exceptions and stack traces",
+        "Using try, catch, and finally blocks",
+        "Multiple catch clauses",
+        "Nested try statements",
+        "Multi-catch (Java 7+)",
+        "try-with-resources for automatic resource management",
+        "throw and throws keywords",
+        "Exception chaining (initCause, getCause)",
+        "Java's Built-in Exceptions overview",
+        "Creating Custom Exception Subclasses",
+        "Best practices for exception design"
+      ],
+      "learningOutcomes": [
+        "Describe the exception hierarchy and types of exceptions in Java (Knowledge)",
+        "Implement robust exception handling using try-catch-finally, custom exceptions, and try-with-resources (Skills)",
+        "Apply exception handling to build fault-tolerant programs that handle errors gracefully (Competency)"
       ]
     },
     {
       "unitNumber": 6,
-      "unitTitle": "Generics and Modules",
-      "lectureHours": 4,
+      "unitTitle": "Generics and Collections",
+      "lectureHours": 5,
       "topics": [
         "Importance of Generic Programming",
         "Defining Generic Classes and Methods",
-        "Bounds for Type Variables",
-        "Generic Code and Virtual Machine",
-        "Restrictions and Limitations",
-        "Inheritance Rule",
-        "Wildcard",
-        "Reflection and Generics",
-        "Modules"
+        "Type parameters",
+        "Bounded Wildcards (extends/super)",
+        "Type erasure and heap pollution",
+        "Restrictions and Limitations of Generics",
+        "Inheritance Rules with Generics",
+        "The Java Collections Framework: List, Set, Map, Queue, and Deque interfaces",
+        "Iterators and the Iterable interface",
+        "Enhanced for loop with collections",
+        "Type Wrappers: Character, Boolean, numeric wrappers",
+        "Autoboxing and Unboxing",
+        "Autoboxing in expressions",
+        "Autoboxing with Boolean and Character",
+        "Preventing errors"
+      ],
+      "learningOutcomes": [
+        "Describe generic programming concepts, type parameters, wildcards, and the Collections Framework (Knowledge)",
+        "Implement generic classes and methods (Skills)",
+        "Apply generics and collections to write type-safe, reusable, and efficient data management code (Competency)"
       ]
     },
     {
       "unitNumber": 7,
-      "unitTitle": "Essential Java Classes",
-      "lectureHours": 7,
+      "unitTitle": "Multithreaded Programming",
+      "lectureHours": 5,
       "topics": [
-        "String, StringBuffer, and StringBuilder Classes",
-        "Primitive Type Wrappers",
-        "Math Class",
-        "I/O Classes and Interfaces",
-        "File I/O"
+        "The Java Thread Model: threads vs. processes",
+        "Benefits of multithreading",
+        "Thread Priorities",
+        "Synchronization",
+        "Messaging between threads",
+        "The Thread Class and the Runnable Interface",
+        "The main thread",
+        "Creating Threads: implementing Runnable; extending Thread class",
+        "Creating Multiple Threads",
+        "Using isAlive() and join()",
+        "Thread Priorities and scheduling",
+        "Synchronization: synchronized methods and synchronized statements"
+      ],
+      "learningOutcomes": [
+        "Explain the Java thread model, thread lifecycle, synchronization, and enumeration concepts (Knowledge)",
+        "Create and manage threads using Runnable and Thread; apply synchronized mechanisms to prevent race conditions (Skills)",
+        "Apply multithreading techniques to develop concurrent, efficient, and thread-safe Java applications (Competency)"
+      ]
+    },
+    {
+      "unitNumber": 8,
+      "unitTitle": "Essential Java Classes",
+      "lectureHours": 3,
+      "topics": [
+        "String Class: constructors, length, special operators (concatenation, conversion, toString())",
+        "Character extraction: charAt() and getChars()",
+        "String comparison methods",
+        "Modifying Strings: substring(), concat(), replace(), trim()",
+        "StringBuffer and StringBuilder: mutable strings, performance considerations",
+        "String Handling Library Functions overview",
+        "Math Class: commonly used mathematical methods",
+        "Primitive Type Wrappers: Character, Boolean, Integer, Double methods and conversions",
+        "Introduction to Lambda Expressions and Stream API (overview for modern Java awareness)"
+      ],
+      "learningOutcomes": [
+        "Describe the functionality of essential Java classes including String, StringBuilder, Math, and wrapper classes (Knowledge)",
+        "Use string manipulation methods, math functions, and wrapper class utilities to solve common programming problems (Skills)",
+        "Apply essential Java library classes to write cleaner, more expressive, and efficient programs (Competency)"
+      ]
+    },
+    {
+      "unitNumber": 9,
+      "unitTitle": "File Handling",
+      "lectureHours": 5,
+      "topics": [
+        "Introduction to Files",
+        "File class: creating, deleting, listing files and directories",
+        "File Modes and I/O Exceptions",
+        "AutoCloseable, Closeable, and Flushable Interfaces",
+        "Byte Streams: InputStream, OutputStream, FileInputStream, FileOutputStream",
+        "PrintStream, DataOutputStream, DataInputStream",
+        "RandomAccessFile for random access",
+        "Character Streams: Reader, Writer",
+        "FileReader, FileWriter, PrintWriter, BufferedReader, BufferedWriter",
+        "The Console Class",
+        "Reading from standard input and writing formatted output",
+        "NIO.2 API (java.nio.file): Path, Files, Paths - modern file operations",
+        "Sequential and Random Access to Files",
+        "Serialization: Serializable interface, ObjectOutputStream, ObjectInputStream",
+        "I/O Classes and Interfaces review"
+      ],
+      "learningOutcomes": [
+        "Describe Java file I/O concepts including file types, stream hierarchies, serialization, and NIO.2 (Knowledge)",
+        "Implement file handling operations - opening, reading, writing, appending, closing for both text and binary files using byte and character streams (Skills)",
+        "Apply file management and serialization techniques to develop programs with persistent data storage and retrieval capabilities (Competency)"
       ]
     }
   ],
-  "laboratoryWorks": "Students should write Java programs to implement all the concepts studied in each unit of the course.",
-  "textBooks": [
-    {
-      "title": "Core Java Volume I– Fundamentals",
-      "edition": "Eleventh Edition",
-      "author": "Cay S. Horstmann",
-      "publisher": "Pearson Education",
-      "year": 2019
-    },
-    {
-      "title": "Java: The Complete Reference",
-      "edition": "Twelfth Edition",
-      "author": "Herbert Schildt",
-      "publisher": "McGraw Hill",
-      "year": 2022
-    }
+  "pedagogicalStrategies": [
+    "Lectures with live coding demonstrations",
+    "Hands-on laboratory sessions with guided and open-ended exercises",
+    "Problem-based learning using real-world scenarios",
+    "Pair programming and peer code review activities",
+    "Multimedia presentations to visualize OOP and concurrency concepts",
+    "Mini project with iterative design and feedback cycles",
+    "Guest lectures from software industry professionals",
+    "Continuous assessment and formative feedback"
   ],
-  "referenceBooks": [
+  "modeOfDelivery": [
+    "Lecture sessions (Theory)",
+    "Demonstration",
+    "Laboratory work (Practical)",
+    "Mini project"
+  ],
+  "internalAssessment": {
+    "weightage": "40%",
+    "methods": [
+      {
+        "type": "Class participation & attendance",
+        "weightage": "10%",
+        "details": "Contribution to discussions, engagement in class activities"
+      },
+      {
+        "type": "Quizzes/short tests",
+        "weightage": "15%",
+        "details": "Periodic quizzes to assess comprehension"
+      },
+      {
+        "type": "Practical/Project",
+        "weightage": "20%",
+        "details": "Lab sessions and mini project"
+      },
+      {
+        "type": "Mid-term examination",
+        "weightage": "25%",
+        "details": "Written test"
+      },
+      {
+        "type": "Pre-board examination",
+        "weightage": "30%",
+        "details": "Comprehensive written test covering all units"
+      }
+    ]
+  },
+  "externalAssessment": {
+    "weightage": "60%",
+    "breakdown": {
+      "writtenExamination": {
+        "weightage": "40%",
+        "description": "Evaluates students' abilities in remembering, understanding, applying, analyzing, evaluating, and creating"
+      },
+      "practicalExamination": {
+        "weightage": "20%",
+        "description": "Assesses hands-on programming skills and competency"
+      }
+    }
+  },
+  "courseLearningOutcomeDimensions": {
+    "knowledge": "35%",
+    "skills": "40%",
+    "competence": "25%"
+  },
+  "laboratoryWork": {
+    "description": "Students are required to complete hands-on programming exercises for every unit.",
+    "practicalTasks": [
+      {
+        "unit": 1,
+        "description": "Write and execute basic Java programs; explore JDK tools (javac, java); use Scanner for input"
+      },
+      {
+        "unit": 2,
+        "description": "Programs using operators, type casting, control statements, and arrays"
+      },
+      {
+        "unit": 3,
+        "description": "Design and implement classes with constructors, method overloading, static members, and packages"
+      },
+      {
+        "unit": 4,
+        "description": "Build class hierarchies using inheritance; demonstrate polymorphism and interface implementation"
+      },
+      {
+        "unit": 5,
+        "description": "Programs with try-catch-finally, custom exceptions, and try-with-resources"
+      },
+      {
+        "unit": 6,
+        "description": "Implement generic classes/methods; use ArrayList; and sorting with Comparator"
+      },
+      {
+        "unit": 7,
+        "description": "Create multithreaded programs; demonstrate synchronization and deadlock prevention; use Enumerations"
+      },
+      {
+        "unit": 8,
+        "description": "String processing programs; use StringBuilder, Math class, and wrapper classes"
+      },
+      {
+        "unit": 9,
+        "description": "File I/O programs — text file read/write, binary file handling, random access, and object serialization; develop a record-keeping system with search and manipulation features"
+      }
+    ]
+  },
+  "suggestedReadings": [
     {
-      "title": "Effective Java",
-      "edition": "Third Edition",
-      "author": "Joshua Bloch",
+      "authors": "Horstmann, C. S.",
+      "title": "Core Java: Volume I—fundamentals",
+      "edition": "12th ed.",
       "publisher": "Pearson Education",
-      "year": 2018
+      "year": "2022"
     },
     {
-      "title": "Learning Java– An Introduction to Real World Programming with Java",
-      "author": "Marc Loy, Patrick Niemeyer, and Daniel Leuck",
-      "publisher": "O'Reilly",
-      "year": 2020
+      "authors": "Schildt, H.",
+      "title": "Java: The complete reference",
+      "edition": "12th ed.",
+      "publisher": "McGraw Hill",
+      "year": "2022"
+    },
+    {
+      "authors": "Bloch, J.",
+      "title": "Effective Java",
+      "edition": "3rd ed.",
+      "publisher": "Addison-Wesley",
+      "year": "2018"
+    },
+    {
+      "authors": "Deitel, P., & Deitel, H.",
+      "title": "Java: How to program",
+      "edition": "11th ed.",
+      "publisher": "Pearson",
+      "year": "2020"
+    },
+    {
+      "authors": "Loy, M., Niemeyer, P., & Leuck, D.",
+      "title": "Learning Java: An introduction to real-world programming with Java",
+      "publisher": "O'Reilly Media",
+      "year": "2020"
+    },
+    {
+      "authors": "Eckel, B.",
+      "title": "Thinking in Java",
+      "edition": "4th ed.",
+      "publisher": "Prentice Hall",
+      "year": "2006"
+    },
+    {
+      "authors": "Oracle Corporation",
+      "title": "Java SE 21 documentation",
+      "url": "https://docs.oracle.com/en/java/javase/21/",
+      "year": "2023"
     }
   ]
 }
